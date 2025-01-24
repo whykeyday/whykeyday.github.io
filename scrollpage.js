@@ -13,6 +13,8 @@ function updateHeaderClipPath() {
     img.style.transform = `scale(${scaleValue})`;
 
     const opacityValue = (scrollDistance / 600);
+    console.log("scale value: ", scaleValue);
+    console.log("scroll distance: ", scrollDistance);
 }
 
 function scrollHandler(event) {

@@ -1,40 +1,39 @@
-let x = 50; // Initial x position of the square (in percentage of canvas width)
-let y = 50; // Initial y position of the square (in percentage of canvas height)
+let x = 50; 
+let y = 50; 
 let dx = 0; // Change in x position (velocity in x-direction)
 let dy = 0; // Change in y position (velocity in y-direction)
-let speed = 1.5; // Speed multiplier for movement
-let squareSize = 5; // Size of the square (in percentage of canvas width)
+let speed = 1; 
+let img_grade; // Variable to hold the image
 let bgImage; // Variable to hold the background image
 
 function preload() {
-    // Load the background image
     bgImage = loadImage('./bg2.webp');
+    img_grade = loadImage('./grade.png');
 }
 
 function setup() {
-    // Create canvas and attach it to the container
     let canvas = createCanvas(windowWidth, windowHeight / 2);
     canvas.parent('canvas-container'); // Attach canvas to #canvas-container
+    console.log("canvas width: ", windowWidth);
+    console.log("canvas height: ", windowHeight/2);
 }
 
 function draw() {
-    // Draw the background image
     background(bgImage);
-
-    fill(0); // Black square
 
     // Calculate absolute positions and size based on percentages
     let absX = (x / 100) * width;
     let absY = (y / 100) * height;
-    let absSize = (squareSize / 100) * width;
+    let imgWidth = 100; // Width of the image in pixels
+    let imgHeight = 100; // Height of the image in pixels
 
-    // Draw the square
-    rect(absX, absY, absSize, absSize);
+    // Draw the image
+    image(img_grade, absX, absY, imgWidth, imgHeight);
 
     // Calculate the distance to the mouse
-    let mouseDistX = mouseX - absX - absSize / 2;
-    let mouseDistY = mouseY - absY - absSize / 2;
-    let distance = dist(mouseX, mouseY, absX + absSize / 2, absY + absSize / 2);
+    let mouseDistX = mouseX - (absX + imgWidth / 2);
+    let mouseDistY = mouseY - (absY + imgHeight / 2);
+    let distance = dist(mouseX, mouseY, absX + imgWidth / 2, absY + imgHeight / 2);
 
     // If the mouse is close, apply force in the opposite direction
     if (distance < 150) { // Adjust interaction radius
@@ -51,8 +50,13 @@ function draw() {
     dy *= 0.95; // Friction factor for y
 
     // Wrap around edges (percentage-based)
-    if (x < 0) x = 100; // If the square exits left, reappear on the right
-    if (x > 100) x = 0; // If the square exits right, reappear on the left
-    if (y < 0) y = 100; // If the square exits top, reappear at the bottom
-    if (y > 100) y = 0; // If the square exits bottom, reappear at the top
+    if (x < 0) x = 100; // If the image exits left, reappear on the right
+    if (x > 100) x = 0; // If the image exits right, reappear on the left
+    if (y < 0) y = 100; // If the image exits top, reappear at the bottom
+    if (y > 100) y = 0; // If the image exits bottom, reappear at the top
+    // Log the values of x and y every second
+    setInterval(() => {
+        console.log('block x axis is:', x);
+        console.log('block y axis is:', y);
+    }, 2000); // Log every 2000ms (2 second)
 }
