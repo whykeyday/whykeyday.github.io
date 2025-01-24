@@ -20,7 +20,7 @@
     
     scriptElm = doc.createElement('script');
     scriptElm.setAttribute('nomodule', '');
-    scriptElm.src = url + '/ionicons.js';
+    scriptElm.src = url + 'ionicons.js';
     warn.push(scriptElm.outerHTML);
     scriptElm.setAttribute('data-stencil-namespace', 'ionicons');
     doc.head.appendChild(scriptElm)
