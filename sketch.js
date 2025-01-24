@@ -7,8 +7,8 @@ let img_grade; // Variable to hold the image
 let bgImage; // Variable to hold the background image
 
 function preload() {
-    bgImage = loadImage('./bg2.webp');
-    img_grade = loadImage('./grade.png');
+    bgImage = loadImage('./Materials/bg2.webp');
+    img_grade = loadImage('./Materials/grade.png');
 }
 
 function setup() {
