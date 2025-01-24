@@ -26,7 +26,7 @@ function draw() {
     let absY = (y / 100) * height;
     let imgWidth = 100; // Width of the image in pixels
     let imgHeight = 100; // Height of the image in pixels
-
+    console.log(`Absolute X: ${absX}, Absolute Y: ${absY}`);
     // Draw the image
     image(img_grade, absX, absY, imgWidth, imgHeight);
 
@@ -53,7 +53,7 @@ function draw() {
     if (x < 0) x = 100; // If the image exits left, reappear on the right
     if (x > 100) x = 0; // If the image exits right, reappear on the left
     if (y < 0) y = 100; // If the image exits top, reappear at the bottom
-    if (y > 100) y = 0; // If the image exits bottom, reappear at the top
+    if (y > 100) y = 0;  // If the image exits bottom, reappear at the top
     // Log the values of x and y every second
     setInterval(() => {
         console.log('block x axis is:', x);

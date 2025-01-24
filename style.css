@@ -10,8 +10,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent background */
-    color: white;
+    background-color: rgba(71, 235, 208, 0.22); /* Semi-transparent background */
+    color: rgb(252, 252, 252);
     padding: 10px 20px;
     position: fixed;
     top: 0;
@@ -21,21 +21,18 @@
 }
 
 .logo {
-    font-size: 20px;
+    font-size: 60px;
     font-weight: bold;
     margin-right: 20px; /* Space between logo and Assignments */
     transition: font-size 0.3s ease, font-weight 0.3s ease;
 }
 
-.logo:hover, .logo:active {
-    font-size: 22px; /* Slightly increase font size */
-    font-weight: bold; /* Make text bold */
-}
+
 
 .dropdown {
     position: relative;
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 100px;
 }
 
 .dropbtn {
@@ -43,13 +40,13 @@
     color: white;
     border: none;
     padding: 10px 15px;
-    font-size: 16px;
+    font-size: 30px;
     cursor: pointer;
     transition: font-size 0.3s ease, font-weight 0.3s ease; /* Smooth animation */
 }
 
 .dropbtn:hover, .dropbtn:active {
-    font-size: 18px; /* Increase font size on hover or click */
+    font-size: 40px; /* Increase font size on hover or click */
     font-weight: bold; /* Make text bold */
     color: #00e1ff; /* Optional: highlight color */
 }
@@ -57,16 +54,17 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(212, 248, 248, 0.9);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(3, 40, 252, 0.897);
     z-index: 1;
-    opacity: 0;
+    opacity: 0.3;
     transition: opacity 0.3s ease-in-out;
 }
 
 .dropdown-content a {
-    color: black;
+    color: rgb(53, 10, 245);
+    font-size: 18px;
     padding: 10px 15px;
     text-decoration: none;
     display: block;
@@ -74,7 +72,7 @@
 }
 
 .dropdown-content a:hover, .dropdown-content a:active {
-    font-size: 18px; /* Increase font size on hover or click */
+    font-size: 20px; /* Increase font size on hover or click */
     font-weight: bold; /* Make text bold */
     background-color: rgba(240, 240, 240, 0.7); /* Optional subtle background change */
     color: #00e1ff; /* Optional highlight color */
@@ -82,11 +80,11 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
-    opacity: 1; /* Make visible on hover */
+    opacity: 0.99; /* Make visible on hover */
 }
 
 /* Header styles */
-.shell {
+.main_page {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -109,24 +107,57 @@ header {
     transition: transform 0.5s ease;
 }
 
+/* Main content styles */
 .main-content {
+    position: relative; /* Ensure the container is positioned */
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     margin-top: 100px;
+    background: none; /* Remove any existing background */
+    overflow: hidden; /* Ensure the canvas doesn't overflow */
+}
+
+.main-content canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the canvas is behind the content */
 }
 
 .main-content h2 {
-    font-size: 50px;
+    font-size: 80px;
     margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif; 
+    background: linear-gradient(30deg, #add8e6, #e0ffff, #ffffe0, #ffb6c1); /* Vertical gradient with pastel colors */
+    background-clip: text;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
 }
 
-.main-content img {
-    width: 50%;
+.main-content .intro {
+    font-size: 24px;
+    text-align: center;
+    max-width: 700px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: rgb(238, 135, 99, 0.7);
 }
 
-/* Canvas container */
+.playground h2 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    font-family: 'Poppins', sans-serif; 
+    margin-left: 5%;
+    background: linear-gradient(0deg, #bbe9f8, #7b84f7, #4eb1df, #ff0026); /* Vertical gradient with pastel colors */
+    background-clip: text;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}
+
 #canvas-container {
     width: 100%;
     height: 50vh;
@@ -136,18 +167,17 @@ header {
     align-items: center;
 }
 
-/* Social media icons */
 .icons {
     position: fixed;
     right: 20px;
     bottom: 20px;
     display: flex;
-    gap: 10px;
+    gap: 30px;
 }
 
 .icons ion-icon {
     color: white;
-    font-size: 24px;
+    font-size: 50px;
     transition: 0.3s;
 }
 
