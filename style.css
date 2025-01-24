@@ -157,7 +157,14 @@ header {
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent; 
 }
-
+.squaure-canva {
+    width: 100%;
+    height: 50vh;
+    background-color: rgb(255, 14, 14);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 #canvas-container {
     width: 100%;
     height: 50vh;
@@ -167,6 +174,33 @@ header {
     align-items: center;
 }
 
+#squares-canvas {
+    width: 100%;
+    height: 30vh;
+    background-color: rgb(209, 218, 247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+}
+
+.square {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(7, 121, 228, 0.089);
+    border: 2px solid #000000; 
+    animation: horizontalMove 12s linear infinite;
+}
+
+@keyframes horizontalMove {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 100%;
+    }
+}
 .icons {
     position: fixed;
     right: 20px;
@@ -185,25 +219,25 @@ header {
     color: #00e1ff;
 }
 
-/* Body styling */
+
 body {
     position: relative;
     font-family: Arial, sans-serif;
-    height: 1500px; /* Set body height */
-    margin: 0; /* Reset default margins */
+    height: 1500px; 
+    margin: 0; 
 }
 
-/* Background layer using a pseudo-element */
+
 body::before {
     content: "";
-    position: fixed; /* Fixed position to stay static during scrolling */
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('bg2.webp') no-repeat center center fixed; /* Background image */
-    background-size: cover; /* Ensure the image covers the viewport */
-    opacity: 0.5; /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Apply blur effect */
+    background: url('bg2.webp') no-repeat center center fixed; 
+    background-size: cover; 
+    opacity: 0.5; 
+    backdrop-filter: blur(10px);
     z-index: -1; /* Ensure it is behind all other content */
 }
