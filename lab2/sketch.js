@@ -27,8 +27,8 @@ function handleCollisionStar(obj1, obj2) {
 var redBrick = {
     x:0,
     y:0,
-    w:60,
-    h:60, 
+    w:windowHeight/15,
+    h:windowHeight/15, 
     xSpeed:8,
     ySpeed:8,
     colour: 'red',
@@ -54,8 +54,8 @@ var redBrick = {
 var blueBrick = {
     x:1080,
     y:0,
-    w:100,
-    h:100, 
+    w:windowHeight/12,
+    h:windowHeight/12, 
     xSpeed:5,
     ySpeed:5,
     colour: "#9ACDFF",
@@ -89,8 +89,8 @@ var blueBrick = {
 var star = {
     x: windowWidth/3,
     y: windowHeight/3,
-    w: 150, // Add width for collision detection
-    h: 150, // Add height for collision detection
+    w: windowHeight/10, // Add width for collision detection
+    h: windowHeight/10, // Add height for collision detection
     colour: 'white',
     stroke: 'purple',
     strokeWeight: 2,
