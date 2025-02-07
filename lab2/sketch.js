@@ -87,10 +87,10 @@ var blueBrick = {
 }; 
 
 var star = {
-    x: 360,
-    y: 240,
-    w: 70, // Add width for collision detection
-    h: 70, // Add height for collision detection
+    x: windowWidth/3,
+    y: windowHeight/3,
+    w: 150, // Add width for collision detection
+    h: 150, // Add height for collision detection
     colour: 'white',
     stroke: 'purple',
     strokeWeight: 2,
