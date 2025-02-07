@@ -168,7 +168,7 @@ var star = {
 };
 
 function setup(){
-    createCanvas(720,480);
+    createCanvas(windowWidth,windowHeight);
 }
 
 function draw(){
