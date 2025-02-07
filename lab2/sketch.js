@@ -168,9 +168,12 @@ var star = {
 };
 
 function setup(){
-    createCanvas(windowWidth/2,windowHeight/2);
+    createCanvas(windowWidth,windowHeight);
 }
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
 function draw(){
     background("#FFF0F0");
     redBrick.draw();
