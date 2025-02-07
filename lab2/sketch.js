@@ -27,10 +27,10 @@ function handleCollisionStar(obj1, obj2) {
 var redBrick = {
     x:0,
     y:0,
-    w:30,
-    h:30, 
-    xSpeed:3,
-    ySpeed:3,
+    w:60,
+    h:60, 
+    xSpeed:8,
+    ySpeed:8,
     colour: 'red',
     draw:function(){
         fill (this.colour);
@@ -52,12 +52,12 @@ var redBrick = {
 //++redBrick.x increments then returns the value
 
 var blueBrick = {
-    x:500,
+    x:1080,
     y:0,
-    w:30,
-    h:30, 
-    xSpeed:1,
-    ySpeed:1,
+    w:100,
+    h:100, 
+    xSpeed:5,
+    ySpeed:5,
     colour: "#9ACDFF",
     draw:function(){
         fill (this.colour);
