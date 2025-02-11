@@ -7,7 +7,7 @@ console.log(schmoDiv);
 
 function ourDivWasClicked(){
     if(schmoDiv.innerHTML === "Hello"){
-      schmoDiv.innerHTML = "howdy!";
+      schmoDiv.innerHTML = "Salut !";
     }else{
        schmoDiv.innerHTML = "Hello"
     }
