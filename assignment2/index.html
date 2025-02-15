@@ -2,40 +2,45 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Ketchup's leisurely life</title>
     <script src="p5.min.js"></script> 
     
 <!-- ----------------------------------------------------------------------- -->
-      <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_fade-->
-      <!-- This code comes from this tutorial-->
-      <!-- How TO - Tabs-->
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_fade-->
+<!-- This code comes from this tutorial-->
+<!-- How TO - Tabs-->
 <!-- Tab links -->
 
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+    <button class="tablinks" onclick="openCity(event, 'Owner')" id="defaultOpen">Info </button>
+    <button class="tablinks" onclick="openCity(event, 'Tel')">Contact</button>
+    <button class="tablinks" onclick="openCity(event, 'Subscription')">Subscription</button>
   </div>
   
   
   <!-- Tab content -->
 
-  <div id="London" class="tabcontent">
+  <div id="Owner" class="tabcontent">
     <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-    <h3>London</h3>
-    <p>London is the capital city of England.</p>
+    <h3>Owner</h3>
+    <p>Keying Dai 💕 Kecheng Yao </p>
   </div>
   
-  <div id="Paris" class="tabcontent">
+  <div id="Tel" class="tabcontent">
     <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-    <h3>Paris</h3>
-    <p>Paris is the capital of France.</p> 
+    <h3>Tel 📞</h3>
+    <p>4389218452</p> 
   </div>
   
-  <div id="Tokyo" class="tabcontent">
+  <div id="Subscription" class="tabcontent">
     <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-    <h3>Tokyo</h3>
-    <p>Tokyo is the capital of Japan.</p>
+    <div class="icons">
+      <a href="https://www.youtube.com/@keyingdai"><ion-icon name="logo-youtube"></ion-icon></a>
+      <a href="https://www.linkedin.com/in/keying-dai-a85540297/"><ion-icon name="logo-linkedin"></ion-icon></a>
+      <a href="https://github.com/whykeyday/whykeyday.github.io"><ion-icon name="logo-github"></ion-icon></a>
+  </div>
   </div>
   
   <script>
@@ -122,35 +127,31 @@
     </div>
 </div>
 
+<div class="bgimg-2">
+  <div class="caption">
+  </div>
+</div>
+
+<div style="position:relative;">
+  <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
+  <p>All rights reserved by Ketchup. </p><p></p>No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by KittyRight law. </p>
+  <p>Moew~~~</p>
+</div>
+</div>
+
+<div class="bgimg-3">
+  <div class="caption">
+<!-- https://diviengine.com/snippets/divi/confetti-effect-when-clicking-a-divi-button-module/ -->
+    <!-- This code comes from this tutorial-->
+  <!-- How TO - create confetti buttons-->
+    <button class="confetti-button" id="btn">
+      😎 COOL!
+    </button>
+  </div>
+</div>
 
 
 
-
-          
-
-    
-    <div class="bgimg-2">
-      <div class="caption">
-      </div>
-    </div>
-    
-    <div style="position:relative;">
-      <div style="color:#ddd;background-color:#282E34;text-align:center;padding:50px 80px;text-align: justify;">
-      <p>All rights reserved by Ketchup. </p><p></p>No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by KittyRight law. </p>
-      <p>Moew~~~</p>
-    </div>
-    </div>
-
-      
-    
-    
-    
-    <div class="bgimg-3">
-      <div class="caption">
-      <span class="border">COOL!</span>
-      </div>
-    </div>
-    
     
     </body>
 </head>
@@ -171,9 +172,15 @@
         document.getElementById("exit-button").addEventListener("click", function() {
             window.location.href = "https://whykeyday.github.io/"; // back to this URL
         });
+
     </script>
 
     <link rel="stylesheet" href="ketchup.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.js"></script>
+
     <script src="ketchup.js"></script>
     <script src="heart.js"></script>
 </body>
