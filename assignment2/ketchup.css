@@ -1,0 +1,355 @@
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 16px;
+  }
+  
+  /* Scrollbar Track */
+  ::-webkit-scrollbar-track {
+    background: #e9ccfa;
+    border-radius: 10px;
+  }
+  
+  /* Scrollbar thumb with repeating star pattern */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(107, 255, 235); /* Fallback */
+    background-repeat: repeat-y;    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12,2 15,8 22,9 17,14 18,21 12,18 6,21 7,14 2,9 9,8" fill="yellow" stroke="black" stroke-width="1"/></svg>');
+
+    background-size: contain;
+    border-radius: 10px;
+  }
+  
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #eb98be; 
+  }
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+/* Flip card container */
+.flip-card {
+    position: absolute; /* Position inside .parallax */
+    top: 60px; /* Adjust distance from top */
+    left: 10px; /* Adjust distance from left */
+    width: 300px;
+    height: 300px;
+    perspective: 1000px; /* Enables 3D effect */
+}
+
+/* Flip card inner container */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Flip animation */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front and back styling */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Front side with full image */
+.flip-card-front {
+    background-image: url("photos/08.jpg"); /* Your image */
+    background-size: cover; /* Ensures the image fully covers the card */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents tiling */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Flip card back with better text layout */
+.flip-card-back {
+    background-color: rgb(139, 117, 101);
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column; /* Aligns text in a vertical column */
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    text-align: left; /* Aligns text properly */
+}
+
+/* Style for each row of information */
+.flip-card-back p {
+    font-size: 16px;
+    margin: 5px 0; /* Adds spacing between lines */
+}
+
+/* Bold label text */
+.flip-card-back strong {
+    font-weight: bold;
+}
+
+/* Style the links inside the sidenav */
+/* Side navigation */
+#mySidenav {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+/* Style for sidenav links */
+#mySidenav a {
+    position: relative;
+    left: -100px;
+    transition: 0.3s;
+    width: 90px;
+    height: 55px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white; /* Keep text visible */
+    border-radius: 80%;
+    display: flex;
+    justify-content: flex-end; /* Move text to the right */
+    align-items: flex-end; /* Move text to the bottom */
+    opacity: 0.8;
+    font-weight: bold;
+    text-transform: uppercase;
+    -webkit-text-stroke: none; /* Remove unwanted outline */
+    text-shadow: none !important; /* Remove any shadow */
+    z-index: 10;
+    overflow: visible;
+    padding-right: 10px; /* Adjust horizontal positioning */
+    padding-bottom: 10px; /* Adjust vertical positioning */
+}
+
+
+/* Fully expand on hover */
+#mySidenav a:hover {
+    left: 0px;
+    opacity: 1;
+}
+
+/* Heart Shape Styling */
+#mySidenav a::before, #mySidenav a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 78px;
+    height: 120px;
+    border-radius: 75px 75px 0 0;
+    background: inherit;
+    z-index: -1; /* Keep the heart background behind the text */
+}
+
+#mySidenav a::before {
+    left: 75px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+#mySidenav a::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+/* Individual button colors */
+#mySidenav a:nth-child(1) { background-color: #04AA6D; margin-top: 200px; }
+#mySidenav a:nth-child(2) { background-color: #2196F3;  margin-top: 30px; }
+#mySidenav a:nth-child(3) { background-color: #f44336;  margin-top: 30px; }
+#mySidenav a:nth-child(4) { background-color: #555; opacity: 0.6;  margin-top: 30px; }
+
+.active {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+}
+
+body {
+    background-color: rgb(255, 227, 211);
+    position: relative;
+}
+
+
+#exit-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: rgb(250, 239, 239);
+    color: rgb(12, 8, 8);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+#exit-button:hover {
+    background-color: rgb(235, 9, 9);
+}
+/* remixed from https://www.w3schools.com/howto/howto_css_parallax.asp */
+body, html {
+    height: 100%;
+  }
+  
+  /* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  
+  }
+  
+  /* Style the close button */
+  .topright {
+    float: right;
+    cursor: pointer;
+    font-size: 28px;
+  }
+  
+  .topright:hover {color: red;}
+  /* Go from zero to full opacity */
+  @keyframes fadeEffect {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  /*-----------------------------------------------------------------------*/
+
+/* Parallax background */
+.parallax {
+    background-image: url("photos/01.jpg");
+    height: 80vh; /* Use viewport height for better responsiveness */
+    position: relative; /* Needed to position elements inside */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+  /* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
+@media only screen and (max-device-width: 1366px) {
+    .parallax {
+      background-attachment: scroll;
+    }
+  }
+  /* end remix*/
+
+/*-----------------------------------------------------------------------
+      <!-- https://www.w3schools.com/howto/howto_css_parallax.asp -->
+      <!-- This code comes from this tutorial-->
+      <!-- How To Create a Parallax Scrolling Effect -->*/
+
+.bgimg-1 {
+    background-image: url(photos/16.jpg);
+    min-height: 400px;
+          /* Full height */
+    height: 50%; 
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgimg-2 {
+    background-image: url(photos/IMG_0331.JPG);
+    min-height: 500px;
+    height: 80%; 
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.bgimg-3 {
+    background-image: url(photos/07.jpg);
+    min-height: 500px;
+    height: 100%; 
+    position: relative;
+    opacity: 0.65;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Ensure the caption is positioned correctly */
+.caption {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 66.66%; /* Takes up the right 2/3 of the container */
+    text-align: right; /* Aligns text to the right */
+    color: #000;
+    transform: translateY(-50%); /* Centers text vertically */
+    display: flex; 
+    justify-content: flex-end; /* Push text to the right */
+    align-items: center; /* Align text vertically */
+}
+
+/* Style for the text block inside the caption */
+.caption span.border {
+    background-color: #111;
+    color: #fff;
+    padding: 18px;
+    font-size: 25px;
+    letter-spacing: 10px;
+    display: inline-block; /* Ensures proper spacing */
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+body {font-family: Arial;}
+
+
+
+
+
+        
+
+

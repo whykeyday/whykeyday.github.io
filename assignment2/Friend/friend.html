@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ketchup's Leisurely Life</title>
+    <script src="p5.min.js"></script> 
+    <link rel="stylesheet" href="../ketchup.css">
+    <link rel="stylesheet" href="../page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+    <script src="../ketchup.js"></script>
+    <script src="../heart.js"></script>
+    <script src="../photo.js"></script>
+
+</head>
+<body>
+<!-- Slideshow container -->
+<div class="slideshow-container">
+    <div class="mySlides fade">
+        <div class="numbertext">1 / 15</div>
+        <img src="01.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">2 / 15</div>
+        <img src="01B.JPG" style="width:100%">
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">3 / 15</div>
+        <img src="02.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">4 / 15</div>
+        <img src="02b.JPG" style="width:100%">
+    </div>
+    <div class="mySlides fade">
+        <div class="numbertext">5 / 15</div>
+        <img src="03.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">6 / 15</div>
+        <img src="04.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">7 / 15</div>
+        <img src="05.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">8 / 15</div>
+        <img src="06.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">9 / 15</div>
+        <img src="07.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">10 / 15</div>
+        <img src="08.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">11/ 15</div>
+        <img src="09.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">12 / 15</div>
+        <img src="10.JPG" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">13 / 15</div>
+        <img src="11.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <div class="numbertext">14 / 15</div>
+        <img src="12.jpg" style="width:100%">
+    </div>
+  <!-- Video Section -->
+    <div class="mySlides fade">
+        <div class="numbertext">15 / 15</div>
+        <div class="video-container">
+            <h2 class="heading">Food Guardian</h2>
+            <video controls width="100%">
+                <source src="IMG_4397.MOV" type="video/mp4">
+            </video>
+        </div>
+    </div>
+  
+
+    <!-- Previous and Next buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<!-- The dots/circles -->
+<div style="text-align:center; margin-top: 10px;">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <span class="dot" onclick="currentSlide(7)"></span>
+    <span class="dot" onclick="currentSlide(8)"></span>
+    <span class="dot" onclick="currentSlide(9)"></span>
+    <span class="dot" onclick="currentSlide(10)"></span>
+    <span class="dot" onclick="currentSlide(11)"></span>
+    <span class="dot" onclick="currentSlide(12)"></span>
+    <span class="dot" onclick="currentSlide(13)"></span>
+    <span class="dot" onclick="currentSlide(14)"></span>
+    <span class="dot" onclick="currentSlide(15)"></span>
+
+</div>
+
+
+    
+<button id="exit-button">Back</button>
+
+
+<div><br><br><br><br><br></div>
+<!-- Ketchup Rating -->
+<div class="rating-container">
+<strong class="heading">Ketchup Rating</strong>
+<div class="stars">
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+
+    <span class="fa fa-star-half-alt"></span>
+</div>
+</div>
+
+<hr class="divider">
+
+<!-- Individual Ratings -->
+<div class="rating-container">
+<span class="heading">Happiness</span>
+<div class="stars">
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+</div>
+</div>
+
+<div class="rating-container">
+<span class="heading">Sleepiness</span>
+<div class="stars">
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star-half-alt"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+    <span class="fa fa-star"></span>
+
+</div>
+</div>
+
+<div class="rating-container">
+<span class="heading">Companionship</span>
+<div class="stars">
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+
+
+    <span class="fa fa-star-half-alt"></span>
+</div>
+</div>
+
+<div class="rating-container">
+<span class="heading">Activity</span>
+<div class="stars">
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+
+
+    <span class="fa fa-star"></span>
+</div>
+</div>
+<div class="rating-container">
+    <span class="heading" style="color: red;">Connetion</span>
+    <div class="stars">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+    
+    
+        <span class="fa fa-star checked"></span>
+    </div>
+    </div>
+<div><br><br><br><br><br></div>
+
+<script>
+    // Ensure the button exists before adding event listener
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("exit-button").addEventListener("click", function() {
+            window.location.href = "https://whykeyday.github.io/"; // back to this URL
+        });
+    });
+</script>
+</body>
+</html>
