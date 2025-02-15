@@ -27,8 +27,8 @@
 /* Flip card container */
 .flip-card {
     position: absolute; /* Position inside .parallax */
-    top: 140px; /* Adjust distance from top */
-    left: 80px; /* Adjust distance from left */
+    top: 160px; /* Adjust distance from top */
+    left: 100px; /* Adjust distance from left */
     width: 300px;
     height: 300px;
     perspective: 1000px; /* Enables 3D effect */
