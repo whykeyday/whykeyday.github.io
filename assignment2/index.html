@@ -9,38 +9,26 @@
     
 <!-- ----------------------------------------------------------------------- -->
 <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_tabs_fade-->
-<!-- This code comes from this tutorial-->
-<!-- How TO - Tabs-->
-<!-- Tab links -->
-
+<!-- remixed code from this tutorial-->
+<!-- How TO Create Tabs-->
 <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'Owner')" id="defaultOpen">Info </button>
     <button class="tablinks" onclick="openCity(event, 'Tel')">Contact</button>
     <button class="tablinks" onclick="openCity(event, 'Subscription')">Subscription</button>
   </div>
   
-  
   <!-- Tab content -->
 
   <div id="Owner" class="tabcontent">
     <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
     <h3>Owner</h3>
-    <p>Keying Dai 💕 Kecheng Yao </p>
+    <p>Keying Dai 💕 Kecheng Yao </p>   <!-- press windows and . to open emoji collections -->
   </div>
   
   <div id="Tel" class="tabcontent">
     <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
     <h3>Tel 📞</h3>
     <p>4389218452</p> 
-  </div>
-  
-  <div id="Subscription" class="tabcontent">
-    <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-    <div class="icons">
-      <a href="https://www.youtube.com/@keyingdai"><ion-icon name="logo-youtube"></ion-icon></a>
-      <a href="https://www.linkedin.com/in/keying-dai-a85540297/"><ion-icon name="logo-linkedin"></ion-icon></a>
-      <a href="https://github.com/whykeyday/whykeyday.github.io"><ion-icon name="logo-github"></ion-icon></a>
-  </div>
   </div>
   
   <script>
@@ -58,26 +46,42 @@
       evt.currentTarget.className += " active";
     }
     </script>
+  
+  <div id="Subscription" class="tabcontent">
+    <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+    <div class="icons"> <!-- https://ionic.io/ionicons -->
+      <a href="https://www.youtube.com/@keyingdai"><ion-icon name="logo-youtube"></ion-icon></a>
+      <a href="https://www.linkedin.com/in/keying-dai-a85540297/"><ion-icon name="logo-linkedin"></ion-icon></a>
+      <a href="https://github.com/whykeyday/whykeyday.github.io"><ion-icon name="logo-github"></ion-icon></a>
+  </div>
+  
+  </div>
+<!-- end remix code about tab-->
+<!-- ----------------------------------------------------------------------- -->
 
-        <!-- Container element -->
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!-- remixed parallax and flip card tutorials from https://www.w3schools.com/howto/howto_css_parallax.asp and https://www.w3schools.com/howto/howto_css_flip_card.asp-->
+<!-- Container element -->
 <div class="parallax"></div>
     <div class="flip-card">
         <div class="flip-card-inner">
-            <div class="flip-card-front">
-            </div>
+            <div class="flip-card-front"></div>
             <div class="flip-card-back">
                 <p><strong>Name:</strong> Ketchup</p>
                 <p><strong>Date of Birth:</strong> March 15th, 2022</p>
                 <p><strong>Gender:</strong> He/His</p>
-                <p><strong>Zodiac Sign:</strong> Pisces</p> <!-- Pisces for March 15 -->
+                <p><strong>Zodiac Sign:</strong> Pisces</p> 
                 <p><strong>Breed:</strong> Sichuan Jianzhou Cat (Dragon Li)</p>
                 <p><strong>Place of Birth:</strong> Montreal, Canada</p>
             </div>
         </div>
     </div>
+    <!-- flip card info -->
 
-<body data-new-gr-c-s-check-loaded="14.1223.0" data-gr-ext-installed="">
-    <div style="color: #777;background-color:white;text-align:center;padding:50px 80px;text-align: justify;">
+<body>
+    <div>
+      <!-- css font styles from https://www.w3schools.com/css/css_font.asp-->
         <h1 style="text-align:center; font-family: 'Comic Sans MS', cursive, sans-serif; color: #ff6699;">🐾Autobiography🐾</h1>
 <body>
     <p style="font-family: 'Pangolin', cursive; font-size: 18px; color: #ff66b2; text-align: center; line-height: 1.6;">
@@ -91,10 +95,11 @@
         
     </div>
       
-    <div class="bgimg-1">
-      <div class="caption">
-      </div>
+    <div class="bgimg-1">  <!-- parallax img -->
+      <div class="caption"></div>
     </div>
+
+<!-- ------------------------------------------------>  
 <!--https://www.w3schools.com/html/html5_video.asp -->   
 <!-- Video Block -->
 <div id="adngin-mid_content-0" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
@@ -126,6 +131,7 @@
         </video>
     </div>
 </div>
+<!-- ------------------------------------------------> 
 
 <div class="bgimg-2">
   <div class="caption">
@@ -141,31 +147,39 @@
 
 <div class="bgimg-3">
   <div class="caption">
+
 <!-- https://diviengine.com/snippets/divi/confetti-effect-when-clicking-a-divi-button-module/ -->
-    <!-- This code comes from this tutorial-->
+<!-- This code comes from this tutorial-->
   <!-- How TO - create confetti buttons-->
     <button class="confetti-button" id="btn">
       😎 COOL!
     </button>
+<!-- ------------------------------------------------> 
+
   </div>
 </div>
-
-
-
-    
-    </body>
+</body>
 </head>
-<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_buttons-->
-       <!-- This code comes from this tutorial-->
-      <!-- How TO - create sidenav buttons-->
-<body>
+<!-- end remix parallax and flip card -->
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
+
     
+<!-- ----------------------------------------------------------------------------------->
+<!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_sidenav_buttons-->
+<!-- This code comes from this tutorial-->
+  <!-- How TO - create sidenav buttons-->
+<body>
     <div id="mySidenav" class="sidenav">
         <a href="Flop/flop.html" id="flop" class='button'>Flop</a>
         <a href="Fiddle/fiddle.html" id="fiddle" class='button'>Fiddle</a>
         <a href="Funky/funky.html" id="funky" class='button'>Funky</a>
         <a href="Friend/friend.html" id="friend" class='button'>Friend</a>
       </div>
+<!-- changed contents and end the tutorial -->
+<!-- ----------------------------------------------------------------------------------->
+ 
     <button id="exit-button">Exit</button>
 
     <script>
@@ -185,3 +199,4 @@
     <script src="heart.js"></script>
 </body>
 </html>
+

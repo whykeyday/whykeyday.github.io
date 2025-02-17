@@ -1,3 +1,6 @@
+//----------------------------------------------------------------------------------------
+//https://www.w3schools.com/howto/howto_js_slideshow.asp
+//the code about slideshow is from this tutorial
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -26,3 +29,5 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
+//end tutorial
+//----------------------------------------------------------------------------------------

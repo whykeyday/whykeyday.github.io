@@ -1,4 +1,6 @@
-* {
+/*----------------------------------------------------------------------------------*/
+/*star rating page*/
+  *{
     box-sizing: border-box;
   }
   
@@ -13,55 +15,56 @@
     font-size: 25px;
     margin-right: 25px;
   }
-  
+   /*star--------------------------------------------------------*/
+   /*https://www.w3schools.com/howto/howto_css_star_rating.asp*/
   .fa {
     font-size: 25px;
   }
   
   .checked {
-    color: orange;
+    color: orange;  
   }
-  
-  /* Three column layout */
-  .side {
-    float: left;
-    width: 15%;
-    margin-top: 10px;
-  }
-  
-  .middle {
-    float: left;
-    width: 70%;
-    margin-top: 10px;
-  }
-  
-  /* Place text to the right */
-  .right {
-    text-align: right;
-  }
-  
-  /* Clear floats after the columns */
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* The bar container */
-  .bar-container {
-    width: 100%;
-    background-color: #f1f1f1;
-    text-align: center;
-    color: white;
-  }
-  
-  /* Individual bars */
-  .bar-5 {width: 60%; height: 18px; background-color: #04AA6D;}
-  .bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
-  .bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
-  .bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
-  .bar-1 {width: 15%; height: 18px; background-color: #f44336;}
-  
+
+/* Align text and stars in the same row */
+.rating-container {
+  display: flex;
+  align-items: center;  /* Vertically align items */
+  justify-content: space-between;  /* Space between text and stars */
+  width: 400px;  /* Adjust width as needed */
+  margin: 10px 0;  /* Add spacing between rows */
+}
+
+/* Ensure stars are on the same line */
+.stars {
+  display: flex;
+  gap: 5px;  /* Add spacing between stars */
+}
+
+/* Star styles */
+.fa-star {
+  color: gray;  /* Default color */
+  font-size: 30px;
+}
+/* Half star */
+.fa-star-half-alt {
+  color: orange;
+  font-size: 30px;
+
+}
+.checked {
+  color: orange;  /* Highlighted stars */
+}
+
+/* Divider line */
+.divider {
+  border: 2px solid #f1f1f1;
+  margin: 30px 0;
+}
+/*------------------------------------------------------------------------------------------------------*/
+ 
+
+/*------------------------------------------------------------------------------------------------------*/
+/* remixed slideshow tutorial from https://www.w3schools.com/howto/howto_js_slideshow.asp */
   /* Responsive layout - make the columns stack on top of each other instead of next to each other */
   @media (max-width: 400px) {
     .side, .middle {
@@ -83,13 +86,12 @@
 
 /* Hide the images by default */
 .mySlides {
-    display: none; /* 默认隐藏所有幻灯片 */
+    display: none; 
 }
 
 .mySlides:first-child {
-    display: block; /* 默认显示第一张 */
+    display: block; /* setup the first img as default */
 }
-
 
 /* Next & previous buttons */
 .prev, .next {
@@ -164,39 +166,6 @@
   from {opacity: .4}
   to {opacity: 1}
 }
+/*end remix*/
+/*------------------------------------------------------------------------------------------------------*/
 
-/* Align text and stars in the same row */
-.rating-container {
-    display: flex;
-    align-items: center;  /* Vertically align items */
-    justify-content: space-between;  /* Space between text and stars */
-    width: 400px;  /* Adjust width as needed */
-    margin: 10px 0;  /* Add spacing between rows */
-}
-
-/* Ensure stars are on the same line */
-.stars {
-    display: flex;
-    gap: 5px;  /* Add spacing between stars */
-}
-
-/* Star styles */
-.fa-star {
-    color: gray;  /* Default color */
-    font-size: 30px;
-}
-/* Half star */
-.fa-star-half-alt {
-    color: orange;
-    font-size: 30px;
-
-}
-.checked {
-    color: orange;  /* Highlighted stars */
-}
-
-/* Divider line */
-.divider {
-    border: 2px solid #f1f1f1;
-    margin: 30px 0;
-}
