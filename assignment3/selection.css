@@ -1,0 +1,62 @@
+/* General Styles */
+body {
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #222;
+    color: white;
+    margin: 0;
+    text-align: center;
+}
+
+/* Title Styling */
+#title {
+    font-size: 36px;
+    color: #FFC800;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Input and Button Container */
+.input-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row; /* Arrange input and button in a row */
+    align-items: center;
+    gap: 10px;
+}
+
+/* Input Field */
+input {
+    width: 250px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #FF6600;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+
+/* Button */
+button {
+    width: 140px;
+    height: 45px;
+    background-color: #FF6600;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FF4500;
+}

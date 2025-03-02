@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="p5.min.js"></script>
+    <title>Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5.collide2d"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="selection.css">
+
+</head>
+<body>
+    <button id="exit-button">Exit</button>
+    <button id="back-button" style="display: none;">Back</button>
+    
+    <script>
+        document.getElementById("exit-button").addEventListener("click", function() {
+            window.location.href = "https://whykeyday.github.io/"; // Redirect to homepage
+        });
+    
+        document.getElementById("back-button").addEventListener("click", function() {
+            location.reload(); // Refresh the page when on the game selection screen
+        });
+    </script>
+ 
+     
+    
+    <script src="gameselection.js"></script>
+    <script src="gate.js"></script>
+    <script src="2048.js"></script>
+    <script src="snake.js"></script>
+    <script src="tetris.js"></script>
+</body>
+</html>
