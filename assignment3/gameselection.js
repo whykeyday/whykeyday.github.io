@@ -244,7 +244,9 @@ function keyPressed() {
   if (key === 'F') {
     fullscreen(!fullscreen()); // Toggle full-screen mode
   }
-  if (key === 'Escape') {
+
+  // Only allow ESC to pause if a game is active
+  if (key === 'Escape' && currentGame !== null) {
     gamePaused = !gamePaused; // Toggle pause state
     showPauseMenuFlag = gamePaused; // Show pause menu only if game is paused
   }

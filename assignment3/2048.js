@@ -1,6 +1,7 @@
 class Game2048 {
     constructor() {
         this.initGame();
+        this.gameOverTimeout = null; // To store the timeout for auto-return
     }
 
     initGame() {
@@ -8,6 +9,7 @@ class Game2048 {
         this.spawnTile();
         this.spawnTile();
         this.gameOver = false;
+        this.showGameOverMessage = false;
     }
 
     createEmptyGrid() {
@@ -50,81 +52,36 @@ class Game2048 {
 
         if (this.isGameOver()) {
             this.gameOver = true;
-            setTimeout(() => this.restartGame(), 1000);
+            this.showGameOverMessage = true;
+            this.triggerGameOver();
         }
     }
 
-    restartGame() {
-        this.initGame();
-    }
-
-    performMove(direction) {
-        let moved = false;
-
-        if (direction === "left") {
-            for (let r = 0; r < 4; r++) {
-                let newRow = this.slideAndMerge(this.grid[r]);
-                if (!this.arraysEqual(newRow, this.grid[r])) {
-                    this.grid[r] = newRow;
-                    moved = true;
-                }
-            }
-        } else if (direction === "right") {
-            for (let r = 0; r < 4; r++) {
-                let reversed = [...this.grid[r]].reverse();
-                let newRow = this.slideAndMerge(reversed).reverse();
-                if (!this.arraysEqual(newRow, this.grid[r])) {
-                    this.grid[r] = newRow;
-                    moved = true;
-                }
-            }
-        } else if (direction === "up") {
-            for (let c = 0; c < 4; c++) {
-                let column = this.getColumn(c);
-                let newColumn = this.slideAndMerge(column);
-                if (!this.arraysEqual(newColumn, column)) {
-                    this.setColumn(c, newColumn);
-                    moved = true;
-                }
-            }
-        } else if (direction === "down") {
-            for (let c = 0; c < 4; c++) {
-                let column = this.getColumn(c).reverse();
-                let newColumn = this.slideAndMerge(column).reverse();
-                if (!this.arraysEqual(newColumn, column.reverse())) {
-                    this.setColumn(c, newColumn);
-                    moved = true;
-                }
-            }
+    triggerGameOver() {
+        // Clear any existing timeout
+        if (this.gameOverTimeout) {
+            clearTimeout(this.gameOverTimeout);
         }
 
-        return moved;
+        // Set a timeout to return to the game selection page after 5 seconds
+        this.gameOverTimeout = setTimeout(() => {
+            this.returnToGameSelection();
+        }, 5000);
     }
 
-    slideAndMerge(row) {
-        let newRow = row.filter(num => num !== 0);
-        for (let i = 0; i < newRow.length - 1; i++) {
-            if (newRow[i] === newRow[i + 1]) {
-                newRow[i] *= 2;
-                newRow[i + 1] = 0;
-            }
+    returnToGameSelection() {
+        // Reset the game state
+        this.gameOver = false;
+        this.showGameOverMessage = false;
+
+        // Clear the timeout
+        if (this.gameOverTimeout) {
+            clearTimeout(this.gameOverTimeout);
+            this.gameOverTimeout = null;
         }
-        newRow = newRow.filter(num => num !== 0);
-        return [...newRow, ...Array(4 - newRow.length).fill(0)];
-    }
 
-    arraysEqual(a, b) {
-        return JSON.stringify(a) === JSON.stringify(b);
-    }
-
-    getColumn(colIndex) {
-        return this.grid.map(row => row[colIndex]);
-    }
-
-    setColumn(colIndex, newColumn) {
-        for (let r = 0; r < 4; r++) {
-            this.grid[r][colIndex] = newColumn[r];
-        }
+        // Return to the game selection page
+        exitGame(); // Assuming exitGame() is defined in the main script
     }
 
     show() {
@@ -153,10 +110,10 @@ class Game2048 {
             }
         }
 
-        if (this.gameOver) {
+        if (this.showGameOverMessage) {
             fill(255, 0, 0);
             textSize(36);
-            text("Game Over! Restarting...", width / 2, height / 2);
+            text("Game Over! Returning to game selection...", width / 2, height / 2);
         }
     }
 
@@ -168,58 +125,63 @@ class Game2048 {
         };
         return colors[value] || "#3C3A32";
     }
-  
-    
+
     handleKeyPress(keyCode) {
-      let moved = false;
-      if (keyCode === UP_ARROW) {
-        moved = this.moveUp();
-      } else if (keyCode === DOWN_ARROW) {
-        moved = this.moveDown();
-      } else if (keyCode === LEFT_ARROW) {
-        moved = this.moveLeft();
-      } else if (keyCode === RIGHT_ARROW) {
-        moved = this.moveRight();
-      }
-      if (moved) this.spawnTile();
-    }
-  
-    moveUp() {
-      return this.move((r, c) => r > 0, (r, c) => [r - 1, c]);
-    }
-  
-    moveDown() {
-      return this.move((r, c) => r < 3, (r, c) => [r + 1, c]);
-    }
-  
-    moveLeft() {
-      return this.move((r, c) => c > 0, (r, c) => [r, c - 1]);
-    }
-  
-    moveRight() {
-      return this.move((r, c) => c < 3, (r, c) => [r, c + 1]);
-    }
-  
-    move(canMove, getNext) {
-      let moved = false;
-      for (let times = 0; times < 3; times++) {
-        for (let r = 0; r < 4; r++) {
-          for (let c = 0; c < 4; c++) {
-            if (this.grid[r][c] !== 0 && canMove(r, c)) {
-              let [nr, nc] = getNext(r, c);
-              if (this.grid[nr][nc] === 0) {
-                this.grid[nr][nc] = this.grid[r][c];
-                this.grid[r][c] = 0;
-                moved = true;
-              } else if (this.grid[nr][nc] === this.grid[r][c]) {
-                this.grid[nr][nc] *= 2;
-                this.grid[r][c] = 0;
-                moved = true;
-              }
-            }
-          }
+        if (this.gameOver) {
+            // If the game is over, any key press will return to the game selection page
+            this.returnToGameSelection();
+            return;
         }
-      }
-      return moved;
+
+        let moved = false;
+        if (keyCode === UP_ARROW) {
+            moved = this.moveUp();
+        } else if (keyCode === DOWN_ARROW) {
+            moved = this.moveDown();
+        } else if (keyCode === LEFT_ARROW) {
+            moved = this.moveLeft();
+        } else if (keyCode === RIGHT_ARROW) {
+            moved = this.moveRight();
+        }
+        if (moved) this.spawnTile();
     }
-  }
+
+    moveUp() {
+        return this.move((r, c) => r > 0, (r, c) => [r - 1, c]);
+    }
+
+    moveDown() {
+        return this.move((r, c) => r < 3, (r, c) => [r + 1, c]);
+    }
+
+    moveLeft() {
+        return this.move((r, c) => c > 0, (r, c) => [r, c - 1]);
+    }
+
+    moveRight() {
+        return this.move((r, c) => c < 3, (r, c) => [r, c + 1]);
+    }
+
+    move(canMove, getNext) {
+        let moved = false;
+        for (let times = 0; times < 3; times++) {
+            for (let r = 0; r < 4; r++) {
+                for (let c = 0; c < 4; c++) {
+                    if (this.grid[r][c] !== 0 && canMove(r, c)) {
+                        let [nr, nc] = getNext(r, c);
+                        if (this.grid[nr][nc] === 0) {
+                            this.grid[nr][nc] = this.grid[r][c];
+                            this.grid[r][c] = 0;
+                            moved = true;
+                        } else if (this.grid[nr][nc] === this.grid[r][c]) {
+                            this.grid[nr][nc] *= 2;
+                            this.grid[r][c] = 0;
+                            moved = true;
+                        }
+                    }
+                }
+            }
+        }
+        return moved;
+    }
+}
