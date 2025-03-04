@@ -6,6 +6,8 @@ let showPauseMenuFlag = false; // Controls whether the pause menu is shown
 let gameSelectionButtons = []; // Store game selection buttons
 let gameSelectionImages = []; 
 let comments = []; // Store comments
+let commentInput, commentButton;
+
 
 let pauseMenuButtons = []; // Store pause menu buttons
 
@@ -104,21 +106,29 @@ function showGameSelection() {
       gameSelectionButtons.push(btn);
   }
 
-  let commentInput = createInput("").attribute("placeholder", "Leave a comment");
-  let commentY = height - 90; // change of y position
-  commentInput.position(width / 2 - 200, commentY);
-  let commentButton = createButton("Upload Comment");
-  commentButton.position(commentInput.x + commentInput.width + 10, commentY);
-  commentButton.mousePressed(() => {
-    let comment = commentInput.value().trim();
-    if (comment === "") {
-        alert("Sorry, you cannot complete the message without entering content🤔"); 
-    } else {
-        comments.push(comment);
-        commentInput.value(''); // clear the input field
-        displayComments();
-    }
-});
+  if (!commentInput) {
+    commentInput = createInput("").attribute("placeholder", "Leave a comment");
+    commentInput.position(width / 2 - 200, height - 130);
+} else {
+    commentInput.show(); // redisplay
+}
+
+if (!commentButton) {
+    commentButton = createButton("Upload Comment");
+    commentButton.position(commentInput.x + commentInput.width + 10, height - 130);
+    commentButton.mousePressed(() => {
+        let comment = commentInput.value().trim();
+        if (comment === "") {
+            alert("对不起，你没有输入内容，无法留言。");
+        } else {
+            comments.push(comment);
+            commentInput.value('');
+            displayComments();
+        }
+    });
+} else {
+    commentButton.show(); 
+}
 }
 
 function displayComments() {
@@ -139,16 +149,23 @@ function hideGameSelectionUI() {
   gameSelectionImages.forEach(img => img.remove());
   gameSelectionButtons = [];
   gameSelectionImages = [];
+  
 }
 
 function startGameLogic(game) {
   currentGame = game;
   window.currentGame = game;
 
-  // Hide Back button in game mode
+  // let Comment UI disappear 
+  if (commentInput) commentInput.hide();
+  if (commentButton) commentButton.hide();
+
+  // hide Back button
   document.getElementById("back-button").style.display = "none";
 
+  // hide the game selection buttons and images
   gameSelectionButtons.forEach(btn => btn.hide());
+  gameSelectionImages.forEach(img => img.hide());
 
   if (game === 'gate') {
       gateGame = new Game();
@@ -164,6 +181,7 @@ function startGameLogic(game) {
       enterFullScreen();
   }
 }
+
 
 function enterFullScreen() {
   let fs = fullscreen();
@@ -261,10 +279,15 @@ function exitGame() {
 
   showGameSelection();
 
+  // redisplay Comment and Comment Button
+  if (commentInput) commentInput.show();
+  if (commentButton) commentButton.show();
+
   document.getElementById("back-button").onclick = function () {
-      location.reload(); // Reset back button behavior
+      location.reload();
   };
 }
+
 
 function keyPressed() {
   if (keyCode === ENTER && !startGame) {
