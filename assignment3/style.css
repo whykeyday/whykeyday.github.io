@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Brush Script MT", "Lucida Handwriting", cursive;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,24 +43,37 @@ button {
 #exit-button {
     position: fixed;
     bottom: 20px;
-    left: 20px;
-    padding: 15px 30px;
-    font-size: 20px;
-    background-color: rgb(250, 239, 239);
-    color: rgb(12, 8, 8);
-    border: none;
-    border-radius: 10px;
+    left: 30px;
+    width: 120px; 
+    height: 100px;
+    background-color: white; 
+    color: black; 
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid black; 
     cursor: pointer;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    clip-path: polygon(
+        20% 100%, 80% 100%, /* bottom */
+        80% 50%, 100% 50%, 50% 0%, /* top */
+        0% 50%, 20% 50%, 
+        20% 30%, 30% 30%, 30% 20%, 20% 20% /*pipe*/
+    ); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); 
+    font-family: 'Fredoka One', cursive;
 }
+
 #exit-button:hover {
     background-color: rgb(235, 9, 9);
 }
 
 #back-button {
     position: fixed;
-    bottom: 20px; /* 固定在底部 */
-    left: 20px;   /* 固定在左侧 */
+    bottom: 20px; 
+    left: 20px;  
     padding: 15px 30px;
     font-size: 20px;
     background-color: rgb(250, 239, 239);
@@ -69,9 +82,12 @@ button {
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    display: none; /* 默认隐藏 */
+    display: none; 
+    font-family: 'Fredoka One', cursive;
 }
 
 #back-button:hover {
     background-color: rgb(235, 9, 9);
 }
+
+

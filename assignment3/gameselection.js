@@ -5,6 +5,7 @@ let currentGame = null;
 let showPauseMenuFlag = false; // Controls whether the pause menu is shown
 let gameSelectionButtons = []; // Store game selection buttons
 let gameSelectionImages = []; 
+let comments = []; // Store comments
 
 let pauseMenuButtons = []; // Store pause menu buttons
 
@@ -17,9 +18,15 @@ let tetrisGame;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   textAlign(CENTER, CENTER);
+  window.addEventListener("keydown", function(event) {
+    if ([37, 38, 39, 40].includes(event.keyCode)) { // check the direction keys
+      event.preventDefault(); // prevent rolling the page
+    }
+  });
 
   input = createInput("").attribute("placeholder", "Type your name to continue");
   input.position(width / 2 - 200, height / 2);
+  input.input(() => console.log("Typing: " + input.value()));
 
   button = createButton("Start Game");
   button.position(input.x + input.width + 10, height / 2);
@@ -28,7 +35,6 @@ function setup() {
   document.getElementById("exit-button").style.display = "block";  // Exit button visible
   document.getElementById("back-button").style.display = "none";   // Back button hidden initially
 }
-
 
 function startGameCheck() {
   playerName = input.value().trim();
@@ -97,8 +103,34 @@ function showGameSelection() {
 
       gameSelectionButtons.push(btn);
   }
+
+  let commentInput = createInput("").attribute("placeholder", "Leave a comment");
+  let commentY = height - 90; // change of y position
+  commentInput.position(width / 2 - 200, commentY);
+  let commentButton = createButton("Upload Comment");
+  commentButton.position(commentInput.x + commentInput.width + 10, commentY);
+  commentButton.mousePressed(() => {
+    let comment = commentInput.value().trim();
+    if (comment === "") {
+        alert("Sorry, you cannot complete the message without entering content🤔"); 
+    } else {
+        comments.push(comment);
+        commentInput.value(''); // clear the input field
+        displayComments();
+    }
+});
 }
 
+function displayComments() {
+  let yPosition = height - 150;
+  fill(255);
+  textSize(16);
+  textAlign(LEFT, TOP);
+  for (let i = 0; i < comments.length; i++) {
+    text(comments[i], 20, yPosition);
+    yPosition -= 20;
+  }
+}
 
 
 // Function to hide images and buttons when a game starts
@@ -132,8 +164,6 @@ function startGameLogic(game) {
       enterFullScreen();
   }
 }
-
-
 
 function enterFullScreen() {
   let fs = fullscreen();
@@ -218,6 +248,7 @@ function resumeGame() {
   pauseMenuButtons.forEach(btn => btn.remove());
   pauseMenuButtons = [];
 }
+
 function exitGame() {
   gamePaused = false;
   showPauseMenuFlag = false;
@@ -234,8 +265,6 @@ function exitGame() {
       location.reload(); // Reset back button behavior
   };
 }
-
-
 
 function keyPressed() {
   if (keyCode === ENTER && !startGame) {

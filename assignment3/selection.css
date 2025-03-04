@@ -12,7 +12,7 @@ body {
     text-align: center;
 }
 
-/* Title Styling */
+
 #title {
     font-size: 36px;
     color: #FFC800;
@@ -32,7 +32,7 @@ body {
     gap: 10px;
 }
 
-/* Input Field */
+
 input {
     width: 250px;
     height: 40px;
@@ -45,7 +45,7 @@ input {
     outline: none;
 }
 
-/* Button */
+
 button {
     width: 140px;
     height: 45px;
