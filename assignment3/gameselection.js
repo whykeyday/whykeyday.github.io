@@ -119,7 +119,7 @@ if (!commentButton) {
     commentButton.mousePressed(() => {
         let comment = commentInput.value().trim();
         if (comment === "") {
-            alert("对不起，你没有输入内容，无法留言。");
+            alert("Sorry, you cannot complete the message without entering content🤔");
         } else {
             comments.push(comment);
             commentInput.value('');
