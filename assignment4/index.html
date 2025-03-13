@@ -41,6 +41,7 @@
             </tr>
         </tbody>
     </table>
+    <button id="exit-button">Exit</button>
     <script src="sketch.js"></script>
     <script>
         let signedIn = 0;
@@ -98,6 +99,15 @@
             document.getElementById('signedOutCount').innerText = signedOut;
             document.getElementById('totalCount').innerText = total;
         }
+
+        document.getElementById("exit-button").addEventListener("click", function() {
+            window.location.href = "https://whykeyday.github.io/"; // Redirect to homepage
+        });
+    
     </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.js"></script>
 </body>
 </html>
