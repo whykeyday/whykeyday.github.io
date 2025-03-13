@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Fireworks</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
+</head>
+<body>
+    <div id="container">
+        <h1>Hall of Fame</h1>
+        <p>Please sign in to join the show!</p>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button id="enterButton">Enter</button>
+        <div id="welcomeMessage"></div>
+        <table id="nameTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <table id="counterTable">
+        <thead>
+            <tr>
+                <th>Signed In</th>
+                <th>Signed Out</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="signedInCount">0</td>
+                <td id="signedOutCount">0</td>
+                <td id="totalCount">0</td>
+            </tr>
+        </tbody>
+    </table>
+    <script src="sketch.js"></script>
+    <script>
+        let signedIn = 0;
+        let signedOut = 0;
+        let total = 0;
+        
+        document.getElementById('enterButton').addEventListener('click', function() {
+            let name = document.getElementById('nameInput').value.trim();
+            if (name) {
+                showMessageAndFireworks(`Welcome ${name}!`, name);
+                addToTable(name);
+                updateCounter(1, 0);
+                document.getElementById('nameInput').value = ''; // Clear input after adding
+            }
+        });
+
+        function showMessageAndFireworks(message, name) {
+            let messageDiv = document.getElementById('welcomeMessage');
+            messageDiv.innerText = message;
+            createFirework(windowWidth / 2, windowHeight / 2); // 触发烟花
+            
+            setTimeout(() => {
+                messageDiv.innerText = '';
+            }, 3000);
+        }
+
+        function addToTable(name) {
+            let tableBody = document.querySelector('#nameTable tbody');
+            let row = document.createElement('tr');
+            let nameCell = document.createElement('td');
+            let actionCell = document.createElement('td');
+            let deleteBtn = document.createElement('button');
+
+            nameCell.innerText = name;
+            deleteBtn.innerText = 'Delete';
+            deleteBtn.className = 'deleteBtn';
+            deleteBtn.onclick = function() {
+                showMessageAndFireworks(`See you ${name}!`, name);
+                row.remove();
+                updateCounter(-1, 1);
+            };
+
+            actionCell.appendChild(deleteBtn);
+            row.appendChild(nameCell);
+            row.appendChild(actionCell);
+            tableBody.appendChild(row);
+        }
+
+        function updateCounter(signInChange, signOutChange) {
+            signedIn += signInChange;
+            signedOut += signOutChange;
+            total = signedIn + signedOut;
+            
+            document.getElementById('signedInCount').innerText = signedIn;
+            document.getElementById('signedOutCount').innerText = signedOut;
+            document.getElementById('totalCount').innerText = total;
+        }
+    </script>
+</body>
+</html>
