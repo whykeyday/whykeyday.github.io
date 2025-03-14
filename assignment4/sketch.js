@@ -10,7 +10,7 @@ var colorPalettes = [
     [ [255, 255, 255], [200, 200, 200], [150, 150, 150], [100, 100, 100] ] // White/Grey
 ];
 var shapes = ['circle', 'heart', 'emoji', 'star', 'meteor'];
-var emojis = ['😊', '😂', '🤣', '😍', '🤩', '🥳', '🎆', '🎇', '🌟', '💥', '🔥', '💫', '✨', '💖', '🚀'];
+var emojis = ['😊', '😂', '🤣', '😍', '🤩', '🥳', '🎆', '🎇', '🌟', '💥', '🔥', '💫', '✨', '💖', '🚀', '🥳', '🎊', '🎉', '😈'];
 
 function createFirework(x, y) {
     let numFireworks = floor(random(2, 6)); // Randomly spawn 2-5 fireworks at a time

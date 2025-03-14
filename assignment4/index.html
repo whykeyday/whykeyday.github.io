@@ -43,11 +43,16 @@
     </table>
     <button id="exit-button">Exit</button>
     <script src="sketch.js"></script>
+    
     <script>
         let signedIn = 0;
         let signedOut = 0;
         let total = 0;
-        
+    
+    //---------------------------------------------------------------------------------------------------
+    //Remixed code from https://www.w3schools.com/jsref/met_element_addeventlistener.asp
+    //Used DOM manipulation techniques from https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
+    //How to add an event listener to an element
         document.getElementById('enterButton').addEventListener('click', function() {
             let name = document.getElementById('nameInput').value.trim();
             if (name) {
@@ -55,19 +60,25 @@
                 addToTable(name);
                 updateCounter(1, 0);
                 document.getElementById('nameInput').value = ''; // Clear input after adding
-            }
+            }else {
+        alert('Please enter the name❤️'); // alert
+    }
         });
+  
 
         function showMessageAndFireworks(message, name) {
             let messageDiv = document.getElementById('welcomeMessage');
             messageDiv.innerText = message;
-            createFirework(windowWidth / 2, windowHeight / 2); // 触发烟花
+            createFirework(windowWidth / 2, windowHeight / 2); // Trigger fireworks
             
             setTimeout(() => {
                 messageDiv.innerText = '';
             }, 3000);
         }
 
+        //Tutorial from https://blog.csdn.net/SongLiang02_/article/details/129797044 & https://www.cnblogs.com/leedev-blog/p/14948730.html
+        //Remixed code
+        //How to add an element to a table & How to implement dynamic addition and deletion of table rows
         function addToTable(name) {
             let tableBody = document.querySelector('#nameTable tbody');
             let row = document.createElement('tr');
@@ -90,6 +101,8 @@
             tableBody.appendChild(row);
         }
 
+        //Update the statistics for signed-in and signed-out users
+        //Remixed tutorial frome https://stackoverflow.com/questions/31419700/javascript-how-to-update-count
         function updateCounter(signInChange, signOutChange) {
             signedIn += signInChange;
             signedOut += signOutChange;
@@ -99,6 +112,9 @@
             document.getElementById('signedOutCount').innerText = signedOut;
             document.getElementById('totalCount').innerText = total;
         }
+        //End of remix code
+        //---------------------------------------------------------------------------------------------------
+
 
         document.getElementById("exit-button").addEventListener("click", function() {
             window.location.href = "https://whykeyday.github.io/"; // Redirect to homepage
