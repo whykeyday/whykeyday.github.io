@@ -5,9 +5,9 @@ var currentTime = 0;
 var backgroundVideo;
 var videoTop;
 var capture;
-var img;
 var bubbleImgs = [];
-var img; // Declare the variable for the image
+var img;
+var sound;
 
 function preload() {
     // Preload three bubble images
@@ -47,29 +47,46 @@ function createBubbles(numberOfBubbles) {
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
+  
 
     // Background Video
     backgroundVideo = createVideo('fishbg.mp4', () => {
-        backgroundVideo.loop();
+        backgroundVideo.size(windowWidth, windowHeight); 
+        backgroundVideo.position(0,0); 
+        backgroundVideo.style('z-index', '-1'); 
+        backgroundVideo.style('object-fit', 'cover');
         backgroundVideo.volume(0); // Mute audio
-        backgroundVideo.hide(); // Hide HTML element
+        backgroundVideo.loop(); 
+        backgroundVideo.show();  
+        backgroundVideo.play();
+        backgroundVideo.speed(0.8); 
     });
+
+    sound = createAudio('music.mp3', () => {
+        console.log('Audio loaded successfully');
+    }); 
+    sound = createAudio('music.mp3');
+    sound.hide();
 
     // Top Video
     videoTop = createVideo('flowerv.mp4', () => {
-        videoTop.loop();
+        videoTop.size(160, 90); 
+        videoTop.position(10, 10);
+        videoTop.show();
         videoTop.volume(0);
-        videoTop.hide();
+        videoTop.loop();
+    
+    
     });
 
     // Camera (Webcam)
     capture = createCapture(VIDEO);
-    capture.size(300, 200);
+    capture.size(1920, 1080);
     capture.hide();
 
     // Image using createImg() to meet the requirement
-    img = createImg('bgm.png', 'BGM Image');
-    img.position(20, height - 200); // Position it at the bottom left
+    img = createImg('bgm.png');
+    img.position(20, height - 198); // Position it at the bottom left
     img.style('transform', 'scaleX(-1)'); // Flip horizontally
     img.size(200, 200); // Resize if needed
 
@@ -85,15 +102,11 @@ function setup() {
     createBubbles(10);
 }
 
+
+
 function draw() {
-    background(100);
+  clear();
 
-    // Display Background Video
-    image(backgroundVideo, 0, 0, 4000, 2000);
-
-    // Display Other Videos
-    image(videoTop, 10, 10, 600, 300);
-    
     // Display Camera Feed (Bottom-Right)
     let camX = width - 160;
     let camY = height - 60;
@@ -112,10 +125,11 @@ function draw() {
     }
 
     // Bubble-BGM Collision
-    let imgX = 100;
-    let imgY = height - 200;
-    let imgWidth = 250;
-    let imgHeight = 250;
+    let margin = 60;
+    let imgX = img.position().x + margin;
+    let imgY = img.position().y + margin;
+    let imgWidth = 250 - 2 * margin;
+    let imgHeight = 250 - 2 * margin;
 
     bubbles = bubbles.filter(bubble => {
         let bubbleX = bubble.pos.x;
@@ -169,6 +183,8 @@ function draw() {
 }
 
 function mousePressed() {
+    let clickedOnBubble = false;
+
     // Click to Pop Bubbles
     for (let bubble of bubbles) {
         let mouseVec = createVector(mouseX, mouseY);
@@ -176,6 +192,7 @@ function mousePressed() {
         if (distance < bubble.diameter / 2) {
             score++;
             bubble.popMe = true;
+            clickedOnBubble = true; 
         }
     }
     bubbles = bubbles.filter(bubble => !bubble.popMe);
@@ -184,4 +201,23 @@ function mousePressed() {
     if (bubbles.length <= 1) {
         createBubbles(5);
     }
+
+    if (!clickedOnBubble) {
+        if (sound.elt.paused) {
+            console.log('Playing audio');
+            sound.play(); // 如果音频暂停，则播放
+        } else {
+            console.log('Pausing audio');
+            sound.pause(); // 如果音频正在播放，则暂停
+        }
+    }
+   
 }
+
+
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+    backgroundVideo.size(windowWidth, windowHeight); // 动态调整视频大小
+    backgroundVideo.position(0,0);
+}
+
