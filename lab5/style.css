@@ -1,0 +1,29 @@
+#exit-button {
+    position: fixed;
+    bottom: 20px;
+    left: 30px;
+    width: 120px; 
+    height: 100px;
+    background-color: white; 
+    color: black; 
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border: 3px solid black; 
+    cursor: pointer;
+    clip-path: polygon(
+        20% 100%, 80% 100%, /* bottom */
+        80% 50%, 100% 50%, 50% 0%, /* top */
+        0% 50%, 20% 50%, 
+        20% 30%, 30% 30%, 30% 20%, 20% 20% /*pipe*/
+    ); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3); 
+    font-family: 'Fredoka One', cursive;
+}
+
+#exit-button:hover {
+    background-color: rgb(235, 9, 9);
+}

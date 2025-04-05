@@ -57,7 +57,7 @@ function setup() {
 
   playernameInput = createInput();
   playernameInput.attribute('placeholder', 'Player');
-  playernameInput.position(20, windowHeight - 80);
+  playernameInput.position(windowWidth / 2-140, windowHeight / 7);
 
   let cleared = false;
 playernameInput.input(() => {
@@ -70,7 +70,7 @@ playernameInput.elt.focus();
 
 
   resetButton = createButton('🔄Reset');
-  resetButton.position(200, windowHeight - 80);
+  resetButton.position(windowWidth /2+40, windowHeight / 7);
   resetButton.mousePressed(() => {
     clearStorage();
     highscore = 0;
@@ -161,8 +161,7 @@ function addScore() {
     storeItem('highscorename', highscorename);
   }
 
-  // 本地图片也随机换
-  catImage = random(catImages);
+
 }
 
 
