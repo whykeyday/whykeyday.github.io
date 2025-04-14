@@ -1,0 +1,130 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars if content slightly overflows */
+}
+
+#layer1 {
+    position: relative; /* Establishes positioning context for children */
+    width: 100vw; /* 100% of viewport width */
+    height: 100vh; /* 100% of viewport height */
+    background-image: url('images/layer1.webp'); /* Your background image */
+    background-size: cover; /* Scale image to cover the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat;
+}
+@keyframes shake {
+    0% { transform: translateX(0); } /* Start at original position */
+    10% { transform: translateX(-4px); } /* Move slightly left */
+    20% { transform: translateX(4px); }  /* Move slightly right */
+    30% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    50% { transform: translateX(-2px); } /* Less intense towards end */
+    60% { transform: translateX(2px); }
+    70% { transform: translateX(-1px); }
+    80% { transform: translateX(1px); }
+    90% { transform: translateX(-0.5px); }
+    100% { transform: translateX(0); } /* End at original position */
+  }
+
+@keyframes gentle-sway {
+0% {
+    transform: rotate(-0.5deg) translateX(-1px); /* Start slightly tilted left */
+}
+100% {
+    transform: rotate(0.5deg) translateX(1px); /* End slightly tilted right */
+}
+}
+
+#layer2_r {
+    position: absolute;
+    right: 14%;
+    top: 5%; /* Use top OR bottom, not both with height */
+    width: 46%;
+    height: 90%;
+    scale: 1.65; /* Keep or remove based on testing */
+    background-image: url('images/layer2_r.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    /* Apply continuous animation */
+    animation: gentle-sway 2s ease-in-out infinite alternate;
+}
+
+
+#layer2_l {
+    position: absolute;
+    left: -14%;
+    top: 5%; /* Explicitly define vertical position */
+    width: 55%;
+    height: 105%;
+    background-image: url('images/layer2_l.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center 80%; /* Only need one background-position */
+    /* Add hover animation if needed */
+    /* animation: ... */ /* You had the hover animation here before */
+}
+
+/* --- MODIFIED HOVER RULE --- */
+#layer2_l:hover {
+    /* Apply the 'shake' animation */
+    /* Format: animation: name duration timing-function iteration-count; */
+  
+    /* Shake using 0.4s cycles, run 5 times (total 2s), linear timing */
+    animation: shake 0.4s linear 5;
+  }
+
+/* --- REST OF THE CSS --- */
+
+/* Positioning Images within Containers - Adjust percentages as needed! */
+#layer2_l img, #layer2_r img {
+   /* These are the images *inside* layer2_l and layer2_r */
+   /* Styles remain the same as before */
+    position: absolute;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+
+/* --- Specific Image Positions (EXAMPLES - ADJUST THESE!) --- */
+
+/* Images in Left Container (#layer2_l) */
+#img-2d { top: 68%; left: 50%; width: 20%; }
+#img-3d { top: 53%; left: 27%; width: 15%; }
+#img-install { top: 37%; left: 39%; width: 20%; }
+#img-still1 { top: 70%; left: 42%; width: 20%; }
+#img-still2 { top: 44%; left: 50%; width: 15%; }
+#img-still3 { top: 56%; left: 46%; width: 18%; }
+
+/* Images in Right Container (#layer2_r) */
+#img-f1 { top: 47%; right: 11%; width: 12%; }
+#img-f2 { top: 34%; right: 11%; width: 12%; }
+#img-f3 { top: 54%; left: 67%; width: 10%; } /* Centered */
+#img-f4 { top: 20%; left: 51%; width: 12%; }
+#img-f5 { top: 54%; left: 1.5%; width: 12%; }
+
+/* --- Hover Effects --- */
+
+/* Rotation for right-side images */
+.rotate-hover {
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+.rotate-hover:hover {
+    transform: rotate(180deg);
+}
+
+/* Image Swap for left-side images (handled by JavaScript) */
+/* No specific CSS needed for the swap itself, just potentially cursor */
+.hover-swap:hover {
+    cursor: pointer; /* Indicate interactivity */
+}
