@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flying Particles</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      overflow: hidden;
+    }
+    #content {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+    }
+    #particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: yellow;
+      border-radius: 50%;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="content">
+    <div id="particles">
+      <div id="p0" class="particle"></div>
+    </div>
+  </div>
+
+  <!-- 引入 TweenMax 和 TimelineMax -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
+  <!-- 引入你本地的 fly.js -->
+  <script src="../fly.js"></script>
+
+</body>
+</html>

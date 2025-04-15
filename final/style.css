@@ -14,6 +14,94 @@ html, body {
     height: 100%;
     overflow: hidden; /* Prevent scrollbars if content slightly overflows */
 }
+/* Remove default margin, set black background, and hide overflow */
+body {
+  margin: 0;
+  background-color: #000;
+  overflow: hidden;
+  position: relative; /* Needed to make #content position relative to body */
+}
+@font-face {
+      font-family: 'AmstelvarAlpha Default';
+      src: url('https://fonts.gstatic.com/s/amselalpha/v2/AXV5ZrbDsjEAlcUNnWkLnZy3oao.woff2') format('woff2');
+      font-style: normal;
+      font-weight: normal;
+    }
+
+    body {
+      margin: 0;
+      background-color: rgb(254, 228, 168);
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .text-3d {
+      font-family: "AmstelvarAlpha Default", serif;
+      color: rgb(255, 122, 3);
+      font-size: 153.881px;
+      font-variation-settings:
+        "cntr" 104.75,
+        "grad" 181.25,
+        "opsz" 72,
+        "prwd" 764,
+        "prwg" 250.625,
+        "srfr" 85.7639,
+        "wdth" 804,
+        "wght" 263.889,
+        "xhgt" 890;
+
+     position: absolute;
+      top: 60px;   /* Distance from top */
+      left: 40px;  /* Distance from left */
+      background: linear-gradient(90deg, rgb(255, 173, 0), rgb(255, 75, 0), rgb(255, 40, 2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+
+    .text-3d::before {
+      content: "Keying Dai's Portfolio";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      z-index: -1;
+      color: rgba(0, 0, 0, 0.2);
+      filter: blur(1px);
+    }
+/* Glowing Fireflies Animation:
+https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-117844809-blog-76528609.235^v43^control&spm=1001.2101.3001.4242.2&utm_relevant_index=4
+*/
+/* Particle container positioned in the bottom-right corner */
+#content {
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  bottom: 0;          /* Stick to the bottom */
+  right: 0;           /* Stick to the right */
+  z-index: 9999;      /* Make sure it's on top */
+  pointer-events: none; /* Allow mouse events to pass through */
+}
+
+/* Inner container to hold all particle elements */
+#particles {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Style for each particle */
+.particle {
+  position: absolute;
+  width: 5px;           /* Smaller size */
+  height: 5px;
+  background: #fffacd;  /* Bright yellowish-white (you can also try #ffffe0 or pure #ffffff) */
+  border-radius: 50%;
+  opacity: 0;           /* Initially invisible */
+  box-shadow: 0 0 6px #fffacd; /* Glow effect for brightness */
+}
+
 
 #layer1 {
     position: relative; /* Establishes positioning context for children */
@@ -134,6 +222,9 @@ html, body {
     cursor: pointer; /* Indicate interactivity */
 }
 
+/* Drawing a Bee Cursor:
+https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=wechat&xsec_token=CBeah6WJpvuNv-GFF2K8bMqmsfN2gGhA5a3UwE2xxUsUw=
+*/
 /* bee body */
 .bee {
   width: 2vw;
