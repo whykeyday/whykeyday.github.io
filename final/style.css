@@ -52,7 +52,7 @@ body {
         "xhgt" 890;
 
      position: absolute;
-      top: 60px;   /* Distance from top */
+      top: 20px;   /* Distance from top */
       left: 40px;  /* Distance from left */
       background: linear-gradient(90deg, rgb(255, 173, 0), rgb(255, 75, 0), rgb(255, 40, 2));
       -webkit-background-clip: text;
@@ -70,6 +70,42 @@ body {
       color: rgba(0, 0, 0, 0.2);
       filter: blur(1px);
     }
+
+    .title-role {
+  position: absolute;
+  top: 200px;
+  left: 280px;
+  font-family: "AmstelvarAlpha Default", serif;
+  font-size: 42px;
+  font-weight: 400;
+  font-variation-settings:
+    "cntr" 104.75,
+    "grad" 181.25,
+    "opsz" 72,
+    "prwd" 764,
+    "prwg" 250.625,
+    "srfr" 85.7639,
+    "wdth" 804,
+    "wght" 263.889,
+    "xhgt" 890;
+  color: rgb(184, 44, 93);
+}
+
+.about-me {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  width: 50%;
+  font-family: "AmstelvarAlpha Default", serif;
+  font-size: 40px;
+  line-height: 1.6;
+  color: rgb(80, 10, 30);
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+}
+
 /* Glowing Fireflies Animation:
 https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-117844809-blog-76528609.235^v43^control&spm=1001.2101.3001.4242.2&utm_relevant_index=4
 */
@@ -329,4 +365,25 @@ https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=we
   50% {
     transform: scale(0.9) rotateX(90deg) rotateY(90deg);
   }
+}
+
+.icons {
+    position: fixed;
+    bottom: 20px;
+    left: 55%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 200px;
+    z-index: 9999;
+}
+
+
+.icons ion-icon {
+    color: white;
+    font-size: 50px;
+    transition: 0.3s;
+}
+
+.icons ion-icon:hover {
+    color: #ff4c00;
 }
