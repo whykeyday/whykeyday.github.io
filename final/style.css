@@ -5,6 +5,9 @@
     box-sizing: border-box;
     cursor: none;
 }
+*, *:hover, *:active, *:focus {
+    cursor: none !important;
+}
 
 html, body {
     width: 100%;
@@ -50,7 +53,7 @@ html, body {
     top: 5%; /* Use top OR bottom, not both with height */
     width: 46%;
     height: 90%;
-    scale: 1.65; /* Keep or remove based on testing */
+    scale: 1.70; /* Keep or remove based on testing */
     background-image: url('images/layer2_r.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -99,19 +102,20 @@ html, body {
 /* --- Specific Image Positions (EXAMPLES - ADJUST THESE!) --- */
 
 /* Images in Left Container (#layer2_l) */
-#img-2d { top: 68%; left: 50%; width: 20%; }
+#img-2d { top: 64%; left: 31%; width: 23%; }
 #img-3d { top: 53%; left: 27%; width: 15%; }
-#img-install { top: 37%; left: 39%; width: 20%; }
-#img-still1 { top: 70%; left: 42%; width: 20%; }
-#img-still2 { top: 44%; left: 50%; width: 15%; }
-#img-still3 { top: 56%; left: 46%; width: 18%; }
+#img-install { top: 40%; left: 40%; width: 20%; }
+#img-still1 { top: 56%; left: 48%; width: 22%; }
+#img-still2 { top: 73%; left: 45%; width: 15%; }
+#img-still3 { top: 34%; left: 31%; width: 25%; }
 
 /* Images in Right Container (#layer2_r) */
 #img-f1 { top: 47%; right: 11%; width: 12%; }
-#img-f2 { top: 34%; right: 11%; width: 12%; }
+#img-f2 { top: 31%; right: 5%; width: 20%; }
 #img-f3 { top: 54%; left: 67%; width: 10%; } /* Centered */
 #img-f4 { top: 20%; left: 51%; width: 12%; }
-#img-f5 { top: 54%; left: 1.5%; width: 12%; }
+#img-f5 { top: 55%; left: 3%; width: 12%; }
+#img-f6 { top: 64%; right: 18%; width: 14%; }
 
 /* --- Hover Effects --- */
 
@@ -132,54 +136,57 @@ html, body {
 
 /* bee body */
 .bee {
-  width: 50px;
-  height: 50px;
+  width: 2vw;
+  height: 2vw;
   border-radius: 50% 75% 0% 75%;
   background: linear-gradient(-50deg,
-    #000 15px, #daa520 15px,
-    #daa520 25px, #000 25px,
-    #000 40px, #daa520 40px,
-    #daa520 50px, #000 50px);
+    #000 0.6vw, #daa520 0.6vw,
+    #daa520 1vw, #000 1vw,
+    #000 1.6vw, #daa520 1.6vw,
+    #daa520 2vw, #000 2vw
+  );
   box-shadow:
-    inset 0 0 0 2px #000,
-    inset 5px -5px 5px 5px rgba(139, 69, 19, 0.5),
-    -10px 20px 35px saddlebrown;
+    inset 0 0 0 0.075vw #000,
+    inset 0.2vw -0.2vw 0.2vw 0.2vw rgba(139, 69, 19, 0.5),
+    -0.4vw 0.8vw 1.4vw saddlebrown;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: rotate(-20deg);
-  pointer-events: none; /* Let clicks pass through */
+  pointer-events: none;
   z-index: 9999;
 }
 
+
 .bee:before {
     content: "";
-    width: 35px;
-    height: 35px;
+    width: 1.5vw;
+    height: 1.5vw;
     /*background: #000;*/
     border-radius: 75% 50% 75% 25%;
     position: absolute;
-    left: -22px;
-    top: -15px;
-    background: radial-gradient(circle at 10px 15px, #000 3px, #daa520 3px, #daa520 20px, #000);
-    box-shadow: 0 0 0 2px #000;
+    left: -1vw;
+    top: -0.75vw;
+    background: radial-gradient(circle at 0.6vw 0.7vw, #000 2px, #ffbb11 1.5px, #ffbb11 10px, #daa520 100%);
+    box-shadow: 0 0 0 1px #000;
     transform: rotate(30deg);
 }
+
 /* bee tip */
 .bee::after {
   content: "";
-  width: 30px;
-  height: 30px;
+  width: 1.25vw;
+  height: 1.25vw;
   border-radius: 50%;
   position: absolute;
-  left: -33px;
-  top: -28px;
+  left: -1.5vw;
+  top: -1.25vw;
   box-shadow:
-    inset -2px 1px 0 #000,
-    1px -2px 0 #fb1,
-    3px -3px 0 #000;
+    inset -1px 0.5px 0 #000,
+    0.5px -1px 0 #fb1,
+    1.5px -1.5px 0 #000;
   z-index: -1;
-    animation: feeler 0.35s linear infinite;
+  animation: feeler 0.35s linear infinite;
 }
 
 /* right */
@@ -189,37 +196,37 @@ html, body {
 
 /* wings */
 .wings {
-  width: 50px;
-  height: 50px;
+  width: 2vw;
+  height: 2vw;
   background: linear-gradient(to bottom left, rgba(0,0,0,0.5), transparent 50px);
   border-radius: 50% 50% 50% 25%;
   position: absolute;
-  left: 25px;
-  top: -25px;
-    transform-origin: left bottom;
-    animation: buzz 0.35s linear infinite;
+  left: 1vw;
+  top: -1vw;
+  transform-origin: left bottom;
+  animation: buzz 0.35s linear infinite;
 }
 
-.limbs{
-    width: 10px;
-    height: 10px;
-    border-left: 2px solid #000000;
-    border-right: 2px solid #000000;
-    position: absolute;
-    left: 25px;
-    top: 100%;
+.limbs {
+  width: 0.6vw;
+  height: 0.6vw;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  position: absolute;
+  left: 1vw;
+  top: 100%;
 }
 
 .limbs:before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-left: 2px solid #000000;
-    border-right: 2px solid #000000;
-    position: absolute;
-    left: -33px;
-    top: -20px;
-    transform: rotate(60deg);
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  position: absolute;
+  left: -1.5vw;
+  top: -1vw;
+  transform: rotate(60deg);
 }
 /* animation */
 @keyframes feeler {
