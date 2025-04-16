@@ -367,6 +367,29 @@ https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=we
   }
 }
 
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* --- MODIFIED .star RULE --- */
+.star {
+  position: fixed; /* Keep fixed positioning */
+  font-size: 1.5vw; /* Slightly larger for visibility, adjust as needed */
+  color: hsl(var(--hue), 100%, 75%); /* Use the HSL color */
+  opacity: 1;
+  z-index: 9998; /* Below bee */
+  pointer-events: none;
+  animation: fadeOut 0.6s ease-out forwards; /* Apply fade out */
+  text-shadow: /* Add a glow effect using the same hue */
+    0 0 4px hsl(var(--hue), 100%, 85%),
+    0 0 8px hsl(var(--hue), 100%, 80%);
+  /* Use the unicode star directly */
+  /* You could also use 'content' here if preferred, but textContent in JS is simpler */
+}
+
 .icons {
     position: fixed;
     bottom: 20px;
