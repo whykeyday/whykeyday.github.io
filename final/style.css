@@ -76,7 +76,7 @@ body {
   top: 200px;
   left: 280px;
   font-family: "AmstelvarAlpha Default", serif;
-  font-size: 42px;
+  font-size: 30px;
   font-weight: 400;
   font-variation-settings:
     "cntr" 104.75,
@@ -94,10 +94,10 @@ body {
 .about-me {
   position: absolute;
   top: 30%;
-  left: 25%;
-  width: 50%;
+  left: 30%;
+  width: 40%;
   font-family: "AmstelvarAlpha Default", serif;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 1.6;
   color: rgb(80, 10, 30);
   background-color: rgba(255, 255, 255, 0.3);
