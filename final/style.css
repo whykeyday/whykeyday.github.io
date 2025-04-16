@@ -37,38 +37,29 @@ body {
     }
 
     .text-3d {
-      font-family: "AmstelvarAlpha Default", serif;
-      color: rgb(255, 122, 3);
-      font-size: 153.881px;
-      font-variation-settings:
-        "cntr" 104.75,
-        "grad" 181.25,
-        "opsz" 72,
-        "prwd" 764,
-        "prwg" 250.625,
-        "srfr" 85.7639,
-        "wdth" 804,
-        "wght" 263.889,
-        "xhgt" 890;
-
-     position: absolute;
-      top: 20px;   /* Distance from top */
-      left: 40px;  /* Distance from left */
-      background: linear-gradient(90deg, rgb(255, 173, 0), rgb(255, 75, 0), rgb(255, 40, 2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-fill-color: transparent;
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      background: none;
+      -webkit-text-fill-color: initial;
+      height: 130px;
     }
 
-    .text-3d::before {
-      content: "Keying Dai's Portfolio";
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      z-index: -1;
-      color: rgba(0, 0, 0, 0.2);
-      filter: blur(1px);
+    /* Keying image */
+    .img-keying {
+      height: 200px;
+      margin-top: 50px;
+      transform: translateX(0px);
+    }
+
+    /* Dai image */
+    .img-dai {
+      height: 180px;
+      margin-top: 50px;
+      transform: translateX(10px);
     }
 
     .title-role {
@@ -390,26 +381,6 @@ https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=we
   /* You could also use 'content' here if preferred, but textContent in JS is simpler */
 }
 
-.icons {
-    position: fixed;
-    bottom: 20px;
-    left: 55%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 200px;
-    z-index: 9999;
-}
-
-
-.icons ion-icon {
-    color: white;
-    font-size: 50px;
-    transition: 0.3s;
-}
-
-.icons ion-icon:hover {
-    color: #ff4c00;
-}
 
 /* --- Title Display Bar Styles --- */
 #title-display-bar {
