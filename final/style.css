@@ -219,16 +219,16 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
 /* Images in Left Container (#layer2_l) */
 #img-2d { top: 64%; left: 31%; width: 23%; }
 #img-3d { top: 53%; left: 27%; width: 15%; }
-#img-install { top: 40%; left: 40%; width: 20%; }
+#img-install { top: 42%; left: 40%; width: 20%; }
 #img-still1 { top: 56%; left: 48%; width: 22%; }
 #img-still2 { top: 73%; left: 45%; width: 15%; }
-#img-still3 { top: 34%; left: 31%; width: 25%; }
+#img-still3 { top: 36%; left: 31%; width: 25%; }
 
 /* Images in Right Container (#layer2_r) */
 #img-f1 { top: 47%; right: 11%; width: 12%; }
 #img-f2 { top: 31%; right: 5%; width: 20%; }
 #img-f3 { top: 54%; left: 67%; width: 10%; } /* Centered */
-#img-f4 { top: 20%; left: 51%; width: 12%; }
+#img-f4 { top: 21%; left: 51%; width: 13%; }
 #img-f5 { top: 55%; left: 3%; width: 12%; }
 #img-f6 { top: 64%; right: 18%; width: 14%; }
 
