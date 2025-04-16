@@ -410,3 +410,41 @@ https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=we
 .icons ion-icon:hover {
     color: #ff4c00;
 }
+
+/* --- Title Display Bar Styles --- */
+#title-display-bar {
+    position: absolute; /* CHANGED: Use absolute positioning */
+    /* REMOVED: bottom, left: 50%, transform: translateX(-50%) */
+    /* JS will set top and left dynamically */
+    background-color: rgba(81, 103, 44, 0.8); /* Slightly darker perhaps */
+    color: #f0f0f0;
+    padding: 6px 14px; /* Adjusted padding slightly */
+    border-radius: 4px;
+    font-family: "AmstelvarAlpha Default", serif;
+    font-size: 16px; /* Adjusted font size slightly */
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    /* Transition only opacity/visibility, not position unless desired */
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    /* Add a subtle shadow for better separation */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+#title-display-bar.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Keep Icon Styles (No change needed unless overlap occurs) --- */
+.icons {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 200px;
+    z-index: 9999;
+}
