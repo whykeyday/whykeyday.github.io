@@ -1,3 +1,57 @@
+/*----------------------------------------------------------------------------------------------------------*/
+/* remixed custom scrollbar from https://www.w3schools.com/howto/howto_css_custom_scrollbar.asp*/
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Scrollbar Track */
+  ::-webkit-scrollbar-track {
+    background: #c57f65;
+    border-radius: 10px;
+  }
+
+  /* Scrollbar thumb with repeating star pattern */
+::-webkit-scrollbar-thumb {
+  background: rgb(253, 253, 222);
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polygon points="12,2 15,8 22,9 17,14 18,21 12,18 6,21 7,14 2,9 9,8" fill="yellow" stroke="black" stroke-width="1"/></svg>');
+
+  background-size: 18px 18px;
+  background-repeat: repeat;
+
+  border-radius: 10px;
+}
+
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #faa34d;
+
+  }
+/*end remix*/
+
+#exit-button {
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  width: 120px;
+  height: 100px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+
+  /* Smooth transition */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Image hover swap */
+#exit-button:hover {
+  content: url('../exit-h.png'); /* this is the magic line */
+}
+
+
 /* General Body Style */
 body {
     font-family: sans-serif;

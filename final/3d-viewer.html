@@ -58,6 +58,27 @@
            #progress {
                font-size: 1.2em;
            }
+            #exit-button {
+              position: fixed;
+              bottom: 20px;
+              left: 30px;
+              width: 120px;
+              height: 100px;
+              background-color: transparent;
+              border: none;
+              cursor: pointer;
+              outline: none;
+
+              /* Smooth transition */
+              transition: all 0.3s ease-in-out;
+            }
+
+            /* Image hover swap */
+            #exit-button:hover {
+              content: url('exit-h.png'); /* this is the magic line */
+            }
+
+
        </style>
     </head>
     <body>
@@ -68,5 +89,8 @@
        </div>
 
        <script type="module" src="./model.js"></script>
+        <a href="https://whykeyday.github.io/final" target="_blank">
+          <img src="exit.png" alt="Back" id="exit-button">
+        </a>
     </body>
 </html>
