@@ -201,7 +201,7 @@ h2 {
 
 /* --- Parallax Styles --- */
 .parallax-section {
-    min-height: 400px;
+    min-height: 600px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
