@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Media Showcase</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <nav id="toc-nav">
+        <ul>
+            <li><a href="#section-10items">Adobe Illustrator</a></li>
+            <li><a href="#section-2D-painting">2D Painting</a></li>
+            <li><a href="#section-char">Character Design</a></li>
+            <li><a href="#section-PS">Photoshop and Procreate</a></li>
+            <li><a href="#section-harmony">Harmony</a></li>
+        </ul>
+    </nav>
+
+    <h1>My 2D gallery</h1>
+
+    <div class="media-section" id="section-10items">
+        <h2>Adobe Illustrator</h2>
+        <div class="media-container single-item">
+             <img src="10items.jpg" alt="10 Items" id="media-10items">
+             <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-10items'))">⛶</button>
+        </div>
+    </div>
+
+    <div class="parallax-section" style="background-image: url('6arcr.jpg');">
+        <div class="parallax-caption" id="section-2D-painting">2D Painting</div>
+    </div>
+       <div class="media-section" id="section-coco">
+        <h2>Coco Animaiton Adaptation</h2><br>
+        <div class="media-container single-item">
+             <img src="coco.jpg" alt="10 Items" id="media-coco">
+             <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-coco'))">⛶</button>
+        </div>
+    </div>
+         <div class="media-section" id="section-fire">
+        <h2>Control</h2>
+        <div class="slideshow-container" id="slider-fire">
+            <div class="media-slide fade">
+                <div class="numbertext">1 / 2</div>
+                <img src="fire_1.jpg" alt="fire 1" id="media-fire-1">
+                  <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-fire-1'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">2 / 2</div>
+                <img src="fire_2.jpg" alt="fire 2" id="media-fire-2">
+                 <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-fire-2'))">⛶</button>
+            </div>
+            <a class="prev" onclick="changeSlide('slider-fire', -1)">&#10094;</a>
+            <a class="next" onclick="changeSlide('slider-fire', 1)">&#10095;</a>
+        </div>
+         <br>
+    </div>
+
+    <div class="media-section" id="section-Struggle">
+        <h2>Struggle</h2>
+        <div class="slideshow-container" id="slider-Struggle">
+            <div class="media-slide fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="Struggle_1.jpg" alt="Struggle 1" id="media-Struggle-1">
+                <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-Struggle-1'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="Struggle_2.jpg" alt="Struggle 2" id="media-Struggle-2">
+                 <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-Struggle-2'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="Struggle_3.jpg" alt="Struggle 3" id="media-Struggle-3">
+                 <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-Struggle-3'))">⛶</button>
+            </div>
+             <div class="media-slide fade">
+                <div class="numbertext">4 / 4</div>
+                <img src="Struggle_4.jpg" alt="Struggle 4" id="media-Struggle-4">
+                 <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-Struggle-4'))">⛶</button>
+            </div>
+            <a class="prev" onclick="changeSlide('slider-Struggle', -1)">&#10094;</a>
+            <a class="next" onclick="changeSlide('slider-Struggle', 1)">&#10095;</a>
+        </div>
+        <br>
+    </div>
+    <div class="media-section" id="section-city">
+        <h2>In Toronto </h2>
+        <div class="slideshow-container" id="slider-city">
+             <div class="media-slide fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="city_1.jpg" alt="city 1" id="media-city-1">
+                <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-city-1'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="city_2.jpg" alt="city 2" id="media-city-2">
+                <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-city-2'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="city_3.jpg" alt="city 3" id="media-city-3">
+                <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-city-3'))">⛶</button>
+            </div>
+            <a class="prev" onclick="changeSlide('slider-city', -1)">&#10094;</a>
+            <a class="next" onclick="changeSlide('slider-city', 1)">&#10095;</a>
+        </div>
+    <br>
+    </div>
+    <div class="parallax-section" id="section-char" style="background-image: url('bird_1.jpg');"></div>
+
+    <div class="media-section" id="section-bird">
+        <h2>Kong Fu Birdman</h2>
+        <div class="slideshow-container" id="slider-bird">
+            <div class="media-slide fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="bird_2.jpg" alt="Bird 2" id="media-bird-2">
+                 <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-bird-2'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="bird_3.jpg" alt="Bird 3" id="media-bird-3">
+                 <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-bird-3'))">⛶</button>
+            </div>
+             <div class="media-slide fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="bird_4.jpg" alt="Bird 4" id="media-bird-4">
+                 <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-bird-4'))">⛶</button>
+            </div>
+            <a class="prev" onclick="changeSlide('slider-bird', -1)">&#10094;</a>
+            <a class="next" onclick="changeSlide('slider-bird', 1)">&#10095;</a>
+        </div>
+        <br>
+    </div>
+
+     <div class="media-section" id="section-old">
+        <h2>Funny Couple</h2>
+        <div class="slideshow-container" id="slider-old">
+             <div class="media-slide fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="old_1.jpg" alt="Old 1" id="media-old-1">
+                <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-old-1'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="old_2.jpg" alt="Old 2" id="media-old-2">
+                <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-old-2'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="old_3.jpg" alt="Old 3" id="media-old-3">
+                <button class="fullscreen-btn" onclick="openFullscreen(document.getElementById('media-old-3'))">⛶</button>
+            </div>
+            <a class="prev" onclick="changeSlide('slider-old', -1)">&#10094;</a>
+            <a class="next" onclick="changeSlide('slider-old', 1)">&#10095;</a>
+        </div>
+    <br>
+    </div>
+         <div class="media-section" id="section-mice">
+        <h2>Cute Couple</h2>
+        <div class="slideshow-container" id="slider-mice">
+            <div class="media-slide fade">
+                <div class="numbertext">1 / 2</div>
+                <img src="mice_1.jpg" alt="mice 1" id="media-mice-1">
+                <button class="fullscreen-btn " onclick="openFullscreen(document.getElementById('media-mice-1'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">2 / 2</div>
+                <img src="mice_2.jpg" alt="mice 2" id="media-mice-2">
+                 <button class="fullscreen-btn " onclick="openFullscreen(document.getElementById('media-mice-2'))">⛶</button>
+            </div>
+            <a class="prev" onclick="changeSlide('slider-mice', -1)">&#10094;</a>
+            <a class="next" onclick="changeSlide('slider-mice', 1)">&#10095;</a>
+        </div>
+         <br>
+    </div>
+    <div class="parallax-section" style="background-image: url('dance.gif');">
+         <div class="parallax-caption" id="section-PS">Photoshop and Procreate</div>
+    </div>
+
+    <div class="media-section" id="section-dance">
+        <h2>Rotoscoping</h2>
+        <div class="media-container single-item">
+             <video controls id="media-dance">
+                <source src="dance.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+             </video>
+             <button class="fullscreen-btn video-⛶-btn" onclick="openFullscreen(document.getElementById('media-dance'))">⛶</button>
+        </div>
+    </div>
+
+     <div class="media-section" id="section-duckrun">
+        <h2>Character Running and Morphing</h2>
+        <div class="slideshow-container" id="slider-duckrun">
+            <div class="media-slide fade">
+                <div class="numbertext">1 / 2</div>
+                 <video controls loop muted id="media-duckrun-1">
+                     <source src="duckrun.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                 </video>
+                  <button class="fullscreen-btn video-⛶-btn" onclick="openFullscreen(document.getElementById('media-duckrun-1'))">⛶</button>
+            </div>
+            <div class="media-slide fade">
+                <div class="numbertext">2 / 2</div>
+                 <video controls loop muted id="media-duckrun-2">
+                    <source src="duckrun2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                 </video>
+                 <button class="fullscreen-btn video-⛶-btn" onclick="openFullscreen(document.getElementById('media-duckrun-2'))">⛶</button>
+            </div>
+            <a class="prev" onclick="changeSlide('slider-duckrun', -1)">&#10094;</a>
+            <a class="next" onclick="changeSlide('slider-duckrun', 1)">&#10095;</a>
+        </div>
+         <br>
+    </div>
+
+    <div class="parallax-section" id="section-harmony" style="background-image: url('ddance.gif');"> <div class="parallax-caption">Harmony</div>
+    </div>
+
+     <div class="media-section" id="section-vamp">
+        <h2>Vampire</h2>
+        <div class="media-container single-item">
+             <video controls id="media-vamp">
+                <source src="vamp.mov" type="video/mp4"> <source src="vamp.mov" type="video/quicktime">
+                Your browser does not support the video tag. Consider converting .mov to .mp4 or .webm.
+             </video>
+             <button class="fullscreen-btn video-⛶-btn" onclick="openFullscreen(document.getElementById('media-vamp'))">⛶</button>
+        </div>
+    </div>
+
+     <div class="media-section" id="section-walk">
+        <h2>Walk</h2>
+        <div class="media-container single-item">
+             <video controls id="media-walk">
+                 <source src="walk.mov" type="video/mp4"> <source src="walk.mov" type="video/quicktime">
+                 Your browser does not support the video tag. Consider converting .mov to .mp4 or .webm.
+             </video>
+             <button class="fullscreen-btn video-⛶-btn" onclick="openFullscreen(document.getElementById('media-walk'))">⛶</button>
+        </div>
+    </div>
+
+    <button id="backToTopBtn" title="Go to top">&uarr;</button>
+
+    <script src="script.js"></script>
+</body>
+</html>

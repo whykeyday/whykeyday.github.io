@@ -1,0 +1,256 @@
+/* General Body Style */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding-top: 50px; /* Add padding to prevent content hiding behind fixed nav */
+    background-color: #FFFFE0; /* Light Yellow Background */
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #5D4037; /* Darker Brown for titles */
+    padding: 10px 0;
+}
+
+h2 {
+    margin-top: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    display: inline-block; /* Keep underline tight */
+}
+
+/* --- Table of Contents Navigation --- */
+#toc-nav {
+    background-color: rgba(93, 64, 55, 0.9); /* Semi-transparent Dark Brown */
+    padding: 5px 0;
+    text-align: center;
+    position: fixed; /* Stick to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it's above other content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+#toc-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#toc-nav li {
+    display: inline-block; /* Arrange items horizontally */
+    margin: 0 10px;
+}
+
+#toc-nav a {
+    text-decoration: none;
+    color: #FFF59D; /* Light yellow text */
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+#toc-nav a:hover,
+#toc-nav a:focus {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle highlight on hover */
+    color: #ffffff;
+}
+
+
+.media-section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px; /* Limit content width */
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background for sections */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center; /* Center the h2 within this section */
+    position: relative; /* Needed for absolute positioning inside if any */
+    scroll-margin-top: 60px; /* Offset for fixed nav when jumping to ID */
+}
+
+.media-container {
+    margin-top: 15px;
+    position: relative; /* Needed for positioning the fullscreen button */
+    display: inline-block; /* Fit container to content */
+}
+
+/* Style for images and videos */
+.media-container img,
+.media-container video,
+.media-slide img,
+.media-slide video {
+    max-width: 100%; /* Responsive media */
+    height: auto;   /* Maintain aspect ratio */
+    display: block; /* Prevent extra space below */
+    margin: 10px auto; /* Center block elements */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* --- Fullscreen Button --- */
+/* --- Fullscreen Button --- */
+.fullscreen-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white; /* Symbol color */
+    border: none;
+    border-radius: 3px;
+    padding: 2px 6px;  /* Adjust padding if needed for this symbol */
+    font-size: 20px;   /* Adjust font size for the symbol's visual size */
+    font-weight: normal; /* Bold might make this symbol too thick */
+    line-height: 1;    /* Ensure proper vertical alignment */
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    font-family: 'Segoe UI Symbol', Symbola, sans-serif; /* Suggest fonts known to support it */
+}
+
+/* If you previously had .fullscreen-btn img styles, remove or comment them out */
+/*
+.fullscreen-btn img { ... }
+*/
+
+.fullscreen-btn:hover {
+    opacity: 1;
+}
+
+/* Adjust position slightly for video controls */
+.video-fs-btn {
+   bottom: 45px; /* Or adjust as needed */
+}
+
+/* Adjust position slightly for video controls */
+.video-fs-btn {
+   bottom: 45px; /* Higher up to avoid overlapping controls typically */
+}
+
+/* --- Slideshow Styles --- */
+.slideshow-container {
+  max-width: 800px; /* Adjust as needed */
+  position: relative;
+  margin: auto; /* Center the slideshow */
+  background-color: #f1f1f1; /* Light grey background for slider area */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.media-slide {
+  display: none;
+  text-align: center; /* Center content within slide */
+  position: relative; /* Needed for fullscreen button positioning */
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  transform: translateY(-50%); /* Better vertical centering */
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 15; /* Above slides but below FS button potentially */
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev {
+    left: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 0 0 5px 0;
+  z-index: 10;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.0s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* --- Parallax Styles --- */
+.parallax-section {
+    min-height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.parallax-caption {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px 25px;
+    font-size: 24px;
+    letter-spacing: 5px;
+    border-radius: 5px;
+}
+
+/* --- Back to Top Button --- */
+#backToTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button on the right */
+    z-index: 999; /* Make sure it does not overlap other elements */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #5D4037; /* Brown background */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 10px 15px; /* Some padding */
+    border-radius: 50%; /* Circular */
+    font-size: 18px; /* Increase font size */
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+#backToTopBtn:hover {
+    background-color: #795548; /* Darker brown on hover */
+}
+
+#backToTopBtn.show {
+    display: block; /* Show the button */
+    opacity: 0.8;
+}
+#backToTopBtn.show:hover {
+     opacity: 1;
+}
