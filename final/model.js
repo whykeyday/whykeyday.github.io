@@ -1,3 +1,8 @@
+//---------------------------------------------------------------------------------------------------
+//Tutorial from https://github.com/dgreenheck/threejs-gltf-import/blob/main/main.js
+//Remixed code
+//Function: Load and display a GLB 3D model using Three.js with camera controls, lighting, shadows, and responsive layout
+//---------------------------------------------------------------------------------------------------
 // Import necessary modules from the Three.js library
 import * as THREE from 'three'; // Core Three.js components
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; // Loader for GLTF/GLB models
@@ -181,3 +186,6 @@ function animate() {
 
 // Start the animation loop
 animate();
+
+//end of remix code
+//---------------------------------------------------------------------------------------------------
