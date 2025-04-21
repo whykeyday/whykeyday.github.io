@@ -2,17 +2,17 @@
 //Tutorial from https://www.xiaohongshu.com/explore/630de51d0000000012008663
 //Remixed code
 //Function: Create a custom bee cursor that follows the mouse and leaves a glowing trail effect
-//---------------------------------------------------------------------------------------------------
 
-// Element to be operated on
+
+
 const bee = document.querySelector('.bee'); // Target the element with class 'bee'
 
 // Record the last x-coordinate (used to determine bee's facing direction)
 let last_x = 0;
 
 //---------------------------------------------------------------------------------------------------
-//Function: Move the bee to follow the mouse and flip direction based on movement
-//Also: Generate a glowing star trail behind the bee with randomized positions and colors
+//Move the bee to follow the mouse and flip direction based on movement
+//Generate a glowing star trail behind the bee with randomized positions and colors
 window.addEventListener('mousemove', function(e) {
     let x = e.clientX - 15; // Adjust X position so the bee centers on cursor
     let y = e.clientY - 15; // Adjust Y position
@@ -33,7 +33,8 @@ window.addEventListener('mousemove', function(e) {
     // Update last_x for next comparison
     last_x = x;
 
-    // ✨ trail animation
+    //  trail animation
+    //Remixed tutorial code from https://www.smashingmagazine.com/2020/04/particle-trail-animation-javascript/ & https://www.youtube.com/watch?v=1Qv1Z1eznmg&ab_channel=SoftAsiaTech
     const arr = [1, 0.9, 0.8, 0.5, 0.2]; // Opacity/offset influence values
     arr.forEach(function(i) { // Use i to influence offset/randomness
       let offset = (1 - i) * 40; // Base offset on i
@@ -56,6 +57,6 @@ window.addEventListener('mousemove', function(e) {
       }, 650);
     });
 });
-//Explanation: Combines cursor tracking, visual orientation, and fading star trail for a dynamic and playful bee effect
+//Combines cursor tracking, visual orientation, and fading star trail for a dynamic and playful bee effect
 //end of remix code
 //---------------------------------------------------------------------------------------------------

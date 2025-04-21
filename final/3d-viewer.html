@@ -16,17 +16,16 @@
          }
        </script>
        <style>
-           /* Styles for the background title will go here or in public/index.css */
+
            #background-title {
-               position: absolute; /* Position it relative to the body */
-               top: 20px;          /* Distance from the top */
-               left: 20px;         /* Distance from the left */
-               color: white;       /* Text color */
-               font-size: 2em;     /* Adjust font size as needed */
+               position: absolute;
+               top: 20px;
+               left: 20px;
+               color: white;
+               font-size: 2em;
                font-family: sans-serif; /* Choose a font */
                z-index: 10;        /* Ensure it's above the canvas */
                pointer-events: none; /* Prevent it from blocking mouse events for the canvas */
-               /* Optional: Add a subtle shadow for better readability */
                text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
            }
 
@@ -37,13 +36,12 @@
                 height: 100%;
                 overflow: hidden; /* Prevent scrollbars */
            }
-           /* You might need to ensure the canvas doesn't have a conflicting background */
+
            canvas {
                display: block; /* Remove extra space below canvas */
            }
 
-           /* Keep existing styles for progress bar if needed, */
-           /* or remove them if progress bar is not styled */
+
            #progress-container {
                 position: absolute;
                 top: 50%;

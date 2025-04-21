@@ -1,11 +1,11 @@
 //---------------------------------------------------------------------------------------------------
-//Tutorial from https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js
+//Resource from https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js
 //Glowing Fireflies Animation:
-//https://blog.csdn.net/weixin_39688750/article/details/117844809
-//Remixed code
-//Function: Initialize animated firefly particles and simulate glowing movement using GSAP TweenMax
-//---------------------------------------------------------------------------------------------------
+//Tutorial from https://blog.csdn.net/weixin_39688750/article/details/117844809
 
+//Function: Initialize animated firefly particles and simulate glowing movement using GSAP TweenMax
+//Remixed code
+// ---------------------------------------------------------------------------------------------------
 var numP = 50;
 TweenMax.set("#content", { transformOrigin: "50% -45%" }); // Set the transform origin for rotating content
 
@@ -42,7 +42,7 @@ for (var i = 0; i <= numP; i++) {
 }
 
 //---------------------------------------------------------------------------------------------------
-//Function: Loop animation path for each particle to create continuous motion
+//Loop animation path for each particle to create continuous motion
 function loop(_p) {
   var tl = new TimelineMax({ yoyo: true, repeat: -1 }); // Infinite back-and-forth animation
   tl.to(_p, 14, {
@@ -58,17 +58,17 @@ function loop(_p) {
     }
   });
 }
-//Explanation: Uses GSAP TimelineMax and bezier easing to animate particles in an infinite looping path
+//Uses GSAP TimelineMax and bezier easing to animate particles in an infinite looping path
 //---------------------------------------------------------------------------------------------------
 
 //---------------------------------------------------------------------------------------------------
-//Function: Update the movement and rotation of the #content container based on mouse position
+// Update the movement and rotation of the #content container based on mouse position
 window.addEventListener('mousemove', function (e) {
   TweenMax.to("#content", 0.5, {
     x: -400 + 800 * (e.clientX / window.innerWidth),
     rotation: -25 + 50 * (e.clientX / window.innerWidth)
   });
 });
-//Explanation: Makes the main content react to mouse position for an immersive parallax-like effect
+//Makes the main content react to mouse position for an immersive parallax-like effect
 //end of remix code
 //---------------------------------------------------------------------------------------------------

@@ -2,7 +2,7 @@
 //Tutorial from https://github.com/dgreenheck/threejs-gltf-import/blob/main/main.js
 //Remixed code
 //Function: Load and display a GLB 3D model using Three.js with camera controls, lighting, shadows, and responsive layout
-//---------------------------------------------------------------------------------------------------
+
 // Import necessary modules from the Three.js library
 import * as THREE from 'three'; // Core Three.js components
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; // Loader for GLTF/GLB models
@@ -16,7 +16,7 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 // Set the size of the renderer to match the window dimensions
 renderer.setSize(window.innerWidth, window.innerHeight);
-// Set the background color of the scene (black in this case)
+// Set the background color of the scene
 renderer.setClearColor(0x000000);
 // Set the pixel ratio for sharper rendering on high-density displays
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -37,7 +37,7 @@ const scene = new THREE.Scene();
 // Create a perspective camera
 // Parameters: FOV, aspect ratio, near clipping plane, far clipping plane
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-// Set the initial position of the camera (adjust as needed for your model)
+// Set the initial position of the camera
 camera.position.set(4, 5, 11); // x, y, z coordinates
 
 // --- Controls Setup ---
@@ -45,7 +45,7 @@ camera.position.set(4, 5, 11); // x, y, z coordinates
 const controls = new OrbitControls(camera, renderer.domElement);
 // Enable damping (inertia) for smoother camera movement
 controls.enableDamping = true;
-// Disable panning (optional, uncomment to enable)
+// Disable panning
 controls.enablePan = false;
 // Set minimum and maximum zoom distances
 controls.minDistance = 5;
@@ -53,9 +53,9 @@ controls.maxDistance = 20;
 // Set minimum and maximum vertical rotation angles (in radians)
 controls.minPolarAngle = 0.5;
 controls.maxPolarAngle = 1.5;
-// Disable auto-rotation (optional, set to true to enable)
+// Disable auto-rotation
 controls.autoRotate = false;
-// Set the point the camera looks at (adjust as needed)
+// Set the point the camera looks at
 controls.target = new THREE.Vector3(0, 1, 0);
 // Apply initial control settings
 controls.update();
@@ -67,7 +67,7 @@ const groundGeometry = new THREE.PlaneGeometry(20, 20, 32, 32); // width, height
 groundGeometry.rotateX(-Math.PI / 2); // Rotate 90 degrees around the X-axis
 // Create a standard material for the ground
 const groundMaterial = new THREE.MeshStandardMaterial({
-  color: 0x555555, // Gray color
+  color: 0x555555,
   side: THREE.DoubleSide // Render both sides of the plane
 });
 // Create a mesh by combining the geometry and material
@@ -83,31 +83,27 @@ scene.add(groundMesh);
 // Create a spotlight
 // Parameters: color, intensity, distance, angle, penumbra, decay
 const spotLight = new THREE.SpotLight(0xffffff, 3000, 100, 0.22, 1);
-// Set the position of the spotlight (adjust as needed)
+// Set the position of the spotlight
 spotLight.position.set(0, 25, 0); // High above the center
 // Enable the light to cast shadows
 spotLight.castShadow = true;
-// Adjust shadow bias to prevent shadow artifacts
 spotLight.shadow.bias = -0.0001;
 // Add the spotlight to the scene
 scene.add(spotLight);
 
 // Add an AmbientLight to lighten shadows
-// Parameters: color, intensity (0 to 1 is a typical range)
+// Parameters: color, intensity
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5); // White light, half intensity
 scene.add(ambientLight);
 
-// You might want to add an AmbientLight for overall scene illumination:
-// const ambientLight = new THREE.AmbientLight(0x404040, 1); // soft white light
-// scene.add(ambientLight);
 
 // --- Model Loading ---
 // Create a GLTF loader instance and set the path to the models folder
-const loader = new GLTFLoader().setPath('models/'); // Adjust path if needed
+const loader = new GLTFLoader().setPath('models/');
 
 // Load the GLB model file
 loader.load(
-    'model.glb', // Your model file name
+    'model.glb',
     // Success callback function (runs when model loads)
     (gltf) => {
         console.log('Model loaded successfully');
@@ -125,13 +121,10 @@ loader.load(
         });
 
         // Set the position of the loaded model in the scene
-        // Adjust these x, y, z values to position your model correctly
-        mesh.position.set(1.5, 0, 0); // Example: Place at the origin
+        mesh.position.set(1.5, 0, 0);
 
-        // Optional: Adjust the scale of the model if needed
-        mesh.scale.set(15, 15, 15); // Example: No scaling
-
-        // Add the loaded model to the scene
+        // Adjust the scale of the model
+        mesh.scale.set(15, 15, 15);
         scene.add(mesh);
 
         // Hide the loading progress indicator now that the model is loaded
@@ -140,7 +133,7 @@ loader.load(
             progressContainer.style.display = 'none';
         }
     },
-    // Progress callback function (runs during loading)
+    // Progress callback function
     (xhr) => {
         // Calculate and display the loading percentage
         const percentLoaded = Math.round(xhr.loaded / xhr.total * 100);
@@ -163,7 +156,7 @@ loader.load(
 );
 
 // --- Window Resize Handling ---
-// Add an event listener to handle browser window resizing
+// an event listener to handle browser window resizing
 window.addEventListener('resize', () => {
   // Update camera aspect ratio
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -178,7 +171,6 @@ window.addEventListener('resize', () => {
 function animate() {
   // Request the next frame from the browser
   requestAnimationFrame(animate);
-  // Update controls (important for damping)
   controls.update();
   // Render the scene from the perspective of the camera
   renderer.render(scene, camera);

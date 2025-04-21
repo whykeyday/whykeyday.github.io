@@ -1,7 +1,7 @@
 // Object to store the current slide index for each slider
 let slideIndices = {};
 
-// Function to initialize all sliders on the page
+// initialize all sliders on the page
 function initializeSliders() {
     const slideshows = document.querySelectorAll('.slideshow-container');
     slideshows.forEach(slideshow => {
@@ -13,21 +13,21 @@ function initializeSliders() {
     });
 }
 
-// Function to change slide by delta (n = 1 for next, n = -1 for previous)
+// change slide by delta (n = 1 for next, n = -1 for previous)
 function changeSlide(sliderId, delta) {
     if (slideIndices.hasOwnProperty(sliderId)) {
         showSlide(sliderId, slideIndices[sliderId] + delta);
     }
 }
 
-// Function to show a specific slide by index (optional, if using dots)
+// show a specific slide by index
 function currentSlide(sliderId, index) {
      if (slideIndices.hasOwnProperty(sliderId)) {
         showSlide(sliderId, index);
     }
 }
 
-// Core function to display the correct slide
+
 function showSlide(sliderId, n) {
     if (!slideIndices.hasOwnProperty(sliderId)) return;
 
@@ -51,7 +51,7 @@ function showSlide(sliderId, n) {
     slides[slideIndices[sliderId] - 1].style.display = "block";
 }
 
-// --- Fullscreen API Logic ---
+// --- Fullscreen  ---
 function openFullscreen(element) {
   if (!element) return;
   if (element.requestFullscreen) {
@@ -65,20 +65,20 @@ function openFullscreen(element) {
   }
 }
 
-/* Optional: Function to close fullscreen (often handled by ESC key automatically) */
+
 function closeFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
-  } else if (document.mozCancelFullScreen) { /* Firefox */
+  } else if (document.mozCancelFullScreen) {
     document.mozCancelFullScreen();
-  } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+  } else if (document.webkitExitFullscreen) {
     document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) { /* IE/Edge */
+  } else if (document.msExitFullscreen) {
     document.msExitFullscreen();
   }
 }
 
-// --- Back to Top Button Logic ---
+// --- Back to Top Button  ---
 let backToTopButton = document.getElementById("backToTopBtn");
 
 // When the user scrolls down 200px from the top of the document, show the button
@@ -101,5 +101,4 @@ backToTopButton.addEventListener("click", function() {
 // --- Initialize everything on page load ---
 document.addEventListener('DOMContentLoaded', () => {
     initializeSliders();
-    // The scroll listener is set globally above, no need to add it here
 });

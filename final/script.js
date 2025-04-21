@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalSrc = img.dataset.original;
         const hoverSrc = img.dataset.hover;
 
-        // Preload hover image (optional, but good practice)
+        // Preload hover image
         const hoverImage = new Image();
         hoverImage.src = hoverSrc;
 
@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Existing Image Swap Logic ---
     const imagesToSwap = document.querySelectorAll('.hover-swap');
     imagesToSwap.forEach(img => {
         const originalSrc = img.dataset.original;
@@ -44,39 +43,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- UPDATED: Title Display Bar Logic ---
+    // --- Title Display Bar  ---
     const titleBar = document.getElementById('title-display-bar');
     const hoverableImagesForTitle = document.querySelectorAll('.hover-swap, .rotate-hover');
 
     if (titleBar) {
         hoverableImagesForTitle.forEach(img => {
-            img.addEventListener('mouseenter', (event) => { // Use event if needed, not strictly necessary here
+            img.addEventListener('mouseenter', (event) => {
                 const title = img.getAttribute('alt');
                 if (!title) return; // Exit if no alt text
 
-                // 1. Update text content (might affect size)
+
                 titleBar.textContent = title;
 
-                // 2. Get image position and dimensions relative to viewport
+                // Get image position and dimensions relative to viewport
                 const imgRect = img.getBoundingClientRect();
 
-                // 3. Get title bar dimensions (ensure text is set first)
+                // Get title bar dimensions
                 const barWidth = titleBar.offsetWidth;
                 const barHeight = titleBar.offsetHeight;
 
-                // 4. Get viewport dimensions
+                // Get viewport dimensions
                 const viewportWidth = window.innerWidth;
                 const viewportHeight = window.innerHeight;
 
-                // 5. Define margin/spacing
+
                 const margin = 10; // Space between image and title bar
 
-                // 6. Calculate desired position (Default: below image, centered horizontally)
+                //  Calculate desired position
                 let potentialTop = imgRect.bottom + margin;
                 let potentialLeft = imgRect.left + (imgRect.width / 2) - (barWidth / 2);
 
                 // --- Boundary Checks ---
-
                 // Check bottom boundary: If placing below goes off-screen, try placing above
                 if (potentialTop + barHeight > viewportHeight - margin) { // Check against bottom edge + margin
                     potentialTop = imgRect.top - barHeight - margin; // Place above
@@ -96,18 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (potentialLeft + barWidth > viewportWidth - margin) {
                     potentialLeft = viewportWidth - barWidth - margin;
                 }
-
                 // --- End Boundary Checks ---
 
-                // 7. Apply calculated position
-                // getBoundingClientRect is relative to viewport. Since the titleBar is positioned
-                // absolutely relative to the body (which is the offset parent here unless
-                // another ancestor is positioned), and the body isn't scrolled (overflow: hidden),
-                // we can directly use the viewport coordinates.
                 titleBar.style.top = `${potentialTop}px`;
                 titleBar.style.left = `${potentialLeft}px`;
-
-                // 8. Make it visible
                 titleBar.classList.add('visible');
             });
 

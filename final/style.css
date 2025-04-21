@@ -1,4 +1,4 @@
-/* Basic Reset */
+
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +19,7 @@ body {
   margin: 0;
   background-color: #000;
   overflow: hidden;
-  position: relative; /* Needed to make #content position relative to body */
+  position: relative;
 }
 @font-face {
       font-family: 'AmstelvarAlpha Default';
@@ -48,14 +48,14 @@ body {
       height: 130px;
     }
 
-    /* Keying image */
+
     .img-keying {
       height: 200px;
       margin-top: 50px;
       transform: translateX(0px);
     }
 
-    /* Dai image */
+
     .img-dai {
       height: 180px;
       margin-top: 50px;
@@ -97,7 +97,7 @@ body {
   backdrop-filter: blur(4px);
 }
 
-/* Glowing Fireflies Animation:
+/* Tutorial of Glowing Fireflies Animation:
 https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-1-117844809-blog-76528609.235^v43^control&spm=1001.2101.3001.4242.2&utm_relevant_index=4
 */
 /* Particle container positioned in the bottom-right corner */
@@ -105,8 +105,8 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
   position: absolute;
   width: 300px;
   height: 400px;
-  bottom: 0;          /* Stick to the bottom */
-  right: 0;           /* Stick to the right */
+  bottom: 0;
+  right: 0;
   z-index: 9999;      /* Make sure it's on top */
   pointer-events: none; /* Allow mouse events to pass through */
 }
@@ -121,9 +121,9 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
 /* Style for each particle */
 .particle {
   position: absolute;
-  width: 5px;           /* Smaller size */
+  width: 5px;
   height: 5px;
-  background: #fffacd;  /* Bright yellowish-white (you can also try #ffffe0 or pure #ffffff) */
+  background: #fffacd;
   border-radius: 50%;
   opacity: 0;           /* Initially invisible */
   box-shadow: 0 0 6px #fffacd; /* Glow effect for brightness */
@@ -131,10 +131,10 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
 
 
 #layer1 {
-    position: relative; /* Establishes positioning context for children */
-    width: 100vw; /* 100% of viewport width */
-    height: 100vh; /* 100% of viewport height */
-    background-image: url('images/layer1.webp'); /* Your background image */
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/layer1.webp');
     background-size: cover; /* Scale image to cover the entire container */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat;
@@ -142,7 +142,7 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
 @keyframes shake {
     0% { transform: translateX(0); } /* Start at original position */
     10% { transform: translateX(-4px); } /* Move slightly left */
-    20% { transform: translateX(4px); }  /* Move slightly right */
+    20% { transform: translateX(4px); }
     30% { transform: translateX(-4px); }
     40% { transform: translateX(4px); }
     50% { transform: translateX(-2px); } /* Less intense towards end */
@@ -181,32 +181,28 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
 #layer2_l {
     position: absolute;
     left: -14%;
-    top: 5%; /* Explicitly define vertical position */
+    top: 5%;
     width: 55%;
     height: 105%;
     background-image: url('images/layer2_l.png');
     background-repeat: no-repeat;
     background-size: contain;
-    background-position: center 80%; /* Only need one background-position */
-    /* Add hover animation if needed */
-    /* animation: ... */ /* You had the hover animation here before */
+    background-position: center 80%;
+
 }
 
 /* --- MODIFIED HOVER RULE --- */
 #layer2_l:hover {
     /* Apply the 'shake' animation */
-    /* Format: animation: name duration timing-function iteration-count; */
-  
     /* Shake using 0.4s cycles, run 5 times (total 2s), linear timing */
     animation: shake 0.4s linear 5;
   }
 
-/* --- REST OF THE CSS --- */
 
-/* Positioning Images within Containers - Adjust percentages as needed! */
+
+/* Positioning Images within Containers  */
 #layer2_l img, #layer2_r img {
-   /* These are the images *inside* layer2_l and layer2_r */
-   /* Styles remain the same as before */
+   /* These are the images inside layer2_l and layer2_r */
     position: absolute;
     display: block;
     max-width: 100%;
@@ -214,7 +210,7 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
     height: auto;
 }
 
-/* --- Specific Image Positions (EXAMPLES - ADJUST THESE!) --- */
+/* --- Specific Image Positions  */
 
 /* Images in Left Container (#layer2_l) */
 #img-2d { top: 64%; left: 31%; width: 23%; }
@@ -243,13 +239,12 @@ https://blog.csdn.net/weixin_39688750/article/details/117844809?utm_medium=distr
     transform: rotate(180deg);
 }
 
-/* Image Swap for left-side images (handled by JavaScript) */
-/* No specific CSS needed for the swap itself, just potentially cursor */
+/* Image Swap for left-side images  */
 .hover-swap:hover {
     cursor: pointer; /* Indicate interactivity */
 }
 
-/* Drawing a Bee Cursor:
+/* tutorial of Drawing a Bee Cursor:
 https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=wechat&xsec_token=CBeah6WJpvuNv-GFF2K8bMqmsfN2gGhA5a3UwE2xxUsUw=
 */
 /* bee body */
@@ -364,8 +359,9 @@ https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=we
     transform: scale(0.5);
   }
 }
+/* End of the tutorial*/
 
-/* --- MODIFIED .star RULE --- */
+
 .star {
   position: fixed; /* Keep fixed positioning */
   font-size: 1.5vw; /* Slightly larger for visibility, adjust as needed */
@@ -384,19 +380,16 @@ https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=we
 
 /* --- Title Display Bar Styles --- */
 #title-display-bar {
-    position: absolute; /* CHANGED: Use absolute positioning */
-    /* REMOVED: bottom, left: 50%, transform: translateX(-50%) */
-    /* JS will set top and left dynamically */
-    background-color: rgba(81, 103, 44, 0.8); /* Slightly darker perhaps */
+    position: absolute;
+    background-color: rgba(81, 103, 44, 0.8);
     color: #f0f0f0;
-    padding: 6px 14px; /* Adjusted padding slightly */
+    padding: 6px 14px;
     border-radius: 4px;
     font-family: "AmstelvarAlpha Default", serif;
-    font-size: 16px; /* Adjusted font size slightly */
+    font-size: 16px;
     z-index: 10000;
     opacity: 0;
     visibility: hidden;
-    /* Transition only opacity/visibility, not position unless desired */
     transition: opacity 0.25s ease, visibility 0.25s ease;
     pointer-events: none;
     white-space: nowrap;
@@ -409,7 +402,6 @@ https://www.xiaohongshu.com/explore/630de51d0000000012008663?note_flow_source=we
     visibility: visible;
 }
 
-/* --- Keep Icon Styles (No change needed unless overlap occurs) --- */
 .icons {
     position: fixed;
     bottom: 20px;
