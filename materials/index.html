@@ -199,7 +199,7 @@ footer a{color:var(--rose);text-decoration:none;font-weight:600}
 (function(){
   // To deliver submissions silently to your inbox: get a free key at web3forms.com
   // (enter keyingdwork@gmail.com, no signup), paste it below. Until then it falls back to email.
-  var KEY = "WEB3FORMS_KEY";
+  var KEY = "2123e0f5-6077-4e8a-823f-bd0db51739d9";
   var ov=document.getElementById('reqOv'), inner=document.getElementById('reqInner');
   var open=function(){ov.classList.add('show')}, close=function(){ov.classList.remove('show')};
   document.querySelectorAll('[data-req]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open()})});
@@ -209,7 +209,7 @@ footer a{color:var(--rose);text-decoration:none;font-weight:600}
   function thanks(msg){inner.innerHTML='<div class="req-done"><p class="big">Thanks ✦</p><p>'+msg+'</p></div>'}
   function fallback(d){
     var body='Name: '+(d.name||'')+'%0D%0AEmail: '+(d.email||'')+'%0D%0AWhat I do: '+(d.what_you_do||'')+'%0D%0ALooking for: '+(d.looking_for||'')+'%0D%0APortfolio: '+(d.portfolio||'');
-    window.location.href='mailto:keyingdwork@gmail.com?subject=Materials%20library%20access%20request&body='+body;
+    window.location.href='mailto:whykeyday@gmail.com?subject=Materials%20library%20access%20request&body='+body;
     thanks("Your email app should open with the details — just hit send and we'll be in touch.");
   }
   document.getElementById('reqForm').addEventListener('submit',function(e){
