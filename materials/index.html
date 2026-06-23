@@ -81,6 +81,26 @@ h1{font-family:"Fraunces",serif;font-weight:650;font-size:clamp(46px,8vw,86px);l
 
 footer{padding:36px 0 56px;text-align:center;color:var(--ink-soft);font-size:13px}
 footer a{color:var(--rose);text-decoration:none;font-weight:600}
+/* request modal — pastel, on-page */
+.req-ov{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(80,60,90,.34);backdrop-filter:blur(7px)}
+.req-ov.show{display:flex;animation:reqfade .2s ease}
+@keyframes reqfade{from{opacity:0}to{opacity:1}}
+.req-card{position:relative;width:min(520px,100%);max-height:90vh;overflow:auto;background:var(--glass-strong);backdrop-filter:blur(30px) saturate(1.4);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);padding:40px 34px 34px;text-align:center}
+.req-x{position:absolute;top:15px;right:15px;width:34px;height:34px;border:0;border-radius:50%;background:rgba(23,35,58,.06);color:var(--ink-soft);font-size:21px;line-height:1;cursor:pointer;transition:.15s}
+.req-x:hover{background:rgba(23,35,58,.12)}
+.req-card h3{font-family:"Fraunces",serif;font-weight:650;font-size:28px;margin:0 0 6px}
+.req-card .rsub{color:var(--ink-soft);font-size:14.5px;margin:0 auto 22px;line-height:1.5;max-width:380px}
+.field{margin-bottom:14px;text-align:left}
+.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+.field label .opt{color:var(--ink-soft);font-weight:400}
+.field input,.field textarea{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);background:var(--white);border:1px solid var(--line);border-radius:12px;padding:11px 13px;outline:none;transition:border .15s,box-shadow .15s}
+.field input:focus,.field textarea:focus{border-color:var(--rose);box-shadow:0 0 0 3px var(--rose-soft)}
+.field textarea{resize:vertical;min-height:82px}
+.req-card form .btn{width:100%;justify-content:center;margin-top:8px}
+.req-hp{position:absolute!important;left:-9999px}
+.req-done{padding:26px 6px}
+.req-done .big{font-family:"Fraunces",serif;font-size:32px;margin:0 0 10px}
+.req-done p{color:var(--ink-soft);line-height:1.55}
 </style>
 </head>
 <body>
@@ -147,8 +167,8 @@ footer a{color:var(--rose);text-decoration:none;font-weight:600}
   <section class="request" id="request">
     <h2>Like what you see?</h2>
     <p>We keep this library tidy because we use it every day — and we're glad to share the whole thing. Say hi and tell us a little about you, and we'll send a private link your way.</p>
-    <a class="btn btn-primary" href="https://tally.so/r/44EY5o" target="_blank" rel="noopener">Say hi & see it all →</a>
-    <p class="small">Collaborators, clients, recruiters, or just the curious — all welcome. We usually reply within a day or two. ✦<br>Prefer email? <a href="mailto:keyingdwork@gmail.com?subject=Hello%20from%20your%20Materials%20page">keyingdwork@gmail.com</a></p>
+    <button class="btn btn-primary" type="button" data-req>Say hi & see it all →</button>
+    <p class="small">Collaborators, clients, recruiters, or just the curious — all welcome. We usually reply within a day or two. ✦</p>
   </section>
 
 </main>
@@ -157,5 +177,56 @@ footer a{color:var(--rose);text-decoration:none;font-weight:600}
   © <span id="yr">2026</span> Keying Dai &amp; Kecheng Yao · <a href="../index.html">back to portfolio</a>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<div class="req-ov" id="reqOv">
+  <div class="req-card" role="dialog" aria-modal="true" aria-labelledby="reqTitle">
+    <button class="req-x" id="reqX" aria-label="Close">×</button>
+    <div id="reqInner">
+      <h3 id="reqTitle">Say hi 👋</h3>
+      <p class="rsub">Tell us a little about you and we'll send a private link to the full library your way.</p>
+      <form id="reqForm" novalidate>
+        <input type="checkbox" name="botcheck" class="req-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field"><label>Your name</label><input name="name" required></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required></div>
+        <div class="field"><label>What you do</label><input name="what_you_do" placeholder="designer · studio · recruiter…" required></div>
+        <div class="field"><label>What are you looking for?</label><textarea name="looking_for" required></textarea></div>
+        <div class="field"><label>Portfolio / LinkedIn <span class="opt">(optional)</span></label><input name="portfolio"></div>
+        <button class="btn btn-primary" type="submit" id="reqSubmit">Send →</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  // To deliver submissions silently to your inbox: get a free key at web3forms.com
+  // (enter keyingdwork@gmail.com, no signup), paste it below. Until then it falls back to email.
+  var KEY = "WEB3FORMS_KEY";
+  var ov=document.getElementById('reqOv'), inner=document.getElementById('reqInner');
+  var open=function(){ov.classList.add('show')}, close=function(){ov.classList.remove('show')};
+  document.querySelectorAll('[data-req]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();open()})});
+  document.getElementById('reqX').onclick=close;
+  ov.addEventListener('click',function(e){if(e.target===ov)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+  function thanks(msg){inner.innerHTML='<div class="req-done"><p class="big">Thanks ✦</p><p>'+msg+'</p></div>'}
+  function fallback(d){
+    var body='Name: '+(d.name||'')+'%0D%0AEmail: '+(d.email||'')+'%0D%0AWhat I do: '+(d.what_you_do||'')+'%0D%0ALooking for: '+(d.looking_for||'')+'%0D%0APortfolio: '+(d.portfolio||'');
+    window.location.href='mailto:keyingdwork@gmail.com?subject=Materials%20library%20access%20request&body='+body;
+    thanks("Your email app should open with the details — just hit send and we'll be in touch.");
+  }
+  document.getElementById('reqForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target, d={}; new FormData(f).forEach(function(v,k){d[k]=v});
+    if(d.botcheck) return;
+    if(!d.name||!d.email||!d.what_you_do||!d.looking_for){ f.reportValidity&&f.reportValidity(); return; }
+    var btn=document.getElementById('reqSubmit'); btn.textContent='Sending…'; btn.disabled=true;
+    if(KEY && KEY.charAt(0)!=='W'){
+      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+        body:JSON.stringify({access_key:KEY,subject:'Materials access request — '+(d.name||''),from_name:'Materials page',
+          name:d.name,email:d.email,what_you_do:d.what_you_do,looking_for:d.looking_for,portfolio:d.portfolio})})
+       .then(function(r){return r.json()}).then(function(j){ j&&j.success ? thanks("We got it — we'll be in touch soon with a private link.") : fallback(d); })
+       .catch(function(){fallback(d)});
+    } else { fallback(d); }
+  });
+})();
+</script>
 </body>
 </html>
