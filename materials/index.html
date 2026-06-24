@@ -218,13 +218,10 @@ footer a{color:var(--rose);text-decoration:none;font-weight:600}
     if(d.botcheck) return;
     if(!d.name||!d.email||!d.what_you_do||!d.looking_for){ f.reportValidity&&f.reportValidity(); return; }
     var btn=document.getElementById('reqSubmit'); btn.textContent='Sending…'; btn.disabled=true;
-    if(KEY && KEY.charAt(0)!=='W'){
-      fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-        body:JSON.stringify({access_key:KEY,subject:'Materials access request — '+(d.name||''),from_name:'Materials page',replyto:d.email,
-          name:d.name,email:d.email,what_you_do:d.what_you_do,looking_for:d.looking_for,portfolio:d.portfolio})})
-       .then(function(r){return r.json()}).then(function(j){ j&&j.success ? thanks("We got it — we'll be in touch soon with a private link.") : fallback(d); })
+    fetch('https://truenas-scale.tail40f7e3.ts.net:10000/request',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:d.name,email:d.email,what_you_do:d.what_you_do,looking_for:d.looking_for,portfolio:d.portfolio})})
+       .then(function(r){return r.json()}).then(function(j){ j&&j.ok ? thanks("We got it — we'll be in touch soon with a private link.") : fallback(d); })
        .catch(function(){fallback(d)});
-    } else { fallback(d); }
   });
 })();
 </script>
