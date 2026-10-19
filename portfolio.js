@@ -1,4 +1,124 @@
 const projects = {
+    recognizeMe: {
+    "kicker": "Wearable interface · DIGF-3010 · Fall 2026",
+    "title": "Recognize Me?",
+    "description": "A touch-sensitive shawl pairs soft textile flowers with a pointed, 3D-printed spine. Capacitive touch produces distinct light and sound responses; the central chest-and-back interaction explores permission through a shared two-person trigger. The prototype also exposed challenges in sensor calibration and spine movement.",
+    "tags": [
+        "Capacitive Touch",
+        "CPX",
+        "3D Printing"
+    ],
+    "primary": "https://blogs.ocaduwebspace.ca/digf-3010-301-2026fa/2026/10/10/recognize-me/",
+    "primaryLabel": "Read Full Process",
+    "secondary": "https://youtu.be/mEy6z6CyD7M",
+    "secondaryLabel": "Watch Demo",
+    "preview": "url('assets/wearables/recognize-me-1.webp')",
+    "media": "image",
+    "gallery": [
+        {
+            "src": "assets/wearables/recognize-me-1.webp",
+            "alt": "Recognize Me? — on-body view"
+        },
+        {
+            "src": "assets/wearables/recognize-me-2.webp",
+            "alt": "Recognize Me? — interaction and material view"
+        },
+        {
+            "src": "assets/wearables/recognize-me-3.webp",
+            "alt": "Recognize Me? — additional garment view"
+        }
+    ]
+},
+    blooming: {
+    "kicker": "Wearable interface · DIGF-2016 · Winter 2026",
+    "title": "Blooming Boundaries",
+    "description": "Inspired by the Chinese cloud collar, this jacket uses four servos, pressure sensors, and a light sensor to move wire-and-tulle flowers around the face. Crossed arms raise a protective collar; a handshake prompts light and sound, while bright light creates a breathing movement.",
+    "tags": [
+        "Soft Robotics",
+        "CPX",
+        "Embodied Interaction"
+    ],
+    "primary": "https://blogs.ocaduwebspace.ca/digf-2016-501-2025wi/2026/04/06/blooming-boundaries/",
+    "primaryLabel": "Read Full Process",
+    "secondary": "https://youtu.be/ETWMQPDmZpk",
+    "secondaryLabel": "Watch Demo",
+    "preview": "url('assets/wearables/blooming-boundaries-1.webp')",
+    "media": "image",
+    "gallery": [
+        {
+            "src": "assets/wearables/blooming-boundaries-1.webp",
+            "alt": "Blooming Boundaries — on-body view"
+        },
+        {
+            "src": "assets/wearables/blooming-boundaries-2.webp",
+            "alt": "Blooming Boundaries — interaction and material view"
+        },
+        {
+            "src": "assets/wearables/blooming-boundaries-3.webp",
+            "alt": "Blooming Boundaries — additional garment view"
+        }
+    ]
+},
+    takeBreath: {
+    "kicker": "Wearable interface · DIGF-2016 · Winter 2026",
+    "title": "Take a Breath",
+    "description": "A thermal shirt integrates a handmade cuff pressure sensor, a light sensor, and a Circuit Playground Express. Squeezing the soft cuff activates blue breathing lights, with rhythmic sound in noisy conditions. Crochet, yarn, foam, and a plastic backing make the interface softer and reduce accidental triggers.",
+    "tags": [
+        "Soft Sensors",
+        "CPX",
+        "Care & Interaction"
+    ],
+    "primary": "https://blogs.ocaduwebspace.ca/digf-2016-501-2025wi/2026/03/09/take-a-breath/",
+    "primaryLabel": "Read Full Process",
+    "secondary": "https://youtu.be/aLxP2COgCMo",
+    "secondaryLabel": "Watch Demo",
+    "preview": "url('assets/wearables/take-a-breath-1.webp')",
+    "media": "image",
+    "gallery": [
+        {
+            "src": "assets/wearables/take-a-breath-1.webp",
+            "alt": "Take a Breath — on-body view"
+        },
+        {
+            "src": "assets/wearables/take-a-breath-2.webp",
+            "alt": "Take a Breath — interaction and material view"
+        },
+        {
+            "src": "assets/wearables/take-a-breath-3.webp",
+            "alt": "Take a Breath — additional garment view"
+        }
+    ]
+},
+    inFocus: {
+    "kicker": "Wearable interface · DIGF-2016 · Winter 2026",
+    "title": "In Focus: Status Jacket",
+    "description": "A soft seat switch enables a sleeve-bend switch to trigger a buzzer reminder, while a movable magnetic bridge selects red, yellow, or green status LEDs. Conductive fabric and thread turn posture and personal styling into an embodied interface for attention and social boundaries.",
+    "tags": [
+        "Soft Circuits",
+        "Wearable Interface",
+        "Conductive Textiles"
+    ],
+    "primary": "https://blogs.ocaduwebspace.ca/digf-2016-501-2025wi/2026/02/02/digf-2016-501-intro-to-wearable-electronics/",
+    "primaryLabel": "Read Full Process",
+    "secondary": "https://youtube.com/shorts/9o2Xx5VHou4?feature=share",
+    "secondaryLabel": "Watch Demo",
+    "preview": "url('assets/wearables/in-focus-1.webp')",
+    "media": "image",
+    "gallery": [
+        {
+            "src": "assets/wearables/in-focus-1.webp",
+            "alt": "In Focus: Status Jacket — on-body view"
+        },
+        {
+            "src": "assets/wearables/in-focus-2.webp",
+            "alt": "In Focus: Status Jacket — interaction and material view"
+        },
+        {
+            "src": "assets/wearables/in-focus-3.webp",
+            "alt": "In Focus: Status Jacket — additional garment view"
+        }
+    ]
+},
     echoes: {
         kicker: "Playable game",
         title: "Echoes of Past",
@@ -146,7 +266,7 @@ const modalSecondary = document.getElementById("modal-secondary");
 const menuButton = document.querySelector(".menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const railLinks = Array.from(document.querySelectorAll(".left-rail a[href^='#']"));
-const sliderProjectIds = ["echoes", "media2d", "viewer3d", "beyond", "installation", "demo2", "demo34", "breath", "grain", "pull"];
+const sliderProjectIds = ["recognizeMe", "blooming", "takeBreath", "inFocus", "echoes", "media2d", "viewer3d", "beyond", "installation", "demo2", "demo34", "breath", "grain", "pull"];
 let currentProjectId = "echoes";
 let panelUserHidden = false;
 let panelAvailable = false;
@@ -260,6 +380,20 @@ function updateFloatingPanelState() {
 
 function renderModalMedia(project) {
     modalMedia.innerHTML = "";
+
+    if (project.gallery) {
+        const gallery = document.createElement("div");
+        gallery.className = "wearable-gallery";
+        project.gallery.forEach((photo) => {
+            const image = document.createElement("img");
+            image.src = photo.src;
+            image.alt = photo.alt;
+            image.loading = "lazy";
+            gallery.append(image);
+        });
+        modalMedia.append(gallery);
+        return;
+    }
 
     if (project.media === "launch") {
         const launch = document.createElement("div");
