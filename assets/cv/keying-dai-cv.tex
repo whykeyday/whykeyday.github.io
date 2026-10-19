@@ -1,0 +1,112 @@
+% Keying Dai - Public Curriculum Vitae
+% Adapted from the artistic resume supplied by Keying.
+% !TEX program = xelatex
+\documentclass[10pt,letterpaper]{article}
+\usepackage[letterpaper,left=0.34in,right=0.34in,top=0in,bottom=0.25in]{geometry}
+\usepackage{fontspec,microtype,xcolor,tikz,paracol,enumitem,fontawesome5,hyperref,ragged2e,eso-pic}
+\setmainfont{Arial}
+\newfontfamily\displayfont{Georgia}
+\definecolor{Ink}{HTML}{17233A}
+\definecolor{Deep}{HTML}{17233A}
+\definecolor{Teal}{HTML}{F56F9C}
+\definecolor{Coral}{HTML}{F56F9C}
+\definecolor{Mist}{HTML}{FFF0F5}
+\definecolor{Paper}{HTML}{FFF9FB}
+\definecolor{Muted}{HTML}{596277}
+\definecolor{Pending}{HTML}{943B20}
+\hypersetup{colorlinks=true,urlcolor=Ink,pdfborder={0 0 0},
+pdftitle={Keying Dai - Curriculum Vitae},pdfauthor={Keying Dai}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\columnsep}{0.34in}
+\columnratio{0.31,0.69}
+\AddToShipoutPictureBG{%
+\begin{tikzpicture}[remember picture,overlay]
+\fill[Paper] (current page.south west) rectangle (current page.north east);
+\fill[Mist] ([xshift=0.22in,yshift=0.20in]current page.south west)
+rectangle ([xshift=2.69in,yshift=-1.72in]current page.north west);
+\draw[Teal!45,line width=0.7pt] ([xshift=0.34in,yshift=-1.36in]current page.north west) --
+([xshift=-0.34in,yshift=-1.36in]current page.north east);
+\end{tikzpicture}}
+\newcommand{\sideheading}[1]{\vspace{7pt}{\displayfont\bfseries\color{Deep}\small\MakeUppercase{#1}}\par
+\vspace{2pt}\textcolor{Coral}{\rule{0.37in}{1.4pt}}\vspace{3pt}\par}
+\newcommand{\mainheading}[1]{\vspace{5pt}{\displayfont\bfseries\color{Deep}\large\MakeUppercase{#1}}\par
+\vspace{-1pt}\textcolor{Teal}{\rule{\linewidth}{0.55pt}}\vspace{3pt}\par}
+\newcommand{\role}[4]{{\bfseries\color{Ink}#1}\par
+{\small\color{Coral}\bfseries #2}\par
+{\small\itshape\color{Ink}#3}\par
+\vspace{1pt}{\small\color{Ink}#4}\par\vspace{5pt}}
+\newcommand{\project}[3]{{\bfseries\color{Ink}#1}\enspace{\scriptsize\color{Muted}#2}\par
+{\small\color{Muted}#3}\par\vspace{5pt}}
+\begin{document}
+\begin{minipage}[t][1.30in][c]{\textwidth}
+{\displayfont\fontsize{30}{32}\selectfont\bfseries\color{Teal}Keying Dai}\par
+\vspace{3pt}{\fontsize{11}{13}\selectfont\bfseries\color{Ink}
+DIGITAL ARTIST \quad 3D ANIMATOR \quad CREATIVE TECHNOLOGIST}\par
+\vspace{7pt}{\small\color{Muted}
+\faMapMarker*\ Montreal + Toronto\quad
+\faEnvelope\ \href{mailto:keyingdwork@gmail.com}{keyingdwork@gmail.com}\quad
+\faPhone\ 438-921-8452\quad
+\faGlobe\ \href{https://whykeyday.github.io/index.html}{Portfolio}\quad
+\faLinkedin\ \href{https://www.linkedin.com/in/keying-dai}{LinkedIn}}
+\end{minipage}
+\vspace{0.10in}
+\begin{paracol}{2}
+\raggedright
+\sideheading{Education}
+{\bfseries\color{Ink}OCAD University}\par
+{\small\color{Ink}BFA (Hons), Experimental Animation}\par
+{\scriptsize\color{Muted}Toronto | 2023--Present}\par
+\vspace{4pt}{\small\color{Ink}Expected completion: 2027}\par
+
+
+
+\sideheading{Profile}
+{\small\color{Ink}Experimental animation student working across wearable electronics, immersive media and visual communication. Interested in how people interpret information and interact with physical and digital systems.}
+
+\sideheading{Technical Skills}
+{\scriptsize\color{Muted}\textbf{Interactive media}\par
+Unity (C\#), Meta Quest, SteamVR, Unreal Engine 5, Meta Spark, GameMaker, Twine\par\vspace{5pt}
+\textbf{Interface and visual design}\par
+Figma, Illustrator, Photoshop, Procreate; user flows, wireframes and prototyping\par\vspace{5pt}
+\textbf{3D and animation}\par
+Maya, Blender, Substance 3D Painter, After Effects; modelling, rigging and character animation}
+
+\sideheading{Relevant Coursework}
+{\scriptsize\color{Muted}
+Intro to Wearable Electronics\par
+Advanced Wearable Electronics (in progress)\par
+XR Space Jam\par
+Game Engines\par}
+
+
+\sideheading{Selected Links}
+{\small
+\href{https://keyinggamedesign.itch.io/}{\faGamepad\ itch.io}\par\vspace{3pt}
+\href{https://www.artstation.com/keyingdai}{\faPalette\ ArtStation}\par\vspace{3pt}
+\href{https://github.com/whykeyday}{\faGithub\ GitHub}}
+\switchcolumn
+\mainheading{Relevant Experience}
+\role{Co-founder, Art \& Visual Identity Lead}{May 2026--Present}{Telotia | Montreal, hybrid}{
+Develop visual identity, logo direction, website imagery and communication assets for a claim-to-evidence validation startup. Translate technical concepts into visual materials for product communication and public presentation.}
+\role{3D Animator}{Aug 2024--Present}{Empowered Futures | Toronto, remote}{
+Create 3D assets, character animation and campaign visuals for mental-health initiatives using Maya and Adobe tools. Collaborate on visual narratives for young adults.}
+\role{VR Exhibition Assistant}{Sep 2024}{OCAD University + French Embassy | Best of Cannes}{
+Supported headset setup and maintenance, visitor guidance, bookings, opening activities and daily exhibition operations.}
+
+\mainheading{Selected Projects}
+\project{In Focus}{Wearable analog circuit}{
+Created a jacket that communicates availability through three selectable light states, with a magnetic control and a separate posture-enabled reminder circuit. Explored how body position and visual cues express personal boundaries.
+}
+\project{Breath to Restore}{2026 | Unity / Meta Quest 3}{
+Developed and published a VR prototype exploring environmental change, particles and spatial sound. Documented implementation choices and limitations in a development journal; used external models and code assistance.
+\href{https://keyinggamedesign.itch.io/breath-to-restore}{Project and devlog}.}
+\project{Beyond Life}{Interface prototype / Figma}{
+Developed a health-tracking interface through research, personas, user flows, wireframes and high-fidelity design.
+}
+\project{My Virtual Gallery}{VR exhibition / Unity}{
+Built an explorable exhibition for 3D work, animation and interactive objects, designed for SteamVR and Meta Quest viewing.
+}
+
+\end{paracol}
+\end{document}
