@@ -56,11 +56,13 @@ keeps a static bridge and disables continuous motion.
   outlines are identical, with exact approved ink `#282D32` / `#F7F9F8` and dot
   `#00B9AC`. On scroll the first letter crossfades into the curved-entry hook
   from the original public brand paths. The dot first arrives above the T, then
-  rises another diameter (75.48 SVG units). Its final edge-to-edge gap above
-  the hook is about 1.16 dot diameters. The dot never reverses vertically.
-- Favicon: the supplied white-background black tau PNG, copied unchanged and
-  used in both themes (`test-favicon-wbg.png`). It is independent of the header
-  dot and of theme switching.
+  rises another half-diameter (37.74 SVG units). Its final edge-to-edge gap above
+  the hook is about 0.66 dot diameters, half a diameter closer than the previous
+  revision. The dot never reverses vertically.
+- Favicon: `test-favicon-rounded.svg` clips the supplied white-background black
+  tau PNG to a rounded square (86-unit radius in a 538-unit viewBox). The embedded
+  PNG bytes and T artwork are unchanged; corners are transparent. The icon is
+  used in both themes and is independent of header-dot/theme switching.
 - Hero: "Empowering people. Connecting organizations." with "Helping
   professionals work more efficiently and organizations collaborate with
   confidence." Responsive type preserves two desktop lines without shrinking
