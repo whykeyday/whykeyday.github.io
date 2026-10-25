@@ -6,15 +6,19 @@ Never copy a whole Limen dist: it also contains unrelated/private preview routes
 from pathlib import Path
 import re
 import sys
+import argparse
 
-source = Path(sys.argv[1]).resolve()
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('dist', type=Path)
+parser.add_argument('--page', choices=('intro', 'test'), help='Export one route, preserving the other route and its bundles')
+args = parser.parse_args()
+source = args.dist.resolve()
 root = Path(__file__).resolve().parents[1]
 namespace = "/telotia-demo"
 pages = {name: (source / f"{name}.html").read_text(encoding="utf-8")
-         for name in ("intro", "test")}
-assert pages["intro"] == pages["test"], "The unified mentor pages must match"
-assert 'data-page="pharmacy-intro"' in pages["intro"]
-pending = set(re.findall(r'/_astro/[^\s"\'<>]+', pages["intro"]))
+         for name in ((args.page,) if args.page else ("intro", "test"))}
+assert all('data-page="pharmacy-intro"' in page for page in pages.values())
+pending = set(url for page in pages.values() for url in re.findall(r'/_astro/[^\s"\'<>]+', page))
 files = {}
 while pending:
     url = pending.pop()
@@ -49,4 +53,4 @@ for asset in assets:
         target = root / "telotia-demo" / asset.relative_to(source)
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_bytes(asset.read_bytes())
-print(f"Exported 2 pages, {len(files)} bundles, and public brand/texture assets.")
+print(f"Exported {len(pages)} pages, {len(files)} bundles, and public brand/texture assets.")

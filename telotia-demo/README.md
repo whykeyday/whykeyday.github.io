@@ -1,7 +1,8 @@
 # Telotia mentor demo
 
-Public presentation pages: `/intro/` and `/test/`. Both intentionally render the
-same final, unified design. The portfolio homepage remains independent.
+Public presentation pages: `/intro/` and `/test/`. They share the same design.
+`/test/` now keeps a visible, flowing rope as it traces the chaotic orbit;
+`/intro/` retains the original animation. The portfolio homepage remains independent.
 
 Recovered from Telotia/Limen PR #174, source commit
 `7d4ac85754ba9a9b3fcb384c9c758bdb58a6f492` (the final code archived by
@@ -16,12 +17,25 @@ The pages retain `noindex,nofollow`; this is indexing guidance, not access contr
 
 ## Rebuild
 
+For the `/test/` rope revision, start from the source commit above and apply
+`git apply /path/to/telotia-demo/patches/test-flowing-rope.patch` before building.
+The patch contains only the public animation TypeScript changes; it enables the
+flowing rope on `/test/` only. Other routes retain the original motion.
+
 In the archived Limen checkout, install its locked dependencies and run the dev
 Astro build with `LIMEN_ENV=dev`. Then run:
 
 ```sh
 python telotia-demo/export.py /path/to/Limen/dist
 ```
+
+To update only `/test/`, preserving `/intro/` and its existing bundles:
+
+```sh
+python telotia-demo/export.py /path/to/Limen/dist --page test
+```
+
+Keep the earlier bundles: the unchanged `/intro/` still references them.
 
 The exporter follows only these pages' compiled bundle dependencies and copies
 the allowlisted public brand, font, morph, and paper assets. URLs are namespaced
