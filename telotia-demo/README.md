@@ -7,6 +7,11 @@ updated "Empowering people. Connecting organizations." hero with its supplied
 supporting sentence and an equivalent French translation. `/intro/` retains its
 original branding, copy and animation. The portfolio homepage remains independent.
 
+The current `/test/` lower page is a company-level preview: About Telotia,
+People/Organizations perspective switch, working principles, a general first-
+product teaser, and contact. The earlier pharmacy product block, pharmacy About
+copy, and pharmacy/pharmacist cards are removed from this route in EN and FR.
+
 Recovered from Telotia/Limen PR #174, source commit
 `7d4ac85754ba9a9b3fcb384c9c758bdb58a6f492` (the final code archived by
 `archive/dev-2026-10-23`, merge commit `6fee055`). This preserves the warm paper
@@ -26,6 +31,11 @@ before building. This is a complete patch against the archived source commit;
 do not apply the earlier `test-flowing-rope.patch` first. The earlier patch is
 retained as revision history only. The current patch contains public Astro,
 TypeScript and supplied brand SVG/PNG changes. No private preview source is included.
+
+Also copy this repository's `telotia-demo/assets/resource-intro/editorial/`
+directory into the archived source's `public/assets/resource-intro/editorial/`
+before building. Large generated PNGs are kept as assets rather than duplicated
+inside the source patch. The prompt/provenance record is `editorial/PROMPTS.md`.
 
 In the archived Limen checkout, install its locked dependencies and run the dev
 Astro build with `LIMEN_ENV=dev`. Then run:
@@ -76,6 +86,21 @@ keeps a static bridge and disables continuous motion.
   lines remain visible. Star/handshake timing, pause/resume and reduced-motion
   behavior are preserved. Entry checks at 1 ms intervals measured approximately
   0.12% speed difference and 0.08 degrees of direction change across the join.
+
+## Company preview
+
+`TestCompanySections.astro`, `resource-test.ts`, and `company-experience.ts`
+maintain the company content and interactions in the archived source. The
+perspective tabs support click/tap and Left/Right/Home/End keyboard navigation,
+preserve the selected perspective when switching language, and animate only
+the selected connection. Scroll entrances use IntersectionObserver; reduced
+motion shows all content and switches perspectives without animation.
+
+The two editorial PNGs were generated with the built-in image_gen tool. They
+are conceptual artwork, not actual team/customer/product photographs. Files and
+full prompts are documented in `assets/resource-intro/editorial/PROMPTS.md`.
+The dark theme treats the landscape as pale ink on the existing navy surface;
+the worktable remains a warm editorial photograph-style illustration.
 
 The custom palette is informed by [NHS colour and contrast guidance](https://service-manual.nhs.uk/design-system/styles/colour)
 and [IBM Carbon's role-based theme/layer model](https://www.carbondesignsystem.com/building-blocks/foundations/themes/overview).
