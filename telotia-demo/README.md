@@ -25,7 +25,7 @@ For the current `/test/` revision, start from the source commit above and apply
 before building. This is a complete patch against the archived source commit;
 do not apply the earlier `test-flowing-rope.patch` first. The earlier patch is
 retained as revision history only. The current patch contains public Astro,
-TypeScript and supplied brand SVG changes. No private preview source is included.
+TypeScript and supplied brand SVG/PNG changes. No private preview source is included.
 
 In the archived Limen checkout, install its locked dependencies and run the dev
 Astro build with `LIMEN_ENV=dev`. Then run:
@@ -54,17 +54,25 @@ keeps a static bridge and disables continuous motion.
   accent `#56D5C9`, surfaces `#172934` / `#1D323F`.
 - Branding: native SVG companions of the supplied scale1/2/3 PNGs. Their
   outlines are identical, with exact approved ink `#282D32` / `#F7F9F8` and dot
-  `#00B9AC`. The first letter remains the exact supplied tau outline on scroll;
-  the original dot moves smoothly above it as the suffix fades.
+  `#00B9AC`. On scroll the first letter crossfades into the curved-entry hook
+  from the original public brand paths. The dot first arrives above the T, then
+  rises another diameter (75.48 SVG units). Its final edge-to-edge gap above
+  the hook is about 1.16 dot diameters. The dot never reverses vertically.
+- Favicon: the supplied white-background black tau PNG, copied unchanged and
+  used in both themes (`test-favicon-wbg.png`). It is independent of the header
+  dot and of theme switching.
 - Hero: "Empowering people. Connecting organizations." with "Helping
   professionals work more efficiently and organizations collaborate with
   confidence." Responsive type preserves two desktop lines without shrinking
   the whole page. The French switch uses a corresponding localized headline.
-- Motion: the bridge gathers into a short line on the left (normalized width
-  0.23, down from 0.58). It floats right for 1.2 seconds with a soft fading tail,
-  then its final endpoint traces the orbit. Tail opacity affects only the spare
-  thread; already drawn orbit lines remain visible. Star/handshake timing,
-  pause/resume and reduced-motion behavior are preserved.
+- Motion: the bridge gathers into a short line on the left (normalized length
+  about 0.23). A single arc-length route joins its rightward flight to the orbit,
+  with one timing curve for the complete journey. The head and tail sample that
+  same route continuously, so there is no stop/restart or reanchoring at the
+  orbit entry. The moving tail fades until drawing begins; already drawn orbit
+  lines remain visible. Star/handshake timing, pause/resume and reduced-motion
+  behavior are preserved. Entry checks at 1 ms intervals measured approximately
+  0.12% speed difference and 0.08 degrees of direction change across the join.
 
 The custom palette is informed by [NHS colour and contrast guidance](https://service-manual.nhs.uk/design-system/styles/colour)
 and [IBM Carbon's role-based theme/layer model](https://www.carbondesignsystem.com/building-blocks/foundations/themes/overview).
