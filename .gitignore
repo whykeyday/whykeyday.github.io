@@ -1,0 +1,5 @@
+
+daily-site/node_modules/
+daily-site/dist/
+daily-site/.astro/
+**/__pycache__/

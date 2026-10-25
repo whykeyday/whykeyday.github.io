@@ -1,0 +1,1 @@
+{"name": "keying-daily-archive", "private": true, "type": "module", "scripts": {"build": "astro build"}, "dependencies": {"astro": "6.3.5", "three": "0.184.0"}}
