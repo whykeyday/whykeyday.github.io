@@ -420,16 +420,17 @@ index a17d5b3..15a9bd9 100644
      event: CustomEvent<string>,
 diff --git a/src/scripts/test-brand.ts b/src/scripts/test-brand.ts
 new file mode 100644
-index 0000000..b57f513
+index 0000000..86f7f65
 --- /dev/null
 +++ b/src/scripts/test-brand.ts
-@@ -0,0 +1,49 @@
+@@ -0,0 +1,50 @@
 +const clamp = (p: number) => Math.max(0, Math.min(1, p));
 +const ease = (p: number) => { const t = clamp(p); return t * t * t * (t * (t * 6 - 15) + 10); };
 +export function testBrandState(progress: number) {
 +  const travel = ease(progress / .68), lift = ease((progress - .68) / .32);
 +  return { x: -1254.14 * travel,
-+    y: -86.67 * travel - 18 * Math.sin(Math.PI * travel) - 37.74 * lift,
++    // A visible upward bow between the i and T; both end positions stay fixed.
++    y: -86.67 * travel - 160 * Math.sin(Math.PI * travel) - 37.74 * lift,
 +    lift, hook: ease((progress - .40) / .40), suffix: 1 - ease(progress / .6) };
 +}
 +

@@ -58,7 +58,8 @@ keeps a static bridge and disables continuous motion.
   from the original public brand paths. The dot first arrives above the T, then
   rises another half-diameter (37.74 SVG units). Its final edge-to-edge gap above
   the hook is about 0.66 dot diameters, half a diameter closer than the previous
-  revision. The dot never reverses vertically.
+  revision. The travel uses a visible upward arc (160 SVG units above the
+  straight interpolation at mid-travel), with the same arrival/final positions.
 - Favicon: `test-favicon-rounded.svg` clips the supplied white-background black
   tau PNG to a rounded square (86-unit radius in a 538-unit viewBox). The embedded
   PNG bytes and T artwork are unchanged; corners are transparent. The icon is
