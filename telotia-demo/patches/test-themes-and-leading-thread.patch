@@ -83,20 +83,23 @@ index 0000000..7296b88
 @@ -0,0 +1 @@
 +<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -40 540 620"><path d="M456.22,78.87H81.58c-2.5,0-4.52,2-4.52,4.44l-1.45,43.53c0,2.44,2.02,4.41,4.52,4.41l123.94.17c6.37-.07,13.71,1.11,17.92,5.89,11.84,13.41,20.26,28.02,23.93,57.18,2.15,47.09-3.42,111.78,3.37,198.06,1.63,20.8,9.01,40.91,21.72,57.71,40.38,53.4,102.95,66.66,173.66,61.58-63.47-17.24-113.06-40.62-132.38-98.93-3.77-11.35-5.72-23.15-6.18-35.07-2.37-62.66-3.29-108.18-1.3-167.92.36-10.53-1.33-21.09-5.43-30.86-9.56-22.83-24.32-34.02-50.4-47.69l205.79-.12c2.54,0,4.55-1.97,4.55-4.41l1.45-43.53c0-2.44-2.02-4.44-4.55-4.44Z" fill="#282d32"/><circle cx="268" cy="30" r="37.74" fill="#00b9ac"/></svg>
 diff --git a/src/components/pages/ResourceIntro.astro b/src/components/pages/ResourceIntro.astro
-index 99e12a8..fff0fe8 100644
+index 99e12a8..d5ced34 100644
 --- a/src/components/pages/ResourceIntro.astro
 +++ b/src/components/pages/ResourceIntro.astro
-@@ -2,20 +2,32 @@
+@@ -2,20 +2,34 @@
  import ComingSoon from '../ComingSoon.astro';
  import CoordinationMotion from '../resource/CoordinationMotion.astro';
  import IntroBrand from '../resource/IntroBrand.astro';
-+import TestBrand from '../resource/TestBrand.astro';
-+import TestTheme from '../resource/TestTheme.astro';
- import { words } from '../../data/resource-company';
+-import { words } from '../../data/resource-company';
 -interface Props { isProd?: boolean; }
 -const { isProd = false } = Astro.props;
++import TestBrand from '../resource/TestBrand.astro';
++import TestTheme from '../resource/TestTheme.astro';
++import { words as companyWords } from '../../data/resource-company';
++import { testWords } from '../../data/resource-test';
 +interface Props { isProd?: boolean; demoVariant?: 'test'; }
 +const { isProd = false, demoVariant } = Astro.props;
++const words = demoVariant === 'test' ? testWords : companyWords;
  const copy = words.en;
  const sections = ['home', 'products', 'about', 'approach'] as const;
  ---
@@ -123,7 +126,7 @@ index 99e12a8..fff0fe8 100644
      <link rel="icon" type="image/png" sizes="32x32" href="/assets/resource-intro/brand/intro-favicon-32.png" />
      <link rel="icon" type="image/svg+xml" sizes="any" href="/assets/resource-intro/brand/intro-app-icon.svg" />
      <link rel="apple-touch-icon" sizes="180x180" href="/assets/resource-intro/brand/intro-apple-touch-icon.png" />
-@@ -26,9 +38,12 @@ const sections = ['home', 'products', 'about', 'approach'] as const;
+@@ -26,9 +40,12 @@ const sections = ['home', 'products', 'about', 'approach'] as const;
    <a class="skip" href="#main" data-copy="skip">{copy.skip}</a>
    <header class="site-header" data-intro-header>
      <div class="header-inner wrap">
@@ -179,10 +182,10 @@ index 0000000..ffd4614
 +</style>
 diff --git a/src/components/resource/TestTheme.astro b/src/components/resource/TestTheme.astro
 new file mode 100644
-index 0000000..546b5bb
+index 0000000..be195dd
 --- /dev/null
 +++ b/src/components/resource/TestTheme.astro
-@@ -0,0 +1,41 @@
+@@ -0,0 +1,52 @@
 +<button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">Dark</button>
 +<script>
 +  import { mountTestTheme } from '../../scripts/test-theme';
@@ -199,6 +202,17 @@ index 0000000..546b5bb
 +    scrollbar-color:#B7C6CF var(--bg);
 +  }
 +  html[data-demo-variant='test'] .header-controls { display:flex; align-items:center; gap:12px; }
++  html[data-page='pharmacy-intro'][data-demo-variant='test'] h1 {
++    font-size:clamp(36px,5.1vw,72px); line-height:1.12; letter-spacing:-.04em;
++  }
++  html[data-page='pharmacy-intro'][data-demo-variant='test'] .hero-line { white-space:normal; }
++  html[data-page='pharmacy-intro'][data-demo-variant='test'] .lead {
++    font-size:clamp(18px,1.8vw,24px); max-width:52ch;
++  }
++  @media(max-width:599px) {
++    html[data-page='pharmacy-intro'][data-demo-variant='test'] h1 { font-size:clamp(28px,6.8vw,38px); }
++    html[data-page='pharmacy-intro'][data-demo-variant='test'] .lead { font-size:18px; }
++  }
 +  html[data-demo-variant='test'] .theme-toggle { background:transparent; border:1px solid var(--border); border-radius:8px; color:var(--navy); min-height:44px; min-width:52px; padding:0 8px; font:500 12px 'Inter',sans-serif; cursor:pointer; }
 +  html[data-demo-variant='test'] .theme-toggle:hover { background:var(--surface-alt); border-color:var(--teal); }
 +  html[data-page='pharmacy-intro'][data-demo-variant='test'] .site-header { background-color:var(--header-bg); }
@@ -224,8 +238,26 @@ index 0000000..546b5bb
 +    html[data-page='pharmacy-intro'][data-demo-variant='test'][data-theme='dark'] .site-header[data-scrolled] { background:#101C26; }
 +  }
 +</style>
+diff --git a/src/data/resource-test.ts b/src/data/resource-test.ts
+new file mode 100644
+index 0000000..5676540
+--- /dev/null
++++ b/src/data/resource-test.ts
+@@ -0,0 +1,12 @@
++import { words } from './resource-company';
++
++export const testWords = {
++  en: { ...words.en,
++    headline: 'Empowering people.\nConnecting organizations.',
++    lead: 'Helping professionals work more efficiently and organizations collaborate with confidence.',
++  },
++  fr: { ...words.fr,
++    headline: 'Donner aux personnes les moyens d’agir.\nRelier les organisations.',
++    lead: 'Aider les professionnels à travailler plus efficacement et les organisations à collaborer en toute confiance.',
++  },
++};
 diff --git a/src/scripts/coordination-motion.ts b/src/scripts/coordination-motion.ts
-index a17d5b3..930caa4 100644
+index a17d5b3..15a9bd9 100644
 --- a/src/scripts/coordination-motion.ts
 +++ b/src/scripts/coordination-motion.ts
 @@ -46,10 +46,12 @@ export async function mountCoordinationMotion(root: HTMLElement) {
@@ -243,7 +275,38 @@ index a17d5b3..930caa4 100644
      context!.lineWidth = size / 264 * 1.2;
      context!.beginPath();
      const fullPoints = Math.floor(state.visible);
-@@ -104,6 +106,7 @@ export async function mountCoordinationMotion(root: HTMLElement) {
+@@ -63,14 +65,28 @@ export async function mountCoordinationMotion(root: HTMLElement) {
+       context!.lineTo(size * (.5 + (a.x + (b.x - a.x) * fraction) * .91), size * (.5 + (a.y + (b.y - a.y) * fraction) * .91));
+     }
+     if (state.closed) context!.closePath();
+-    context!.globalAlpha = .88; context!.stroke();
++    if (state.points.some(p => (p.alpha ?? 1) < .999999)) {
++      // Batch the soft tail into opacity bands, without tinting or fading any
++      // completed orbit behind the leading endpoint. No filled head or dots.
++      for (let band = 1; band <= 32; band++) {
++        context!.beginPath(); let previous = -1;
++        for (let i = 1; i < fullPoints; i++) {
++          const a = state.points[i - 1], b = state.points[i];
++          const opacity = ((a.alpha ?? 1) + (b.alpha ?? 1)) / 2;
++          if (b.move || Math.ceil(opacity * 32) !== band) continue;
++          if (previous !== i - 1) context!.moveTo(size * (.5 + a.x * .91), size * (.5 + a.y * .91));
++          context!.lineTo(size * (.5 + b.x * .91), size * (.5 + b.y * .91)); previous = i;
++        }
++        context!.globalAlpha = .88 * band / 32; context!.stroke();
++      }
++    } else { context!.globalAlpha = .88; context!.stroke(); }
+     // Fade only the short connections between distinct SVG contours. Every
+     // outline keeps moving continuously; there are no filled polygons.
+     for (let i = 1; i < fullPoints; i++) {
+       const join = state.points[i].join ?? 1;
+       if (join <= 0 || join >= .999999) continue;
+       const a = points[i - 1], b = points[i];
+-      context!.globalAlpha = .88 * join;
++      context!.globalAlpha = .88 * join * ((a.alpha ?? 1) + (b.alpha ?? 1)) / 2;
+       context!.beginPath();
+       context!.moveTo(size * (.5 + a.x * .91), size * (.5 + a.y * .91));
+       context!.lineTo(size * (.5 + b.x * .91), size * (.5 + b.y * .91));
+@@ -104,6 +120,7 @@ export async function mountCoordinationMotion(root: HTMLElement) {
      );
    });
    reduced.addEventListener("change", sync);
@@ -332,10 +395,19 @@ index 0000000..837b4c8
 +  set(root.dataset.theme || 'light');
 +}
 diff --git a/src/scripts/thread-motion.ts b/src/scripts/thread-motion.ts
-index 7a09f9e..59c0462 100644
+index 7a09f9e..93a76b8 100644
 --- a/src/scripts/thread-motion.ts
 +++ b/src/scripts/thread-motion.ts
-@@ -77,7 +77,7 @@ export function alignStar(star: CurvePoint[], orbit: CurvePoint[], hand: CurvePo
+@@ -58,7 +58,7 @@ export function shortOrbit(count = THREAD_POINTS): CurvePoint[] {
+   });
+ }
+
+-export type InkPoint = CurvePoint & { join?: number };
++export type InkPoint = CurvePoint & { join?: number; alpha?: number };
+
+ // Match the same closed star outline to both neighbours without rotating the
+ // visible symbol. Only the traversal's start point and direction change.
+@@ -77,9 +77,10 @@ export function alignStar(star: CurvePoint[], orbit: CurvePoint[], hand: CurvePo
    return star.map((_, i) => ({ ...star[(bestShift + bestDirection * i + period) % period], move: i === 0 }));
  }
 
@@ -343,18 +415,21 @@ index 7a09f9e..59c0462 100644
 +export function threadFrame(time: number, shapes: ThreadShapes, buffer?: InkPoint[], flowingRope = false) {
    const count = shapes.bridge.length, t = ((time % THREAD_CYCLE) + THREAD_CYCLE) % THREAD_CYCLE;
    const points: InkPoint[] = buffer ?? Array.from({ length: count }, () => ({ x: 0, y: 0, move: false, join: 1 }));
++  points.forEach(point => { point.alpha = 1; });
    let stage = 'bridge', visible = count, closed = false;
-@@ -94,35 +94,71 @@ export function threadFrame(time: number, shapes: ThreadShapes, buffer?: InkPoin
-   };
-   const thread = (i: number) => {
+   const setJoin = (i: number, join: number) => { points[i].join = join; points[i].move = join < .999999; };
+   const blend = (from: CurvePoint[], to: CurvePoint[], amount: number) => {
+@@ -96,33 +97,80 @@ export function threadFrame(time: number, shapes: ThreadShapes, buffer?: InkPoin
      const u = i / (count - 1);
-+    if (flowingRope) {
-+      const seed = shapes.orbit[0];
-+      return { x: seed.x - .58 * (1 - u), y: seed.y + .114 * (1 - u)
-+        + .035 * Math.sin(u * Math.PI) ** 2 * Math.sin(u * Math.PI * 2) };
-+    }
      return { x: -.37 + .74 * u, y: .025 * Math.sin(u * Math.PI * 2) };
    };
++  const flight = (u: number, amount: number) => {
++    const a = ease(amount), seed = shapes.orbit[0], back = 1 - u;
++    const head = { x: -.17 + (seed.x + .17) * a,
++      y: .06 + (seed.y - .06) * a - .10 * Math.sin(Math.PI * a) };
++    return { x: head.x - .23 * back,
++      y: head.y + .045 * back + .025 * Math.sin(Math.PI * u) * Math.sin(u * Math.PI * 2 - a * 4) };
++  };
 +  // Traverse from free tail to leading endpoint. The endpoint alone advances
 +  // along the orbit; already traced ink stays behind it. The spare tail feeds
 +  // into the fixed starting point, never sprouts from the moving curve's middle.
@@ -370,31 +445,40 @@ index 7a09f9e..59c0462 100644
 +    const v = u / spare, seed = shapes.orbit[0];
 +    // Match the initial soft line exactly, with a restrained wave travelling
 +    // toward the head. Its envelope vanishes at the join and as it is consumed.
-+    const wave = .035 * spare * Math.sin(v * Math.PI) ** 2 * Math.sin(v * Math.PI * 2 - progress * 4);
-+    return { x: seed.x - .58 * (spare - u),
-+      y: seed.y + .114 * (spare - u) + wave };
++    const wave = .025 * spare * Math.sin(v * Math.PI) * Math.sin(v * Math.PI * 2 - 4 - progress * 4);
++    return { x: seed.x - .23 * (spare - u),
++      y: seed.y + .045 * (spare - u) + wave };
 +  };
    if (t < 1400) blend(shapes.bridge, shapes.bridge, 0);
 -  else if (t < 3300) {
 -    stage = 'gather'; const amount = ease((t - 1400) / 1900), lift = Math.sin(Math.PI * amount);
-+  else if (t < (flowingRope ? 3000 : 3300)) {
-+    stage = 'gather'; const amount = ease((t - 1400) / (flowingRope ? 1600 : 1900)), lift = Math.sin(Math.PI * amount);
++  else if (t < (flowingRope ? 2800 : 3300)) {
++    stage = 'gather'; const amount = ease((t - 1400) / (flowingRope ? 1400 : 1900)), lift = Math.sin(Math.PI * amount);
      for (let i = 0; i < count; i++) {
 -      const target = thread(i), p = shapes.bridge[i], u = i / (count - 1);
 +      const u = i / (count - 1), p = shapes.bridge[i];
-+      const target = flowingRope ? rope(u, ease(clamp((t - 2700) / 4900))) : thread(i);
++      const target = flowingRope ? flight(u, 0) : thread(i);
        points[i].x = p.x * (1 - amount) + target.x * amount + .035 * Math.sin(u * Math.PI * 2) * lift;
        points[i].y = p.y * (1 - amount) + target.y * amount - .06 * Math.sin(u * Math.PI * 3) * lift;
        setJoin(i, p.move ? amount : 1);
-     }
++      if (flowingRope) points[i].alpha = 1 - ease((t - 2300) / 500) * (1 - ease(u / .32));
++    }
++  } else if (flowingRope && t < 4000) {
++    stage = 'drift';
++    for (let i = 0; i < count; i++) {
++      const u = i / (count - 1), p = flight(u, (t - 2800) / 1200);
++      points[i].x = p.x; points[i].y = p.y;
++      points[i].alpha = ease(u / .32); setJoin(i, 1);
++    }
 +  } else if (flowingRope && t < 8300) {
-+    // Start winding as the bridge is still relaxing into its single line.
-+    const progress = ease(clamp((t - 2700) / 4900));
++    // Arrive as a short drifting stroke, then let its endpoint trace the orbit.
++    const progress = ease(clamp((t - 4000) / 3600));
 +    stage = progress < 1 ? 'orbit' : 'orbit-hold';
 +    for (let i = 0; i < count; i++) {
-+      const p = rope(i / (count - 1), progress);
++      const u = i / (count - 1), p = rope(u, progress), spare = 1 - progress;
 +      points[i].x = p.x; points[i].y = p.y; setJoin(i, 1);
-+    }
++      points[i].alpha = u < spare ? ease(u / spare / .32) : 1;
+     }
 +    closed = progress === 1;
    } else if (t < 4000) {
      stage = 'thread'; const amount = ease((t - 3300) / 700), seed = shapes.orbit[0];

@@ -2,8 +2,10 @@
 
 Public presentation pages: `/intro/` and `/test/`. They share the same design.
 `/test/` uses the supplied light/dark Telotia wordmark, a theme switch, and a
-leading-end thread that winds around the chaotic orbit. `/intro/` retains its
-original branding and animation. The portfolio homepage remains independent.
+short drifting thread that leads into the chaotic orbit. `/test/` also uses the
+updated "Empowering people. Connecting organizations." hero with its supplied
+supporting sentence and an equivalent French translation. `/intro/` retains its
+original branding, copy and animation. The portfolio homepage remains independent.
 
 Recovered from Telotia/Limen PR #174, source commit
 `7d4ac85754ba9a9b3fcb384c9c758bdb58a6f492` (the final code archived by
@@ -54,8 +56,15 @@ keeps a static bridge and disables continuous motion.
   outlines are identical, with exact approved ink `#282D32` / `#F7F9F8` and dot
   `#00B9AC`. The first letter remains the exact supplied tau outline on scroll;
   the original dot moves smoothly above it as the suffix fades.
-- Motion: the final endpoint advances along the orbit. The remaining tail feeds
-  into the orbit's fixed start, so the drawing no longer grows from the middle.
+- Hero: "Empowering people. Connecting organizations." with "Helping
+  professionals work more efficiently and organizations collaborate with
+  confidence." Responsive type preserves two desktop lines without shrinking
+  the whole page. The French switch uses a corresponding localized headline.
+- Motion: the bridge gathers into a short line on the left (normalized width
+  0.23, down from 0.58). It floats right for 1.2 seconds with a soft fading tail,
+  then its final endpoint traces the orbit. Tail opacity affects only the spare
+  thread; already drawn orbit lines remain visible. Star/handshake timing,
+  pause/resume and reduced-motion behavior are preserved.
 
 The custom palette is informed by [NHS colour and contrast guidance](https://service-manual.nhs.uk/design-system/styles/colour)
 and [IBM Carbon's role-based theme/layer model](https://www.carbondesignsystem.com/building-blocks/foundations/themes/overview).
