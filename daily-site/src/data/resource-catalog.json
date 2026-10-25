@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Daily Finance｜Rating relief meets the earnings test: five stories before central-bank week",
+    "date": "2026-10-25",
+    "dateLabel": "Oct 25, 2026",
+    "folderLabel": "2026/10/25/daily-news",
+    "href": "/news/2026/10/25/daily-news/en/index.html",
+    "zhHref": "/news/2026/10/25/daily-news/zh/index.html",
+    "image": "/news/2026/10/25/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/10/25/daily-news/en/card-1.webp",
+      "/news/2026/10/25/daily-news/en/card-2.webp",
+      "/news/2026/10/25/daily-news/en/card-3.webp",
+      "/news/2026/10/25/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "An ocean in the cut-away",
+    "date": "2026-10-25",
+    "dateLabel": "Oct 25, 2026",
+    "folderLabel": "2026/10/25/wave-pattern-stencil",
+    "href": "/art/2026/10/25/wave-pattern-stencil/en/index.html",
+    "zhHref": "/art/2026/10/25/wave-pattern-stencil/zh/index.html",
+    "image": "/art/2026/10/25/wave-pattern-stencil/cover.webp",
+    "cards": [
+      "/art/2026/10/25/wave-pattern-stencil/en/card-1.webp",
+      "/art/2026/10/25/wave-pattern-stencil/en/card-2.webp",
+      "/art/2026/10/25/wave-pattern-stencil/en/card-3.webp",
+      "/art/2026/10/25/wave-pattern-stencil/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Daily Finance | Growth meets the cost test",
     "date": "2026-10-24",
     "dateLabel": "Oct 24, 2026",
