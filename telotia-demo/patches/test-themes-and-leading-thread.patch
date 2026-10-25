@@ -257,7 +257,7 @@ index 0000000..dc700dd
 +  <path d="M3 4h8" />
 +</svg>
 diff --git a/src/components/pages/ResourceIntro.astro b/src/components/pages/ResourceIntro.astro
-index 99e12a8..f16a19f 100644
+index 99e12a8..9e5fffc 100644
 --- a/src/components/pages/ResourceIntro.astro
 +++ b/src/components/pages/ResourceIntro.astro
 @@ -2,20 +2,35 @@
@@ -316,7 +316,13 @@ index 99e12a8..f16a19f 100644
      </div>
    </header>
    <main id="main" class="wrap">
-@@ -43,6 +61,7 @@ const sections = ['home', 'products', 'about', 'approach'] as const;
+@@ -38,11 +56,12 @@ const sections = ['home', 'products', 'about', 'approach'] as const;
+         <div class="hero-copy">
+           <h1 id="hero-title" data-copy="headline">{copy.headline}</h1>
+           <p class="lead" data-copy="lead">{copy.lead}</p>
+-          <div class="hero-actions"><a class="button" href="#approach"><span data-copy="primary">{copy.primary}</span><img src="/assets/resource-intro/morph/arrow-right.svg" alt="" width="22" height="22" /></a><a class="text-link" href="#contact" data-copy="secondary">{copy.secondary}</a></div>
++          <div class="hero-actions">{demoVariant === 'test' ? <a class="button" href="#contact"><span data-copy="secondary">{copy.secondary}</span><img src="/assets/resource-intro/morph/arrow-right.svg" alt="" width="22" height="22" /></a> : <><a class="button" href="#approach"><span data-copy="primary">{copy.primary}</span><img src="/assets/resource-intro/morph/arrow-right.svg" alt="" width="22" height="22" /></a><a class="text-link" href="#contact" data-copy="secondary">{copy.secondary}</a></>}</div>
+         </div>
          <aside class="hero-aside"><CoordinationMotion /><p class="aside-note" data-copy="context">{copy.context}</p></aside>
        </div>
      </section>
@@ -387,10 +393,10 @@ index 0000000..9e85241
 +</style>
 diff --git a/src/components/resource/TestCompanySections.astro b/src/components/resource/TestCompanySections.astro
 new file mode 100644
-index 0000000..07a5a37
+index 0000000..9c251a3
 --- /dev/null
 +++ b/src/components/resource/TestCompanySections.astro
-@@ -0,0 +1,158 @@
+@@ -0,0 +1,103 @@
 +---
 +import type { testWords } from '../../data/resource-test';
 +interface Props { copy: typeof testWords.en; }
@@ -402,6 +408,13 @@ index 0000000..07a5a37
 +] as const;
 +---
 +<div class="company-sections" data-company-sections>
++  <section id="products" class="company-section company-products" aria-labelledby="future-product-title">
++    <div class="product-preview" data-reveal>
++      <div><span class="product-status" data-copy="productStatus">{copy.productStatus}</span><h2 id="future-product-title" class="company-title" data-copy="productTitle">{copy.productTitle}</h2><p class="company-body" data-copy="productBody">{copy.productBody}</p><p class="product-footnote" data-copy="productNote">{copy.productNote}</p></div>
++      <div class="product-emblem" aria-hidden="true"><span></span><img src="/assets/resource-intro/morph/cross-star-outline.svg" width="128" height="128" alt="" /></div>
++    </div>
++  </section>
++
 +  <section id="about" class="company-intro company-section" aria-labelledby="company-title">
 +    <div class="company-intro-copy" data-reveal>
 +      <p class="company-label" data-copy="companyLabel">{copy.companyLabel}</p>
@@ -410,37 +423,7 @@ index 0000000..07a5a37
 +      <p class="company-body" data-copy="companyBody">{copy.companyBody}</p>
 +    </div>
 +    <div class="ink-landscape" data-reveal>
-+      <img src="/assets/resource-intro/editorial/connection-inkwash.png" width="1536" height="1024" alt={copy.landscapeAlt} data-alt="landscapeAlt" loading="lazy" decoding="async" />
-+    </div>
-+  </section>
-+
-+  <section id="people" class="company-section perspectives" aria-labelledby="perspectives-title" data-perspectives data-audience="people">
-+    <div data-reveal><h2 id="perspectives-title" class="company-title" data-copy="connectionTitle">{copy.connectionTitle}</h2>
-+      <p class="company-lead" data-copy="connectionIntro">{copy.connectionIntro}</p></div>
-+    <div class="perspective-tabs" role="tablist" aria-label={copy.perspectiveLabel} data-perspective-label>
-+      <button id="people-tab" type="button" role="tab" aria-selected="true" aria-controls="people-panel" data-perspective="people" data-copy="peopleTab">{copy.peopleTab}</button>
-+      <button id="organizations-tab" type="button" role="tab" aria-selected="false" aria-controls="organizations-panel" tabindex="-1" data-perspective="organizations" data-copy="organizationsTab">{copy.organizationsTab}</button>
-+    </div>
-+    <div class="perspective-layout" data-reveal>
-+      <svg class="connection-drawing" viewBox="0 0 720 340" aria-hidden="true" focusable="false">
-+        <g class="connection-curves" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-+          <path class="perspective-path people-path" pathLength="1" d="M186 170 C295 55 420 275 546 170" />
-+          <path class="perspective-path organization-path" pathLength="1" d="M186 170 C310 275 425 55 546 170" />
-+          <path class="cluster-branches" d="M594 170 Q615 170 630 124 M594 170 Q615 170 630 216" />
-+        </g>
-+        <g class="people-node" fill="none" stroke="currentColor" stroke-width="1.6"><circle class="focus-ring" cx="150" cy="170" r="52"/><circle cx="150" cy="170" r="36"/><circle cx="150" cy="170" r="7"/></g>
-+        <g class="organization-node" fill="none" stroke="currentColor" stroke-width="1.6"><circle class="focus-ring" cx="570" cy="170" r="43"/><circle cx="570" cy="170" r="24"/><circle cx="630" cy="110" r="14"/><circle cx="630" cy="230" r="14"/></g>
-+        <text x="150" y="282" text-anchor="middle" data-copy="peopleTab">{copy.peopleTab}</text>
-+        <text x="575" y="282" text-anchor="middle" data-copy="organizationsTab">{copy.organizationsTab}</text>
-+      </svg>
-+      <div class="perspective-copy">
-+        <div id="people-panel" role="tabpanel" aria-labelledby="people-tab" tabindex="0" data-perspective-panel="people">
-+          <h3 data-copy="peopleTitle">{copy.peopleTitle}</h3><p data-copy="peopleBody">{copy.peopleBody}</p><p class="perspective-note" data-copy="peopleNote">{copy.peopleNote}</p>
-+        </div>
-+        <div id="organizations-panel" role="tabpanel" aria-labelledby="organizations-tab" tabindex="0" data-perspective-panel="organizations" hidden>
-+          <h3 data-copy="organizationsTitle">{copy.organizationsTitle}</h3><p data-copy="organizationsBody">{copy.organizationsBody}</p><p class="perspective-note" data-copy="organizationsNote">{copy.organizationsNote}</p>
-+        </div>
-+      </div>
++      <img src="/assets/resource-intro/editorial/care-connections-abstract.png" width="1881" height="836" alt={copy.landscapeAlt} data-alt="landscapeAlt" loading="lazy" decoding="async" />
 +    </div>
 +  </section>
 +
@@ -454,12 +437,6 @@ index 0000000..07a5a37
 +    </div>
 +  </section>
 +
-+  <section id="products" class="company-section company-products" aria-labelledby="future-product-title">
-+    <div class="product-preview" data-reveal>
-+      <div><span class="product-status" data-copy="productStatus">{copy.productStatus}</span><h2 id="future-product-title" class="company-title" data-copy="productTitle">{copy.productTitle}</h2><p class="company-body" data-copy="productBody">{copy.productBody}</p><p class="product-footnote" data-copy="productNote">{copy.productNote}</p></div>
-+      <div class="product-emblem" aria-hidden="true"><span></span><img src="/assets/resource-intro/morph/cross-star-outline.svg" width="128" height="128" alt="" /></div>
-+    </div>
-+  </section>
 +</div>
 +
 +<script>
@@ -476,28 +453,8 @@ index 0000000..07a5a37
 +  html[data-demo-variant='test'] .company-intro { padding-bottom:40px; }
 +  html[data-demo-variant='test'] .company-intro-copy { max-width:840px; }
 +  html[data-demo-variant='test'] .ink-landscape { margin-top:32px; overflow:hidden; }
-+  html[data-demo-variant='test'] .ink-landscape img { display:block; width:100%; height:auto; aspect-ratio:2.25; object-fit:cover; object-position:50% 78%; mix-blend-mode:multiply; mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 91%,transparent); }
-+  html[data-demo-variant='test'][data-theme='dark'] .ink-landscape img { mix-blend-mode:screen; filter:invert(1) grayscale(1); opacity:.68; }
-+  html[data-demo-variant='test'] .perspective-tabs { display:flex; gap:8px; margin-top:36px; border-bottom:1px solid var(--border); width:fit-content; }
-+  html[data-demo-variant='test'] .perspective-tabs button { min-height:48px; border:0; border-bottom:2px solid transparent; background:transparent; padding:10px 18px; color:var(--text-secondary); font:500 15px 'Inter',sans-serif; cursor:pointer; }
-+  html[data-demo-variant='test'] .perspective-tabs button[aria-selected='true'] { color:var(--teal); border-bottom-color:var(--teal); }
-+  html[data-demo-variant='test'] .perspective-tabs button:hover { color:var(--teal); }
-+  html[data-demo-variant='test'] .perspective-layout { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:clamp(32px,5vw,72px); align-items:center; margin-top:28px; }
-+  html[data-demo-variant='test'] .connection-drawing { width:100%; height:auto; color:var(--teal); overflow:visible; }
-+  html[data-demo-variant='test'] .connection-drawing text { fill:var(--text-secondary); font:14px 'Inter',sans-serif; }
-+  html[data-demo-variant='test'] .perspective-path { transition:opacity 600ms ease; }
-+  html[data-demo-variant='test'] .people-path { opacity:1; }
-+  html[data-demo-variant='test'] .organization-path { opacity:.16; }
-+  html[data-demo-variant='test'] [data-audience='organizations'] .people-path { opacity:.16; }
-+  html[data-demo-variant='test'] [data-audience='organizations'] .organization-path { opacity:1; }
-+  html[data-demo-variant='test'] .cluster-branches { opacity:.55; }
-+  html[data-demo-variant='test'] .focus-ring { opacity:0; stroke-width:.8; transition:opacity 600ms ease; }
-+  html[data-demo-variant='test'] [data-audience='people'] .people-node .focus-ring,
-+  html[data-demo-variant='test'] [data-audience='organizations'] .organization-node .focus-ring { opacity:.4; }
-+  html[data-demo-variant='test'] .perspective-copy { min-height:250px; }
-+  html[data-demo-variant='test'] .perspective-copy h3 { font-size:clamp(26px,2.8vw,38px); line-height:1.18; letter-spacing:-.03em; font-weight:400; margin:0 0 24px; }
-+  html[data-demo-variant='test'] .perspective-copy p { color:var(--text-secondary); font-size:18px; line-height:1.65; }
-+  html[data-demo-variant='test'] .perspective-copy .perspective-note { font-size:15px; margin:24px 0 0; padding-top:20px; border-top:1px solid var(--border); }
++  html[data-demo-variant='test'] .ink-landscape img { display:block; width:100%; height:auto; aspect-ratio:2.25; object-fit:cover; object-position:50% 55%; mix-blend-mode:multiply; mask-image:linear-gradient(to bottom,transparent,#000 12%,#000 91%,transparent); }
++  html[data-demo-variant='test'][data-theme='dark'] .ink-landscape img { mix-blend-mode:screen; filter:invert(1) hue-rotate(180deg) saturate(.65); opacity:.78; }
 +  html[data-demo-variant='test'] .principles-layout { display:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1fr); gap:clamp(32px,6vw,80px); margin-top:48px; align-items:center; }
 +  html[data-demo-variant='test'] .worktable { margin:0; }
 +  html[data-demo-variant='test'] .worktable img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; border-radius:16px; }
@@ -523,20 +480,14 @@ index 0000000..07a5a37
 +  html[data-demo-variant='test'].company-motion-ready [data-reveal] { opacity:0; transform:translateY(22px); transition:opacity 800ms ease,transform 900ms cubic-bezier(.16,1,.3,1); }
 +  html[data-demo-variant='test'].company-motion-ready [data-reveal].is-visible { opacity:1; transform:none; }
 +  @media(max-width:899.98px) {
-+    html[data-demo-variant='test'] .perspective-layout { grid-template-columns:1fr; gap:16px; }
-+    html[data-demo-variant='test'] .connection-drawing { max-width:680px; }
-+    html[data-demo-variant='test'] .perspective-copy { min-height:200px; max-width:62ch; }
 +    html[data-demo-variant='test'] .principles-layout { grid-template-columns:1fr; gap:40px; }
 +    html[data-demo-variant='test'] .worktable img { aspect-ratio:1.7; }
 +    html[data-demo-variant='test'] .product-preview { grid-template-columns:minmax(0,1fr) 140px; gap:32px; }
 +    html[data-demo-variant='test'] .product-emblem img { width:88px; height:88px; }
 +  }
 +  @media(max-width:599px) {
-+    html[data-demo-variant='test'] .company-body,html[data-demo-variant='test'] .perspective-copy p { font-size:16px; }
++    html[data-demo-variant='test'] .company-body { font-size:16px; }
 +    html[data-demo-variant='test'] .ink-landscape img { aspect-ratio:1.45; }
-+    html[data-demo-variant='test'] .perspective-tabs { width:100%; }
-+    html[data-demo-variant='test'] .perspective-tabs button { padding-inline:12px; font-size:14px; }
-+    html[data-demo-variant='test'] .perspective-copy { min-height:260px; }
 +    html[data-demo-variant='test'] .principle { grid-template-columns:minmax(0,1fr) 48px; gap:16px; }
 +    html[data-demo-variant='test'] .principle-symbol { width:48px; height:48px; }
 +    html[data-demo-variant='test'] .product-preview { grid-template-columns:1fr; gap:32px; }
@@ -546,7 +497,7 @@ index 0000000..07a5a37
 +    html[data-demo-variant='test'] .contact-invitation { padding-block:56px 24px; }
 +  }
 +  @media(prefers-reduced-motion:reduce) {
-+    html[data-demo-variant='test'] [data-reveal],html[data-demo-variant='test'] .perspective-path,html[data-demo-variant='test'] .focus-ring,html[data-demo-variant='test'] .product-emblem img { transition:none !important; transform:none !important; opacity:1; }
++    html[data-demo-variant='test'] [data-reveal],html[data-demo-variant='test'] .product-emblem img { transition:none !important; transform:none !important; opacity:1; }
 +  }
 +</style>
 diff --git a/src/components/resource/TestTheme.astro b/src/components/resource/TestTheme.astro
@@ -609,10 +560,10 @@ index 0000000..be195dd
 +</style>
 diff --git a/src/data/resource-test.ts b/src/data/resource-test.ts
 new file mode 100644
-index 0000000..ecfb566
+index 0000000..ce5fbca
 --- /dev/null
 +++ b/src/data/resource-test.ts
-@@ -0,0 +1,64 @@
+@@ -0,0 +1,46 @@
 +import { words } from './resource-company';
 +
 +export const testWords = {
@@ -621,18 +572,9 @@ index 0000000..ecfb566
 +    lead: 'Helping professionals work more efficiently and organizations collaborate with confidence.',
 +    description: 'Telotia is building tools to help people work with clarity and organizations collaborate with confidence.',
 +    companyLabel: 'About Telotia',
-+    companyStatement: 'Good work starts\nwith people.',
-+    companyIntro: 'We are building tools that help professionals work with greater clarity and organizations collaborate with confidence.',
-+    companyBody: 'We start with the everyday realities of work: the conversations, decisions and relationships that connect one person to a wider team.',
-+    connectionTitle: 'Individual focus.\nCollective progress.',
-+    connectionIntro: 'Different perspectives, connected by the same purpose: making work better for the people doing it.',
-+    peopleTab: 'People', organizationsTab: 'Organizations', perspectiveLabel: 'Explore a perspective',
-+    peopleTitle: 'More room to focus.',
-+    peopleBody: 'Useful tools should give professionals the time and clarity to do their work well.',
-+    peopleNote: 'Support that respects experience, expertise and individual judgment.',
-+    organizationsTitle: 'A clearer way to work together.',
-+    organizationsBody: 'Clearer communication and shared context help people across an organization move forward together.',
-+    organizationsNote: 'Connections that support the people behind every organization.',
++    companyStatement: 'Technology that supports\npeople and care.',
++    companyIntro: 'Telotia is a technology company developing digital tools for professionals and organizations in healthcare.',
++    companyBody: 'Our focus is practical: supporting professional expertise and making collaboration simpler.',
 +    approachTitle: 'Built around the way\npeople work.',
 +    clarityTitle: 'Clarity', clarityBody: 'Make information easier to understand, so people can see what matters and decide what comes next.',
 +    connectionPrincipleTitle: 'Connection', connectionPrincipleBody: 'Bring people and organizations closer through thoughtful, practical tools.',
@@ -641,9 +583,9 @@ index 0000000..ecfb566
 +    productBody: 'We are developing our first product around real professional needs. More will be shared as the work progresses.',
 +    productNote: 'A first step in a longer journey.',
 +    contactHeadline: 'Better collaboration starts\nwith a conversation.',
-+    contactBody: 'We welcome conversations with professionals, organizations and people who share our interest in better ways of working.',
++    contactBody: 'For partnership opportunities and professional inquiries, please contact our team.',
 +    footer: 'Thoughtful technology. Better connections.',
-+    landscapeAlt: 'An ink-wash illustration of a fine thread connecting two landscapes.',
++    landscapeAlt: 'Abstract ink washes and fine contour lines expressing the connection between technology and care.',
 +    tableAlt: 'An editorial illustration of hands working together with paper and a pencil.',
 +  },
 +  fr: { ...words.fr,
@@ -651,18 +593,9 @@ index 0000000..ecfb566
 +    lead: 'Aider les professionnels à travailler plus efficacement et les organisations à collaborer en toute confiance.',
 +    description: 'Telotia développe des outils pour aider les personnes à travailler avec clarté et les organisations à collaborer en confiance.',
 +    companyLabel: 'À propos de Telotia',
-+    companyStatement: 'Tout commence\npar les personnes.',
-+    companyIntro: 'Nous développons des outils pour aider les professionnels à travailler avec plus de clarté et les organisations à collaborer en toute confiance.',
-+    companyBody: 'Nous partons du quotidien du travail : les échanges, les décisions et les relations qui relient une personne à une équipe.',
-+    connectionTitle: 'L’attention à chacun.\nLe progrès ensemble.',
-+    connectionIntro: 'Des perspectives différentes, un même objectif : améliorer le travail pour les personnes qui le font.',
-+    peopleTab: 'Personnes', organizationsTab: 'Organisations', perspectiveLabel: 'Explorer une perspective',
-+    peopleTitle: 'Plus de place pour se concentrer.',
-+    peopleBody: 'Des outils utiles devraient donner aux professionnels le temps et la clarté nécessaires pour bien travailler.',
-+    peopleNote: 'Un soutien qui respecte l’expérience, l’expertise et le jugement de chacun.',
-+    organizationsTitle: 'Une collaboration plus claire.',
-+    organizationsBody: 'Une communication plus claire et un contexte partagé aident les personnes au sein d’une organisation à avancer ensemble.',
-+    organizationsNote: 'Des liens au service des personnes qui font vivre chaque organisation.',
++    companyStatement: 'La technologie au service\ndes personnes et des soins.',
++    companyIntro: 'Telotia est une entreprise technologique qui développe des outils numériques pour les professionnels et les organisations du secteur de la santé.',
++    companyBody: 'Notre priorité est concrète : soutenir l’expertise professionnelle et simplifier la collaboration.',
 +    approachTitle: 'Pensé pour le travail\nau quotidien.',
 +    clarityTitle: 'Clarté', clarityBody: 'Rendre l’information plus facile à comprendre, pour voir ce qui compte et choisir la suite.',
 +    connectionPrincipleTitle: 'Connexion', connectionPrincipleBody: 'Rapprocher les personnes et les organisations grâce à des outils réfléchis et pratiques.',
@@ -671,29 +604,26 @@ index 0000000..ecfb566
 +    productBody: 'Nous développons notre premier produit à partir de besoins professionnels concrets. Nous en partagerons davantage à mesure que le travail avance.',
 +    productNote: 'Un premier pas dans un parcours plus long.',
 +    contactHeadline: 'Mieux collaborer commence\npar une conversation.',
-+    contactBody: 'Nous souhaitons échanger avec les professionnels, les organisations et les personnes qui cherchent de meilleures façons de travailler.',
++    contactBody: 'Pour toute demande professionnelle ou proposition de partenariat, veuillez contacter notre équipe.',
 +    footer: 'Une technologie réfléchie. De meilleures connexions.',
-+    landscapeAlt: 'Une illustration à l’encre d’un fil reliant deux paysages.',
++    landscapeAlt: 'Des lavis abstraits et de fines courbes évoquant le lien entre technologie et soins.',
 +    tableAlt: 'Une illustration éditoriale de mains travaillant ensemble avec du papier et un crayon.',
 +  },
 +};
 diff --git a/src/scripts/company-experience.ts b/src/scripts/company-experience.ts
 new file mode 100644
-index 0000000..e823efb
+index 0000000..2308009
 --- /dev/null
 +++ b/src/scripts/company-experience.ts
-@@ -0,0 +1,75 @@
+@@ -0,0 +1,48 @@
 +export function mountCompanyExperience() {
 +  const root = document.documentElement;
 +  if (root.dataset.demoVariant !== 'test' || !document.querySelector('[data-company-sections]')) return;
 +  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 +  const hero = document.querySelector<HTMLElement>('#hero-title')!;
-+  const perspective = document.querySelector<HTMLElement>('[data-perspectives]')!;
-+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-perspective]'));
-+  const panels = Array.from(document.querySelectorAll<HTMLElement>('[data-perspective-panel]'));
 +  const reveals = Array.from(document.querySelectorAll<HTMLElement>('[data-reveal]'));
 +  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-section-link]'));
-+  const sections = ['home', 'about', 'people', 'approach', 'products'].map(id => document.getElementById(id)!);
++  const sections = ['home', 'products', 'about', 'approach'].map(id => document.getElementById(id)!);
 +  let animations: Animation[] = [], frame = 0;
 +  const observer = new IntersectionObserver(entries => {
 +    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
@@ -715,33 +645,9 @@ index 0000000..e823efb
 +      return mask;
 +    }));
 +  }
-+  function selectAudience(value: string) {
-+    perspective.dataset.audience = value;
-+    buttons.forEach(button => { const selected = button.dataset.perspective === value; button.setAttribute('aria-selected', String(selected)); button.tabIndex = selected ? 0 : -1; });
-+    panels.forEach(panel => { panel.hidden = panel.dataset.perspectivePanel !== value; });
-+    if (reduced.matches) return;
-+    const selected = panels.find(panel => !panel.hidden)!;
-+    animations.push(selected.animate([{ opacity:.3, transform:'translateY(7px)' }, { opacity:1, transform:'translateY(0)' }], { duration:500, easing:'cubic-bezier(.16,1,.3,1)' }));
-+    const path = perspective.querySelector<SVGPathElement>(value === 'people' ? '.people-path' : '.organization-path')!;
-+    animations.push(path.animate([{ strokeDasharray:'1', strokeDashoffset:'1' }, { strokeDasharray:'1', strokeDashoffset:'0' }], { duration:900, easing:'cubic-bezier(.16,1,.3,1)' }));
-+    // Keep a small bounded list even after many perspective changes.
-+    animations = animations.filter(animation => animation.playState !== 'finished');
-+  }
-+  buttons.forEach((button, index) => {
-+    button.addEventListener('click', () => selectAudience(button.dataset.perspective!));
-+    button.addEventListener('keydown', event => {
-+      let next = index;
-+      if (event.key === 'ArrowRight') next = (index + 1) % buttons.length;
-+      else if (event.key === 'ArrowLeft') next = (index + buttons.length - 1) % buttons.length;
-+      else if (event.key === 'Home') next = 0;
-+      else if (event.key === 'End') next = buttons.length - 1;
-+      else return;
-+      event.preventDefault(); buttons[next].focus(); selectAudience(buttons[next].dataset.perspective!);
-+    });
-+  });
 +  function updateNav() {
 +    frame = 0; let active = 'home';
-+    sections.forEach(section => { if (section.getBoundingClientRect().top <= innerHeight * .38) active = section.id === 'people' ? 'about' : section.id; });
++    sections.forEach(section => { if (section.getBoundingClientRect().top <= innerHeight * .38) active = section.id; });
 +    links.forEach(link => { if (link.dataset.sectionLink === active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
 +  }
 +  function schedule() { if (!frame && !document.hidden) frame = requestAnimationFrame(updateNav); }

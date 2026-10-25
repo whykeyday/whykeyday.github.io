@@ -90,17 +90,22 @@ keeps a static bridge and disables continuous motion.
 ## Company preview
 
 `TestCompanySections.astro`, `resource-test.ts`, and `company-experience.ts`
-maintain the company content and interactions in the archived source. The
-perspective tabs support click/tap and Left/Right/Home/End keyboard navigation,
-preserve the selected perspective when switching language, and animate only
-the selected connection. Scroll entrances use IntersectionObserver; reduced
-motion shows all content and switches perspectives without animation.
+maintain the company content and interactions in the archived source. Content
+follows the navigation order: Home, Products, About, Approach, then Contact.
+The People / Organizations perspective section has been removed. The hero
+keeps one contact button; the redundant approach shortcut has been removed.
+Scroll entrances use IntersectionObserver; reduced motion shows all content
+without entrance animation.
 
 The two editorial PNGs were generated with the built-in image_gen tool. They
 are conceptual artwork, not actual team/customer/product photographs. Files and
 full prompts are documented in `assets/resource-intro/editorial/PROMPTS.md`.
-The dark theme treats the landscape as pale ink on the existing navy surface;
-the worktable remains a warm editorial photograph-style illustration.
+The About section now uses `care-connections-abstract.png`, an abstract teal/navy
+ink wash with fine contour lines, replacing the landscape. Its full prompt and
+official company-copy references are in `assets/resource-intro/editorial/ABOUT-ART.md`.
+The dark theme uses pale blue-green ink on the existing navy surface; the
+worktable remains a warm editorial photograph-style illustration. Earlier art
+is retained as provenance but is no longer referenced by the About section.
 
 The custom palette is informed by [NHS colour and contrast guidance](https://service-manual.nhs.uk/design-system/styles/colour)
 and [IBM Carbon's role-based theme/layer model](https://www.carbondesignsystem.com/building-blocks/foundations/themes/overview).
