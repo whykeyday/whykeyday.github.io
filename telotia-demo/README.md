@@ -97,6 +97,15 @@ keeps one contact button; the redundant approach shortcut has been removed.
 Scroll entrances use IntersectionObserver; reduced motion shows all content
 without entrance animation.
 
+Products uses two opaque cards, Product 1 and Product 2. Native CSS sticky
+positioning holds each card below the measured navigation while the next card
+slides over it; no scroll interception or synthetic screenshots are used.
+Product 1 is marked in development; Product 2 is a general upcoming placeholder.
+Both keep only a short stay-tuned line. Reduced motion and short landscape
+viewports use ordinary sequential cards. The abstract About artwork uses
+intersecting horizontal and vertical alpha masks to fade all four edges, and
+the footer phrases are separated with a centered middle dot.
+
 The two editorial PNGs were generated with the built-in image_gen tool. They
 are conceptual artwork, not actual team/customer/product photographs. Files and
 full prompts are documented in `assets/resource-intro/editorial/PROMPTS.md`.
