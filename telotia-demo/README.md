@@ -112,6 +112,8 @@ artwork stays fixed in the viewport while its section reveals and conceals it,
 then clips it completely before the next section. No scroll interception or
 continuous JavaScript loop is needed. Ink opacity is 0.46 in light mode and
 0.42 in dark mode. Reduced-motion and short viewports show a static inline image.
+The fixed artwork anchor is lowered by half its rendered height from the
+original centered position, placing its top halfway down the usable viewport.
 
 The two editorial PNGs were generated with the built-in image_gen tool. They
 are conceptual artwork, not actual team/customer/product photographs. Files and
