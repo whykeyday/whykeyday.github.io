@@ -106,6 +106,13 @@ viewports use ordinary sequential cards. The abstract About artwork uses
 intersecting horizontal and vertical alpha masks to fade all four edges, and
 the footer phrases are separated with a centered middle dot.
 
+Product cards now contain only text and the small card index; their decorative
+icons and rings have been removed. About uses a clipped scroll window: the
+artwork stays fixed in the viewport while its section reveals and conceals it,
+then clips it completely before the next section. No scroll interception or
+continuous JavaScript loop is needed. Ink opacity is 0.46 in light mode and
+0.42 in dark mode. Reduced-motion and short viewports show a static inline image.
+
 The two editorial PNGs were generated with the built-in image_gen tool. They
 are conceptual artwork, not actual team/customer/product photographs. Files and
 full prompts are documented in `assets/resource-intro/editorial/PROMPTS.md`.

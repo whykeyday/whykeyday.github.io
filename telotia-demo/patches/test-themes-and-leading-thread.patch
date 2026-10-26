@@ -393,10 +393,10 @@ index 0000000..9e85241
 +</style>
 diff --git a/src/components/resource/TestCompanySections.astro b/src/components/resource/TestCompanySections.astro
 new file mode 100644
-index 0000000..41c1bcb
+index 0000000..b87a710
 --- /dev/null
 +++ b/src/components/resource/TestCompanySections.astro
-@@ -0,0 +1,127 @@
+@@ -0,0 +1,122 @@
 +---
 +import type { testWords } from '../../data/resource-test';
 +interface Props { copy: typeof testWords.en; }
@@ -413,11 +413,9 @@ index 0000000..41c1bcb
 +    <div class="product-stack">
 +      <article class="product-card product-card-first" aria-labelledby="product-one-title">
 +        <div class="product-card-copy"><span class="product-status" data-copy="productStatus">{copy.productStatus}</span><h3 id="product-one-title" data-copy="productOne">{copy.productOne}</h3><p data-copy="productSoon">{copy.productSoon}</p></div>
-+        <div class="product-card-art" aria-hidden="true"><span class="product-orbit"></span><img src="/assets/resource-intro/editorial/icon-clarity.svg" width="240" height="240" alt="" /></div>
 +        <span class="product-index" aria-hidden="true">01 / 02</span>
 +      </article>
 +      <article class="product-card product-card-second" aria-labelledby="product-two-title">
-+        <div class="product-card-art" aria-hidden="true"><span class="product-orbit"></span><img src="/assets/resource-intro/editorial/icon-connection.svg" width="240" height="240" alt="" /></div>
 +        <div class="product-card-copy"><span class="product-status" data-copy="productNext">{copy.productNext}</span><h3 id="product-two-title" data-copy="productTwo">{copy.productTwo}</h3><p data-copy="productSoon">{copy.productSoon}</p></div>
 +        <span class="product-index" aria-hidden="true">02 / 02</span>
 +      </article>
@@ -431,7 +429,7 @@ index 0000000..41c1bcb
 +      <p class="company-lead" data-copy="companyIntro">{copy.companyIntro}</p>
 +      <p class="company-body" data-copy="companyBody">{copy.companyBody}</p>
 +    </div>
-+    <div class="ink-landscape" data-reveal>
++    <div class="ink-landscape" data-ink-window>
 +      <img src="/assets/resource-intro/editorial/care-connections-abstract.png" width="1881" height="836" alt={copy.landscapeAlt} data-alt="landscapeAlt" loading="lazy" decoding="async" />
 +    </div>
 +  </section>
@@ -461,9 +459,9 @@ index 0000000..41c1bcb
 +  html[data-demo-variant='test'] .company-body { color:var(--text-secondary); font-size:18px; line-height:1.65; max-width:62ch; margin-bottom:0; }
 +  html[data-demo-variant='test'] .company-intro { padding-bottom:40px; }
 +  html[data-demo-variant='test'] .company-intro-copy { max-width:840px; }
-+  html[data-demo-variant='test'] .ink-landscape { margin-top:32px; overflow:hidden; }
-+  html[data-demo-variant='test'] .ink-landscape img { display:block; width:100%; height:auto; aspect-ratio:2.25; object-fit:cover; object-position:50% 55%; mix-blend-mode:multiply; mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent); mask-composite:intersect; -webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent); -webkit-mask-composite:source-in; }
-+  html[data-demo-variant='test'][data-theme='dark'] .ink-landscape img { mix-blend-mode:screen; filter:invert(1) hue-rotate(180deg) saturate(.65); opacity:.78; }
++  html[data-demo-variant='test'] .ink-landscape { position:relative; height:clamp(320px,70svh,720px); margin-top:32px; clip-path:inset(0); mask-image:linear-gradient(transparent,#000 10%,#000 90%,transparent); }
++  html[data-demo-variant='test'] .ink-landscape img { display:block; position:fixed; left:50%; top:calc(var(--header-height,96px) + (100svh - var(--header-height,96px) - clamp(300px,58svh,640px)) / 2); transform:translateX(-50%); width:min(1200px,calc(100% - 48px)); height:clamp(300px,58svh,640px); object-fit:cover; object-position:50% 55%; opacity:.46; mix-blend-mode:multiply; mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent); mask-composite:intersect; -webkit-mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 12%,#000 88%,transparent); -webkit-mask-composite:source-in; }
++  html[data-demo-variant='test'][data-theme='dark'] .ink-landscape img { mix-blend-mode:screen; filter:invert(1) hue-rotate(180deg) saturate(.55); opacity:.42; }
 +  html[data-demo-variant='test'] .principles-layout { display:grid; grid-template-columns:minmax(0,.95fr) minmax(0,1fr); gap:clamp(32px,6vw,80px); margin-top:48px; align-items:center; }
 +  html[data-demo-variant='test'] .worktable { margin:0; }
 +  html[data-demo-variant='test'] .worktable img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; border-radius:16px; }
@@ -486,14 +484,14 @@ index 0000000..41c1bcb
 +  }
 +  @media(max-width:599px) {
 +    html[data-demo-variant='test'] .company-body { font-size:16px; }
-+    html[data-demo-variant='test'] .ink-landscape img { aspect-ratio:1.45; }
++    html[data-demo-variant='test'] .ink-landscape img { width:calc(100% - 40px); }
 +    html[data-demo-variant='test'] .principle { grid-template-columns:minmax(0,1fr) 48px; gap:16px; }
 +    html[data-demo-variant='test'] .principle-symbol { width:48px; height:48px; }
 +    html[data-page='pharmacy-intro'][data-demo-variant='test'] .site-footer { grid-template-columns:1fr; }
 +    html[data-demo-variant='test'] .contact-invitation { padding-block:56px 24px; }
 +  }
 +  html[data-demo-variant='test'] .product-stack { display:grid; gap:32svh; padding-bottom:12svh; isolation:isolate; }
-+  html[data-demo-variant='test'] .product-card { position:sticky; top:calc(var(--header-height,96px) + 24px); box-sizing:border-box; display:grid; grid-template-columns:1fr 1fr; align-items:center; min-height:clamp(360px,58svh,580px); padding:clamp(28px,5vw,72px); border:1px solid var(--border); border-radius:24px; overflow:hidden; background:var(--surface); box-shadow:0 -8px 40px rgb(23 51 80 / .035); }
++  html[data-demo-variant='test'] .product-card { position:sticky; top:calc(var(--header-height,96px) + 24px); box-sizing:border-box; display:grid; grid-template-columns:1fr; align-items:center; min-height:clamp(360px,58svh,580px); padding:clamp(28px,5vw,72px); border:1px solid var(--border); border-radius:24px; overflow:hidden; background:var(--surface); box-shadow:0 -8px 40px rgb(23 51 80 / .035); }
 +  html[data-demo-variant='test'] .product-card-first { z-index:1; }
 +  html[data-demo-variant='test'] .product-card-second { z-index:2; background:#173350; color:#F7F9F8; }
 +  html[data-demo-variant='test'][data-theme='dark'] .product-card-second { background:#245366; }
@@ -502,16 +500,9 @@ index 0000000..41c1bcb
 +  html[data-demo-variant='test'] .product-card .product-status { color:var(--teal); font-size:14px; }
 +  html[data-demo-variant='test'] .product-card-second p { color:#D6E4E7; }
 +  html[data-demo-variant='test'] .product-card-second .product-status { color:#56D5C9; }
-+  html[data-demo-variant='test'] .product-card-art { position:relative; display:grid; place-items:center; width:min(100%,300px); aspect-ratio:1; justify-self:center; }
-+  html[data-demo-variant='test'] .product-card-art img { width:76%; height:76%; opacity:.8; }
-+  html[data-demo-variant='test'] .product-orbit { position:absolute; inset:0; border:1px solid var(--border); border-radius:50%; }
-+  html[data-demo-variant='test'] .product-card-second .product-orbit { border-color:rgb(86 213 201 / .2); }
-+  html[data-demo-variant='test'][data-theme='dark'] .product-card-art img,html[data-demo-variant='test'] .product-card-second .product-card-art img { filter:brightness(0) saturate(100%) invert(80%) sepia(18%) saturate(1253%) hue-rotate(115deg) brightness(95%) contrast(89%); }
 +  html[data-demo-variant='test'] .product-index { position:absolute; bottom:24px; right:32px; font-size:12px; letter-spacing:.1em; opacity:.6; }
 +  @media(max-width:599px) {
 +    html[data-demo-variant='test'] .product-card { min-height:clamp(360px,62svh,520px); grid-template-columns:1fr; gap:16px; padding:28px; top:calc(var(--header-height,112px) + 16px); border-radius:20px; }
-+    html[data-demo-variant='test'] .product-card-art { width:140px; justify-self:end; }
-+    html[data-demo-variant='test'] .product-card-second .product-card-art { grid-row:2; }
 +    html[data-demo-variant='test'] .product-card-second .product-card-copy { grid-row:1; }
 +    html[data-demo-variant='test'] .product-card h3 { margin:16px 0; }
 +    html[data-demo-variant='test'] .product-index { left:28px; right:auto; }
@@ -519,6 +510,10 @@ index 0000000..41c1bcb
 +  @media(prefers-reduced-motion:reduce), (max-height:540px) {
 +    html[data-demo-variant='test'] .product-card { position:relative; top:auto; }
 +    html[data-demo-variant='test'] .product-stack { gap:24px; padding-bottom:0; }
++  }
++  @media(prefers-reduced-motion:reduce), (max-height:540px) {
++    html[data-demo-variant='test'] .ink-landscape { height:auto; }
++    html[data-demo-variant='test'] .ink-landscape img { position:relative; top:auto; left:auto; transform:none; width:100%; height:auto; }
 +  }
 +  @media(prefers-reduced-motion:reduce) {
 +    html[data-demo-variant='test'] [data-reveal] { transition:none !important; transform:none !important; opacity:1; }
