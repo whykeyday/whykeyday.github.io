@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Daily Finance | Sentiment meets the policy test",
+    "date": "2026-10-26",
+    "dateLabel": "Oct 26, 2026",
+    "folderLabel": "2026/10/26/daily-news",
+    "href": "/news/2026/10/26/daily-news/en/index.html",
+    "zhHref": "/news/2026/10/26/daily-news/zh/index.html",
+    "image": "/news/2026/10/26/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/10/26/daily-news/en/card-1.webp",
+      "/news/2026/10/26/daily-news/en/card-2.webp",
+      "/news/2026/10/26/daily-news/en/card-3.webp",
+      "/news/2026/10/26/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "An autumn to wear",
+    "date": "2026-10-26",
+    "dateLabel": "Oct 26, 2026",
+    "folderLabel": "2026/10/26/autumn-scene-jacket",
+    "href": "/art/2026/10/26/autumn-scene-jacket/en/index.html",
+    "zhHref": "/art/2026/10/26/autumn-scene-jacket/zh/index.html",
+    "image": "/art/2026/10/26/autumn-scene-jacket/cover.webp",
+    "cards": [
+      "/art/2026/10/26/autumn-scene-jacket/en/card-1.webp",
+      "/art/2026/10/26/autumn-scene-jacket/en/card-2.webp",
+      "/art/2026/10/26/autumn-scene-jacket/en/card-3.webp",
+      "/art/2026/10/26/autumn-scene-jacket/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Daily Finance｜Rating relief meets the earnings test: five stories before central-bank week",
     "date": "2026-10-25",
     "dateLabel": "Oct 25, 2026",
