@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Daily Finance | Stronger growth meets risk repricing",
+    "date": "2026-10-27",
+    "dateLabel": "Oct 27, 2026",
+    "folderLabel": "2026/10/27/daily-news",
+    "href": "/news/2026/10/27/daily-news/en/index.html",
+    "zhHref": "/news/2026/10/27/daily-news/zh/index.html",
+    "image": "/news/2026/10/27/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/10/27/daily-news/en/card-1.webp",
+      "/news/2026/10/27/daily-news/en/card-2.webp",
+      "/news/2026/10/27/daily-news/en/card-3.webp",
+      "/news/2026/10/27/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A Harbour, Made of Light",
+    "date": "2026-10-27",
+    "dateLabel": "Oct 27, 2026",
+    "folderLabel": "2026/10/27/notre-dame-de-la-garde",
+    "href": "/art/2026/10/27/notre-dame-de-la-garde/en/index.html",
+    "zhHref": "/art/2026/10/27/notre-dame-de-la-garde/zh/index.html",
+    "image": "/art/2026/10/27/notre-dame-de-la-garde/cover.webp",
+    "cards": [
+      "/art/2026/10/27/notre-dame-de-la-garde/en/card-1.webp",
+      "/art/2026/10/27/notre-dame-de-la-garde/en/card-2.webp",
+      "/art/2026/10/27/notre-dame-de-la-garde/en/card-3.webp",
+      "/art/2026/10/27/notre-dame-de-la-garde/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Daily Finance | Sentiment meets the policy test",
     "date": "2026-10-26",
     "dateLabel": "Oct 26, 2026",
