@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "A surprise pause meets inflation and earnings tests",
+    "date": "2026-10-28",
+    "dateLabel": "Oct 28, 2026",
+    "folderLabel": "2026/10/28/daily-news",
+    "href": "/news/2026/10/28/daily-news/en/index.html",
+    "zhHref": "/news/2026/10/28/daily-news/zh/index.html",
+    "image": "/news/2026/10/28/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/10/28/daily-news/en/card-1.webp",
+      "/news/2026/10/28/daily-news/en/card-2.webp",
+      "/news/2026/10/28/daily-news/en/card-3.webp",
+      "/news/2026/10/28/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A bowl holding starlight",
+    "date": "2026-10-28",
+    "dateLabel": "Oct 28, 2026",
+    "folderLabel": "2026/10/28/ribbed-mosaic-glass-bowl",
+    "href": "/art/2026/10/28/ribbed-mosaic-glass-bowl/en/index.html",
+    "zhHref": "/art/2026/10/28/ribbed-mosaic-glass-bowl/zh/index.html",
+    "image": "/art/2026/10/28/ribbed-mosaic-glass-bowl/cover.webp",
+    "cards": [
+      "/art/2026/10/28/ribbed-mosaic-glass-bowl/en/card-1.webp",
+      "/art/2026/10/28/ribbed-mosaic-glass-bowl/en/card-2.webp",
+      "/art/2026/10/28/ribbed-mosaic-glass-bowl/en/card-3.webp",
+      "/art/2026/10/28/ribbed-mosaic-glass-bowl/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Daily Finance | Stronger growth meets risk repricing",
     "date": "2026-10-27",
     "dateLabel": "Oct 27, 2026",

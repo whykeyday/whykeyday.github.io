@@ -1,0 +1,74 @@
+<!doctype html>
+<!-- style_ref: U42 / light-diffuse-glass-editorial-cards -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Daily Finance · Briefing cards</title><style>
+  :root{
+    --ink:#0e1430; --ink-soft:#3a4366; --muted:#6b7494;
+    --up:#0e9f6e; --down:#e0245e; --gold:#b88a3e;
+    --glass:rgba(255,255,255,.55); --glass-line:rgba(255,255,255,.65);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Inter",system-ui,sans-serif;
+    color:var(--ink); line-height:1.75; min-height:100vh;
+    background:
+      radial-gradient(60% 50% at 12% 8%, #c5d8ff 0%, transparent 60%),
+      radial-gradient(55% 45% at 92% 12%, #ffd6e8 0%, transparent 58%),
+      radial-gradient(60% 55% at 80% 95%, #c6f0e4 0%, transparent 60%),
+      radial-gradient(70% 60% at 18% 90%, #e7dcff 0%, transparent 62%),
+      linear-gradient(160deg,#eef2fb 0%,#f6f1f8 100%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:48px 22px 96px}
+  .kicker{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+  h1{font-family:serif;font-weight:700;font-size:clamp(30px,6vw,46px);line-height:1.2;letter-spacing:-.01em;margin-bottom:18px}
+  .dek{font-size:18px;color:var(--ink-soft);max-width:64ch;margin-bottom:22px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted);margin-bottom:34px}
+  .meta span{background:rgba(255,255,255,.5);border:1px solid var(--glass-line);padding:5px 12px;border-radius:999px;backdrop-filter:blur(8px)}
+  .glass{
+    background:var(--glass);
+    backdrop-filter:blur(22px) saturate(1.3);-webkit-backdrop-filter:blur(22px) saturate(1.3);
+    border:1px solid var(--glass-line);
+    border-radius:22px;
+    box-shadow:0 8px 32px -10px rgba(20,30,80,.22), inset 0 1px 0 rgba(255,255,255,.6);
+    padding:26px 28px;margin:18px 0;
+  }
+  h2{font-family:serif;font-size:23px;font-weight:700;margin:8px 0 14px;display:flex;align-items:center;gap:10px}
+  h2 .n{font-family:"Inter";font-size:13px;font-weight:700;color:#fff;background:linear-gradient(135deg,#5b78ff,#a26bff);width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none}
+  p{margin:10px 0}
+  .lead{font-size:17px}
+  strong{font-weight:700}
+  .num-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:18px 0}
+  .stat{background:rgba(255,255,255,.42);border:1px solid var(--glass-line);border-radius:16px;padding:16px 18px;backdrop-filter:blur(8px)}
+  .stat .v{font-size:26px;font-weight:700;font-family:"Inter";letter-spacing:-.02em}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:3px}
+  .up{color:var(--up)} .down{color:var(--down)}
+  .bb{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0}
+  @media(max-width:560px){.bb{grid-template-columns:1fr}}
+  .bull,.bear{border-radius:16px;padding:18px 20px;border:1px solid var(--glass-line);backdrop-filter:blur(8px)}
+  .bull{background:linear-gradient(160deg,rgba(190,240,220,.55),rgba(255,255,255,.35))}
+  .bear{background:linear-gradient(160deg,rgba(255,205,225,.5),rgba(255,255,255,.35))}
+  .bull h3,.bear h3{font-size:15px;letter-spacing:.04em;margin-bottom:8px;text-transform:uppercase}
+  .bull h3{color:var(--up)} .bear h3{color:var(--down)}
+  ul{margin:8px 0 4px;padding-left:20px} li{margin:6px 0}
+  .src{font-size:14px} .src a{color:#4a5bd0;text-decoration:none;border-bottom:1px solid rgba(74,91,208,.3)}
+  .src a:hover{border-bottom-color:#4a5bd0}
+  .disc{font-size:12.5px;color:var(--muted);border-top:1px dashed rgba(120,130,170,.4);padding-top:14px;margin-top:8px}
+  .takeaway{background:linear-gradient(160deg,rgba(91,120,255,.16),rgba(162,107,255,.12));font-size:17px}
+
+:root{--space:8px;--radius:22px;--accent:#5966bf;--body:system-ui,sans-serif;--display:Georgia,serif}
+body{font-family:var(--body)} h1,h2{font-family:var(--display)}
+.wrap{max-width:960px} h2{display:block} a{color:var(--accent);text-underline-offset:4px} .src{overflow-wrap:anywhere}
+.n{display:inline-grid!important;margin-right:10px;vertical-align:middle} nav{display:flex;gap:20px;flex-wrap:wrap;margin:24px 0} .risk-label{color:var(--down)}
+.cards{display:flex;flex-direction:column;gap:40px;padding:40px;width:max-content;margin:auto}
+.card{position:relative;box-sizing:border-box;width:1080px;height:1350px;padding:68px;display:flex;flex-direction:column;overflow:hidden;border-radius:0;background:radial-gradient(80% 70% at 10% 5%,#c5d8ff,transparent 65%),radial-gradient(70% 60% at 100% 90%,#c6f0e4,transparent 60%),linear-gradient(160deg,#eef2fb,#f6f1f8);box-shadow:0 12px 42px #30345a20}
+.card h1{font-size:64px;line-height:1.16;letter-spacing:-.025em;margin:28px 0}.card .kicker{font-size:22px}.card .dek{font-size:29px;line-height:1.5;margin:0 0 26px}.card .glass{padding:26px 30px;margin:12px 0;border-radius:var(--radius)}
+.card h2{font-family:var(--body);font-size:26px;margin:0 0 8px}.card p{font-size:28px;line-height:1.5;margin:0}.card .meta{font-size:20px;margin:0}.card .foot{margin-top:auto;border-top:1px dashed #6b749460;padding-top:20px;font-size:20px;color:var(--ink-soft);line-height:1.5}.card .sources{font-size:18px;line-height:1.5;margin-top:14px;color:var(--ink-soft)}
+.card .stat .v{font-size:48px}.card .stat .l{font-size:22px}.card .num-row{grid-template-columns:1fr 1fr;gap:20px}.card .stat{padding:24px}.isolated .cards{padding:0;gap:0;margin:0}.isolated{margin:0;width:1080px;min-height:1350px}.isolated .card{box-shadow:none}
+@media print{nav{display:none}.glass{break-inside:avoid}.cards{padding:0;gap:0}.card{break-after:page}}
+</style></head><body><main class="cards"><section class="card" data-card="1"><div class="kicker">Daily Finance · TODAY’S THREAD</div><div class="meta"><span>2026-10-28</span><span>01 / 04</span></div><h1>A pause is not<br>an inflation all-clear</h1><p class="dek">Policy surprises and delivered earnings are shaping the same market.</p><div class="glass"><h2 class="">FACTS</h2><p>New Zealand holds at 2.75%; Australian monthly CPI rises 4.3% year on year.</p></div><div class="glass"><h2 class="">INFERENCE</h2><p>Technology gains need broader earnings and manageable funding costs.</p></div><div class="glass"><h2 class="risk-label">COUNTER-RISK</h2><p>Softer demand or energy prices could reverse restrictive rate expectations.</p></div><footer class="foot">Morning research draft. Not investment advice. Facts and inferences are distinct.<br>2026-10-28 07:05 EDT / 11:05 UTC<div class="sources">Sources: RBNZ, ABS, Reuters. See stories 1–4 in the full briefing.</div></footer></section><section class="card" data-card="2"><div class="kicker">Daily Finance · MACRO & CENTRAL BANKS</div><div class="meta"><span>2026-10-28</span><span>02 / 04</span></div><h1>A policy pause.<br>Persistent prices.</h1><p class="dek">US and Canadian decisions are pending; forecasts are not outcomes.</p><div class="glass"><h2 class="">2.75%</h2><p>New Zealand policy rate; a 4–3 hold</p></div><div class="glass"><h2 class="">3.7%</h2><p>Australian quarterly trimmed mean, year on year; monthly: 3.6%</p></div><div class="glass"><h2 class="risk-label">TODAY’S TEST</h2><p>Canada: 09:45 EDT. The Fed’s meeting ends today.</p></div><footer class="foot">Morning research draft. Not investment advice. Facts and inferences are distinct.<br>2026-10-28 07:05 EDT / 11:05 UTC<div class="sources">Sources: RBNZ, ABS, Federal Reserve, Bank of Canada. See stories 1–3.</div></footer></section><section class="card" data-card="3"><div class="kicker">Daily Finance · MARKETS & INDUSTRIES</div><div class="meta"><span>2026-10-28</span><span>03 / 04</span></div><h1>Technology lifts.<br>Energy weighs.</h1><p class="dek">Stronger indexes still need confirmation from broad earnings growth.</p><div class="glass"><h2 class="">FACTS</h2><p>Asian technology shares lead. Ticker V fiscal Q4 revenue: about $12.1bn, up 13%.</p></div><div class="glass"><h2 class="">FACTS</h2><p>08:58 UTC: Brent at $115.24 a barrel, up 1.2%.</p></div><div class="glass"><h2 class="risk-label">COUNTER-RISK</h2><p>Funding and fuel costs may squeeze margins. Reconcile adjusted profit with GAAP.</p></div><footer class="foot">Morning research draft. Not investment advice. Facts and inferences are distinct.<br>2026-10-28 07:05 EDT / 11:05 UTC<div class="sources">Sources: Reuters, CNBC TV18, regulatory earnings filing. See stories 4–6.</div></footer></section><section class="card" data-card="4"><div class="kicker">Daily Finance · NEXT WEEK & RISKS</div><div class="meta"><span>2026-10-28</span><span>04 / 04</span></div><h1>From forecasts<br>to verification</h1><p class="dek">November 2–8, 2026. Scheduled events do not predict outcomes.</p><div class="glass"><h2 class="">NOVEMBER 2–3</h2><p>RBA meeting; decision on November 3 at 14:30 Sydney time.</p></div><div class="glass"><h2 class="">NOVEMBER 6</h2><p>US October jobs report, scheduled for 08:30 EST. Watch wages and revisions.</p></div><div class="glass"><h2 class="risk-label">SCENARIO RISKS</h2><p>Sticky inflation raises funding pressure; weaker demand also threatens earnings.</p></div><footer class="foot">Morning research draft. Not investment advice. Facts and inferences are distinct.<br>2026-10-28 07:05 EDT / 11:05 UTC<div class="sources">Sources: official RBA calendar and BLS release schedule. See the full briefing.</div></footer></section></main><script>
+const requested = new URLSearchParams(window.location.search).get('card');
+if (requested !== null && /^[1-4]$/.test(requested)) {
+  document.body.classList.add('isolated');
+  document.querySelectorAll('.card').forEach(card => { card.hidden = card.dataset.card !== requested; if(card.hidden) card.style.display='none'; });
+}
+</script></body></html>
