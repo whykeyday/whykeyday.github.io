@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Resilient growth meets a cash-return test",
+    "date": "2026-10-30",
+    "dateLabel": "Oct 30, 2026",
+    "folderLabel": "2026/10/30/daily-news",
+    "href": "/news/2026/10/30/daily-news/en/index.html",
+    "zhHref": "/news/2026/10/30/daily-news/zh/index.html",
+    "image": "/news/2026/10/30/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/10/30/daily-news/en/card-1.webp",
+      "/news/2026/10/30/daily-news/en/card-2.webp",
+      "/news/2026/10/30/daily-news/en/card-3.webp",
+      "/news/2026/10/30/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Open arms. One small step.",
+    "date": "2026-10-30",
+    "dateLabel": "Oct 30, 2026",
+    "folderLabel": "2026/10/30/first-steps-after-millet",
+    "href": "/art/2026/10/30/first-steps-after-millet/en/index.html",
+    "zhHref": "/art/2026/10/30/first-steps-after-millet/zh/index.html",
+    "image": "/art/2026/10/30/first-steps-after-millet/cover.webp",
+    "cards": [
+      "/art/2026/10/30/first-steps-after-millet/en/card-1.webp",
+      "/art/2026/10/30/first-steps-after-millet/en/card-2.webp",
+      "/art/2026/10/30/first-steps-after-millet/en/card-3.webp",
+      "/art/2026/10/30/first-steps-after-millet/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "After policy divergence, earnings and cash returns take over",
     "date": "2026-10-29",
     "dateLabel": "Oct 29, 2026",
