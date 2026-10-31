@@ -1,0 +1,10 @@
+# Fate public export
+
+Build: `npm ci` then `npm run build` in this directory. Output: ../fate/ for GitHub Pages.
+Dataset archives live in the same repository's `fate-data` branch and are fetched from raw.githubusercontent.com, avoiding the GitHub Pages artifact size limit. The local ignored fate/data/year-*.jsonl.zst files are build/test inputs, not part of the Pages deployment. To prepare from a local source checkout, run `python prepare.py --source PATH`, then `python pack.py --source PATH_TO_DECOMPRESSED_YEARS`; publish those archives to the data branch.
+Source copied from locally adapted Renhuai123/ziwei-doushu; code MIT. Only reviewed public engine, books, course excerpts and v4 release data included. No saved personal readings, local notes, machine paths, backend, credentials, SQLite databases or private Brain data is deployed.
+
+Browser worker downloads one year archive (~7 MB) and uses fzstd streaming decompression with a 32 MiB window. The original public v4 content is recompressed at level 6, window_log=25; decompressed data is unchanged. WEB-MANIFEST.json records compressed hashes and raw SHA-256. Original upstream manifest/checksums are retained for provenance, and refer to the upstream 128 MiB-window archives. A complete 1950 decode was verified byte-identical to native Python output. Queries terminate/release the worker after the matching line. Birth information remains client-side; only a year appears in the requested dataset URL. Older memory-constrained browsers may require desktop use.
+
+Public hosting is static: per-person real-time GPU generation and local Bird integration are unavailable here. Art is pre-generated for the 13 topics with local SDXL Turbo, identified as thematic art; prompts/model metadata are in fate/art/. Model license/source: https://huggingface.co/stabilityai/sdxl-turbo (noncommercial personal site). Readings CC BY 4.0; excerpts CC BY-NC-SA 4.0; full licenses retained. No analytics installed. GitHub Pages serves normal access logs; client privacy does not imply absence of hosting logs.
+

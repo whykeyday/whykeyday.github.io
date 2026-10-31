@@ -3,3 +3,8 @@ daily-site/node_modules/
 daily-site/dist/
 daily-site/.astro/
 **/__pycache__/
+fate-source/node_modules/
+fate-source/*.log
+fate-source/*.zst
+fate/data/year-*.jsonl.zst
+fate-source/.build-archive/
