@@ -1,0 +1,9 @@
+import {useState} from 'react';
+import {exportCharts} from './saved.mjs';
+export default function SavedCharts({records,onOpen,onNew,error}:{records:any[];onOpen:(id:string)=>void;onNew:()=>void;error:string}){
+ const [q,setQ]=useState(''),[message,setMessage]=useState('');
+ const filtered=records.filter(r=>r.name.toLocaleLowerCase().includes(q.trim().toLocaleLowerCase()));
+ async function backup(){try{const data=await exportCharts();const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='紫微书房-命盘备份.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('备份文件包含姓名、出生资料和完整解读，请妥善保存。')}catch(e){setMessage((e as Error).message)}}
+ return <section className="saved-charts"><div className="intro"><h1>已保存命盘</h1><p>按名字找到之前的结果，直接打开命盘、完整解读和配图。</p><p className="muted">仅保存在当前设备、当前浏览器的这个网址。关闭无痕窗口或清除网站数据会丢失记录，不会自动跨设备同步。</p></div><div className="saved-toolbar"><label>按姓名查找<input type="search" value={q} onChange={e=>setQ(e.target.value)} placeholder="输入姓名或称呼"/></label><button className="demo" onClick={backup} disabled={!records.length}>下载命盘备份</button><button className="primary" onClick={onNew}>新建命盘</button></div>{error&&<p className="error" role="alert">{error}</p>}{message&&<p role="status">{message}</p>}{filtered.length?<ul className="saved-list">{filtered.map(r=><li key={r.id}><div><h2>{r.name}</h2><p>{r.form.date} · {r.form.clock} · {r.birthInfo.gender==='male'?'男':'女'}{r.form.solar?' · 真太阳时':''}</p><small>保存于 {new Date(r.updatedAt).toLocaleString('zh-CN')}</small></div><button className="primary" onClick={()=>onOpen(r.id)}>查看命盘</button></li>)}</ul>:<div className="empty"><h2>{records.length?'没有找到这个名字':'还没有保存命盘'}</h2><p>{records.length?'试试其他姓名或称呼。':'填写姓名后生成命盘，成功后会自动保存在这里。'}</p></div>}</section>;
+}
+

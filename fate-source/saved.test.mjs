@@ -1,0 +1,32 @@
+import 'fake-indexeddb/auto';
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {saveChart,listCharts,getChart,exportCharts} from './src/saved.mjs';
+const topics=['overview','personality','love','career','wealth','health','family','children','move','friends','home','spirit','parents'];
+const input=(name,day=1)=>({name,birthInfo:{year:1990,month:1,day,hour:4,gender:'male'},reading:{k:`1990-01-${String(day).padStart(2,'0')}-4-male`,ms:'太阳',c:Object.fromEntries(topics.map(t=>[t,`${t}完整缓存`]))},form:{date:`1990-01-${String(day).padStart(2,'0')}`,clock:'08:00',gender:'male',solar:false,longitude:'120',utc:'8'},notice:'标准时间；排盘日已核对'});
+test('named charts survive fresh connections; updates and same-name different births stay distinct',async()=>{
+ const first=await saveChart(input('  测试命盘  '));
+ assert.equal(first.name,'测试命盘');
+ const read=await getChart(first.id);
+ assert.deepEqual(read.reading.c,input('测试命盘').reading.c);
+ assert.deepEqual(read.form,input('测试命盘').form);
+ const again=await saveChart(input('测试命盘'));
+ assert.equal(again.id,first.id);
+ const other=await saveChart(input('测试命盘',2));
+ assert.notEqual(other.id,first.id);
+ assert.equal((await listCharts()).length,2);
+ assert.ok((await listCharts()).every(r=>!('reading' in r)));
+ const renamed=await saveChart({...input('新的称呼'),id:first.id});
+ assert.equal(renamed.id,first.id);
+ assert.equal((await getChart(first.id)).name,'新的称呼');
+ const backup=await exportCharts();
+ assert.equal(backup.charts.length,2);assert.equal(Object.keys(backup.charts[0].reading.c).length,13);
+});
+test('invalid names and mismatched readings cannot overwrite stored charts',async()=>{
+ const count=(await listCharts()).length;
+ await assert.rejects(saveChart(input('   ')),/姓名/);
+ await assert.rejects(saveChart({...input('坏记录'),reading:{...input('x').reading,k:'wrong'}}),/不匹配/);
+ await assert.rejects(saveChart(input('无效日期',32)),/无效/);
+ await assert.rejects(getChart('missing'),/不存在/);
+ assert.equal((await listCharts()).length,count);
+});

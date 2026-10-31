@@ -8,3 +8,6 @@ Web, static GitHub Pages subdirectory /fate/.
 
 ## Stack
 Vite / React, reused TypeScript engine, browser worker for Zstandard streaming lookup.
+
+## Named saved charts
+User requested saving generated results by name and reopening them later. A name triggers automatic browser IndexedDB saving of normalized birth input, original form settings and the full 13-topic reading. Saved results can be searched by name and reopened without downloading the year archive again. Same name with different chart keys remains distinct. Storage is private to the current browser and origin, with no cloud sync. JSON backup download is available. No saved personal results are committed or uploaded.
