@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Cooling demand and shifting profits: the month-end cross-asset test",
+    "date": "2026-10-31",
+    "dateLabel": "Oct 31, 2026",
+    "folderLabel": "2026/10/31/daily-news",
+    "href": "/news/2026/10/31/daily-news/en/index.html",
+    "zhHref": "/news/2026/10/31/daily-news/zh/index.html",
+    "image": "/news/2026/10/31/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/10/31/daily-news/en/card-1.webp",
+      "/news/2026/10/31/daily-news/en/card-2.webp",
+      "/news/2026/10/31/daily-news/en/card-3.webp",
+      "/news/2026/10/31/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Even stone rests its face",
+    "date": "2026-10-31",
+    "dateLabel": "Oct 31, 2026",
+    "folderLabel": "2026/10/31/le-stryge",
+    "href": "/art/2026/10/31/le-stryge/en/index.html",
+    "zhHref": "/art/2026/10/31/le-stryge/zh/index.html",
+    "image": "/art/2026/10/31/le-stryge/cover.webp",
+    "cards": [
+      "/art/2026/10/31/le-stryge/en/card-1.webp",
+      "/art/2026/10/31/le-stryge/en/card-2.webp",
+      "/art/2026/10/31/le-stryge/en/card-3.webp",
+      "/art/2026/10/31/le-stryge/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Resilient growth meets a cash-return test",
     "date": "2026-10-30",
     "dateLabel": "Oct 30, 2026",
