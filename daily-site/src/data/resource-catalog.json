@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Export strength and cash returns: five tests for November",
+    "date": "2026-11-01",
+    "dateLabel": "Nov 01, 2026",
+    "folderLabel": "2026/11/01/daily-news",
+    "href": "/news/2026/11/01/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/01/daily-news/zh/index.html",
+    "image": "/news/2026/11/01/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/01/daily-news/en/card-1.webp",
+      "/news/2026/11/01/daily-news/en/card-2.webp",
+      "/news/2026/11/01/daily-news/en/card-3.webp",
+      "/news/2026/11/01/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Balance under pressure",
+    "date": "2026-11-01",
+    "dateLabel": "Nov 01, 2026",
+    "folderLabel": "2026/11/01/painterly-architectonic",
+    "href": "/art/2026/11/01/painterly-architectonic/en/index.html",
+    "zhHref": "/art/2026/11/01/painterly-architectonic/zh/index.html",
+    "image": "/art/2026/11/01/painterly-architectonic/cover.webp",
+    "cards": [
+      "/art/2026/11/01/painterly-architectonic/en/card-1.webp",
+      "/art/2026/11/01/painterly-architectonic/en/card-2.webp",
+      "/art/2026/11/01/painterly-architectonic/en/card-3.webp",
+      "/art/2026/11/01/painterly-architectonic/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Cooling demand and shifting profits: the month-end cross-asset test",
     "date": "2026-10-31",
     "dateLabel": "Oct 31, 2026",
