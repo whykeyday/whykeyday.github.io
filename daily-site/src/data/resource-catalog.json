@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Factory divergence, a new policy anchor and a tentative rebound",
+    "date": "2026-11-02",
+    "dateLabel": "Nov 02, 2026",
+    "folderLabel": "2026/11/02/daily-news",
+    "href": "/news/2026/11/02/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/02/daily-news/zh/index.html",
+    "image": "/news/2026/11/02/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/02/daily-news/en/card-1.webp",
+      "/news/2026/11/02/daily-news/en/card-2.webp",
+      "/news/2026/11/02/daily-news/en/card-3.webp",
+      "/news/2026/11/02/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "The city is vast. We keep walking.",
+    "date": "2026-11-02",
+    "dateLabel": "Nov 02, 2026",
+    "folderLabel": "2026/11/02/wall-street",
+    "href": "/art/2026/11/02/wall-street/en/index.html",
+    "zhHref": "/art/2026/11/02/wall-street/zh/index.html",
+    "image": "/art/2026/11/02/wall-street/cover.webp",
+    "cards": [
+      "/art/2026/11/02/wall-street/en/card-1.webp",
+      "/art/2026/11/02/wall-street/en/card-2.webp",
+      "/art/2026/11/02/wall-street/en/card-3.webp",
+      "/art/2026/11/02/wall-street/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Export strength and cash returns: five tests for November",
     "date": "2026-11-01",
     "dateLabel": "Nov 01, 2026",
