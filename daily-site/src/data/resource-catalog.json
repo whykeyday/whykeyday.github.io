@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Rates, inflation and earnings: the gaps beneath prices",
+    "date": "2026-11-03",
+    "dateLabel": "Nov 03, 2026",
+    "folderLabel": "2026/11/03/daily-news",
+    "href": "/news/2026/11/03/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/03/daily-news/zh/index.html",
+    "image": "/news/2026/11/03/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/03/daily-news/en/card-1.webp",
+      "/news/2026/11/03/daily-news/en/card-2.webp",
+      "/news/2026/11/03/daily-news/en/card-3.webp",
+      "/news/2026/11/03/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A Small Flash of Yellow",
+    "date": "2026-11-03",
+    "dateLabel": "Nov 03, 2026",
+    "folderLabel": "2026/11/03/the-goldfinch",
+    "href": "/art/2026/11/03/the-goldfinch/en/index.html",
+    "zhHref": "/art/2026/11/03/the-goldfinch/zh/index.html",
+    "image": "/art/2026/11/03/the-goldfinch/cover.webp",
+    "cards": [
+      "/art/2026/11/03/the-goldfinch/en/card-1.webp",
+      "/art/2026/11/03/the-goldfinch/en/card-2.webp",
+      "/art/2026/11/03/the-goldfinch/en/card-3.webp",
+      "/art/2026/11/03/the-goldfinch/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Factory divergence, a new policy anchor and a tentative rebound",
     "date": "2026-11-02",
     "dateLabel": "Nov 02, 2026",
