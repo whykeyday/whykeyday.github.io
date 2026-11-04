@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "After election repricing, growth and delivery take over",
+    "date": "2026-11-04",
+    "dateLabel": "Nov 04, 2026",
+    "folderLabel": "2026/11/04/daily-news",
+    "href": "/news/2026/11/04/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/04/daily-news/zh/index.html",
+    "image": "/news/2026/11/04/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/04/daily-news/en/card-1.webp",
+      "/news/2026/11/04/daily-news/en/card-2.webp",
+      "/news/2026/11/04/daily-news/en/card-3.webp",
+      "/news/2026/11/04/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A summer held in blue",
+    "date": "2026-11-04",
+    "dateLabel": "Nov 04, 2026",
+    "folderLabel": "2026/11/04/a-summer-girl",
+    "href": "/art/2026/11/04/a-summer-girl/en/index.html",
+    "zhHref": "/art/2026/11/04/a-summer-girl/zh/index.html",
+    "image": "/art/2026/11/04/a-summer-girl/cover.webp",
+    "cards": [
+      "/art/2026/11/04/a-summer-girl/en/card-1.webp",
+      "/art/2026/11/04/a-summer-girl/en/card-2.webp",
+      "/art/2026/11/04/a-summer-girl/en/card-3.webp",
+      "/art/2026/11/04/a-summer-girl/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Rates, inflation and earnings: the gaps beneath prices",
     "date": "2026-11-03",
     "dateLabel": "Nov 03, 2026",
