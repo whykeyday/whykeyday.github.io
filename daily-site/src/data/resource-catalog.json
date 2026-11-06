@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Global cross-checks after the technology selloff",
+    "date": "2026-11-06",
+    "dateLabel": "Nov 06, 2026",
+    "folderLabel": "2026/11/06/daily-news",
+    "href": "/news/2026/11/06/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/06/daily-news/zh/index.html",
+    "image": "/news/2026/11/06/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/06/daily-news/en/card-1.webp",
+      "/news/2026/11/06/daily-news/en/card-2.webp",
+      "/news/2026/11/06/daily-news/en/card-3.webp",
+      "/news/2026/11/06/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Loud flowers. A quiet bird.",
+    "date": "2026-11-06",
+    "dateLabel": "Nov 06, 2026",
+    "folderLabel": "2026/11/06/hummingbird-and-passionflowers",
+    "href": "/art/2026/11/06/hummingbird-and-passionflowers/en/index.html",
+    "zhHref": "/art/2026/11/06/hummingbird-and-passionflowers/zh/index.html",
+    "image": "/art/2026/11/06/hummingbird-and-passionflowers/cover.webp",
+    "cards": [
+      "/art/2026/11/06/hummingbird-and-passionflowers/en/card-1.webp",
+      "/art/2026/11/06/hummingbird-and-passionflowers/en/card-2.webp",
+      "/art/2026/11/06/hummingbird-and-passionflowers/en/card-3.webp",
+      "/art/2026/11/06/hummingbird-and-passionflowers/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Daily Finance | A rate hike lands; the rebound faces a test",
     "date": "2026-11-05",
     "dateLabel": "Nov 05, 2026",
