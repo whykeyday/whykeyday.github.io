@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Reserve buffers and rising consumer credit put the recovery to an inflation test",
+    "date": "2026-11-08",
+    "dateLabel": "Nov 08, 2026",
+    "folderLabel": "2026/11/08/daily-news",
+    "href": "/news/2026/11/08/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/08/daily-news/zh/index.html",
+    "image": "/news/2026/11/08/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/08/daily-news/en/card-1.webp",
+      "/news/2026/11/08/daily-news/en/card-2.webp",
+      "/news/2026/11/08/daily-news/en/card-3.webp",
+      "/news/2026/11/08/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A wall takes a step",
+    "date": "2026-11-08",
+    "dateLabel": "Nov 08, 2026",
+    "folderLabel": "2026/11/08/striding-lion-panel",
+    "href": "/art/2026/11/08/striding-lion-panel/en/index.html",
+    "zhHref": "/art/2026/11/08/striding-lion-panel/zh/index.html",
+    "image": "/art/2026/11/08/striding-lion-panel/cover.webp",
+    "cards": [
+      "/art/2026/11/08/striding-lion-panel/en/card-1.webp",
+      "/art/2026/11/08/striding-lion-panel/en/card-2.webp",
+      "/art/2026/11/08/striding-lion-panel/en/card-3.webp",
+      "/art/2026/11/08/striding-lion-panel/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "After the jobs report: dollar strength, technology repair and cost pass-through",
     "date": "2026-11-07",
     "dateLabel": "Nov 07, 2026",
