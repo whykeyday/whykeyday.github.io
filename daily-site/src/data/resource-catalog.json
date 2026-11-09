@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "A rebound meets diverging costs and policy risks",
+    "date": "2026-11-09",
+    "dateLabel": "Nov 09, 2026",
+    "folderLabel": "2026/11/09/daily-news",
+    "href": "/news/2026/11/09/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/09/daily-news/zh/index.html",
+    "image": "/news/2026/11/09/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/09/daily-news/en/card-1.webp",
+      "/news/2026/11/09/daily-news/en/card-2.webp",
+      "/news/2026/11/09/daily-news/en/card-3.webp",
+      "/news/2026/11/09/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Holding the Wind in Gold",
+    "date": "2026-11-09",
+    "dateLabel": "Nov 09, 2026",
+    "folderLabel": "2026/11/09/autumn-grasses",
+    "href": "/art/2026/11/09/autumn-grasses/en/index.html",
+    "zhHref": "/art/2026/11/09/autumn-grasses/zh/index.html",
+    "image": "/art/2026/11/09/autumn-grasses/cover.webp",
+    "cards": [
+      "/art/2026/11/09/autumn-grasses/en/card-1.webp",
+      "/art/2026/11/09/autumn-grasses/en/card-2.webp",
+      "/art/2026/11/09/autumn-grasses/en/card-3.webp",
+      "/art/2026/11/09/autumn-grasses/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Reserve buffers and rising consumer credit put the recovery to an inflation test",
     "date": "2026-11-08",
     "dateLabel": "Nov 08, 2026",
