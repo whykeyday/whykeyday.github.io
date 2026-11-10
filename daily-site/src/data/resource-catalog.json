@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Oil relief lifts markets; inflation still needs a test",
+    "date": "2026-11-10",
+    "dateLabel": "Nov 10, 2026",
+    "folderLabel": "2026/11/10/daily-news",
+    "href": "/news/2026/11/10/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/10/daily-news/zh/index.html",
+    "image": "/news/2026/11/10/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/10/daily-news/en/card-1.webp",
+      "/news/2026/11/10/daily-news/en/card-2.webp",
+      "/news/2026/11/10/daily-news/en/card-3.webp",
+      "/news/2026/11/10/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Paint the Noise as Light",
+    "date": "2026-11-10",
+    "dateLabel": "Nov 10, 2026",
+    "folderLabel": "2026/11/10/battle-of-lights",
+    "href": "/art/2026/11/10/battle-of-lights/en/index.html",
+    "zhHref": "/art/2026/11/10/battle-of-lights/zh/index.html",
+    "image": "/art/2026/11/10/battle-of-lights/cover.webp",
+    "cards": [
+      "/art/2026/11/10/battle-of-lights/en/card-1.webp",
+      "/art/2026/11/10/battle-of-lights/en/card-2.webp",
+      "/art/2026/11/10/battle-of-lights/en/card-3.webp",
+      "/art/2026/11/10/battle-of-lights/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "A rebound meets diverging costs and policy risks",
     "date": "2026-11-09",
     "dateLabel": "Nov 09, 2026",
