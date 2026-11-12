@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Daily Finance | 2026-11-12",
+    "date": "2026-11-12",
+    "dateLabel": "Nov 12, 2026",
+    "folderLabel": "2026/11/12/daily-news",
+    "href": "/news/2026/11/12/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/12/daily-news/zh/index.html",
+    "image": "/news/2026/11/12/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/12/daily-news/en/card-1.webp",
+      "/news/2026/11/12/daily-news/en/card-2.webp",
+      "/news/2026/11/12/daily-news/en/card-3.webp",
+      "/news/2026/11/12/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A garden full. A moment still.",
+    "date": "2026-11-12",
+    "dateLabel": "Nov 12, 2026",
+    "folderLabel": "2026/11/12/unicorn-rests-in-a-garden",
+    "href": "/art/2026/11/12/unicorn-rests-in-a-garden/en/index.html",
+    "zhHref": "/art/2026/11/12/unicorn-rests-in-a-garden/zh/index.html",
+    "image": "/art/2026/11/12/unicorn-rests-in-a-garden/cover.webp",
+    "cards": [
+      "/art/2026/11/12/unicorn-rests-in-a-garden/en/card-1.webp",
+      "/art/2026/11/12/unicorn-rests-in-a-garden/en/card-2.webp",
+      "/art/2026/11/12/unicorn-rests-in-a-garden/en/card-3.webp",
+      "/art/2026/11/12/unicorn-rests-in-a-garden/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Daily Finance | November 11, 2026 | Technology rebounds under inflation and funding pressure",
     "date": "2026-11-11",
     "dateLabel": "Nov 11, 2026",
