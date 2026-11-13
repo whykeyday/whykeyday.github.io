@@ -46,3 +46,8 @@ html.motion-paused .contact-particles{display:none}
 .product-landscape>img{position:absolute;inset:auto 0 -125px;width:100%;height:auto;min-height:400px;object-fit:cover;transform:none;opacity:.21;mix-blend-mode:screen;pointer-events:none}
 .product-motion-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 @media(max-width:760px){.product-landscape{height:280px;margin-top:30px}.product-landscape>img{width:1000px;max-width:none;height:500px;min-height:0;left:50%;bottom:-170px;translate:-50% 0;transform:none;opacity:.17}}
+
+/* Highlights flow through the real background filaments. */
+.hero>.flowing-light-canvas,.contact>.flowing-light-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;mix-blend-mode:screen}
+.connection-art{position:relative;isolation:isolate}.connection-art>img{animation:none}.connection-art>.flowing-light-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;z-index:1}
+html.motion-paused .flowing-light-canvas{display:none}@media(prefers-reduced-motion:reduce){.flowing-light-canvas{display:none}}
