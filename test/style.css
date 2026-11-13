@@ -105,31 +105,25 @@ html.motion-paused .product-slots .product{transition:none}
 @media(prefers-reduced-motion:reduce){.pixel-light-surface{display:none!important}img[data-pixel-source]{visibility:visible!important}}
 html.motion-paused .pixel-light-surface{display:none!important}html.motion-paused img[data-pixel-source]{visibility:visible!important}
 
-/* Editorial product reel: continuous vertical movement on the right. */
+/* Horizontal text reel: the same quiet hierarchy as the original vertical reel. */
 .product-wheel-layout{grid-template-columns:minmax(190px,1fr) minmax(0,2fr);gap:60px;align-items:center}
 .product-wheel-layout .products-heading{display:block;align-self:center;margin:0}
 .wheel-counter{font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:.08em;color:var(--muted);margin-top:25px}
-.product-wheel{height:340px;position:relative;overflow:hidden;cursor:grab;touch-action:pan-x;user-select:none;mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 78%,transparent);border-left:1px solid #30433f;outline-offset:8px}
+.product-wheel{height:224px;position:relative;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;mask-image:linear-gradient(to right,transparent,#000 12%,#000 88%,transparent);outline-offset:8px}
 .product-wheel.dragging{cursor:grabbing}
 .wheel-items{position:absolute;inset:0}
-.product-wheel-item{height:168px;position:absolute;top:0;left:0;width:100%;padding:20px 0 20px 38px;display:grid;grid-template-columns:30px minmax(0,1.1fr) minmax(0,1fr);align-items:center;gap:20px;will-change:transform;pointer-events:none}
-.product-wheel-item h3{font:500 32px/1.18 Inter,Arial,sans-serif;letter-spacing:-.035em;overflow-wrap:anywhere}
-.wheel-number{font-size:11px;color:var(--accent);font-variant-numeric:tabular-nums;align-self:center}
-.product-wheel-item>div p{font-size:18px;line-height:1.5;color:var(--muted)}
+.product-wheel-item{height:204px;position:absolute;top:10px;left:0;width:calc(var(--product-step,306px) - 48px);padding:14px 0 12px;display:flex;flex-direction:column;align-items:flex-start;gap:20px;will-change:transform;pointer-events:none}
+.product-wheel-item h3{font:500 32px/1.18 Inter,Arial,sans-serif;letter-spacing:-.035em;overflow-wrap:anywhere;margin:0}
+.wheel-number{font-size:11px;letter-spacing:.08em;color:var(--accent);font-variant-numeric:tabular-nums;margin:0}
+.product-wheel-item>div{margin-top:auto}
+.product-wheel-item>div p{font-size:18px;line-height:1.5;color:var(--muted);margin:0}
 .product-wheel-item.is-current h3{color:var(--text)}
-.wheel-marker{position:absolute;left:0;top:calc(50% - 20px);height:40px;border-left:2px solid var(--accent);z-index:2}
-.product-wheel-layout+.product-landscape{margin-top:10px}
-@media(max-width:1100px){.product-wheel-item{grid-template-columns:22px minmax(0,1fr);padding-left:26px;gap:14px}.product-wheel-item>div{grid-column:2}.product-wheel-item h3{font-size:30px}.product-wheel-item>div p{font-size:17px}.product-wheel-item{align-content:center;row-gap:9px}}
-@media(max-width:760px){.product-wheel-layout{display:block}.product-wheel-layout .products-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}.wheel-counter{margin-top:0}.product-wheel{height:330px}.product-wheel-item{height:174px;padding-left:24px;grid-template-columns:22px minmax(0,1fr)}.product-wheel-item h3{font-size:32px}.product-wheel-item>div p{font-size:18px}.product-wheel-layout+.product-landscape{margin-top:0}}
+.wheel-marker{display:none}
+.product-wheel-layout+.product-landscape{margin-top:24px}
+@media(max-width:1100px){.product-wheel-layout{gap:34px}.product-wheel-item h3{font-size:30px}}
+@media(max-width:760px){.product-wheel-layout{display:block}.product-wheel-layout .products-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}.wheel-counter{margin-top:0}.product-wheel{height:220px;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)}.product-wheel-item{height:200px}.product-wheel-layout+.product-landscape{margin-top:18px}}
 
-/* Horizontal glass-edged cards. */
-.product-wheel{height:244px;border-left:0;touch-action:pan-y;mask-image:linear-gradient(to right,transparent,#000 20px,#000 calc(100% - 28px),transparent)}
-.product-wheel-item{width:286px;height:220px;top:10px;padding:26px;border:1px solid rgba(166,224,217,.23);border-radius:14px;background:linear-gradient(145deg,rgba(55,107,101,.14),rgba(12,26,24,.08));display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:14px}
-.product-wheel-item h3{font-size:30px;margin:0}.product-wheel-item>div{margin-top:auto}.wheel-number{align-self:flex-start;margin:0}.wheel-marker{display:none}
-.product-artwork-video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
-.product-landscape.user-artwork{height:340px;background:#000}.user-artwork:before,.user-artwork:after{display:none}
-@media(max-width:760px){.product-wheel{height:244px}.product-wheel-item{width:258px;height:220px;padding:24px}.product-landscape.user-artwork{height:280px}}
 
-.product-artwork-video{filter:invert(1) sepia(1) saturate(2.2) hue-rotate(112deg) brightness(1.15) drop-shadow(0 0 3px rgba(89,232,216,.24));mix-blend-mode:screen}
-
-.product-artwork-video{background:#fff}
+/* Rebuilt vector animation based on the sketch. */
+.product-landscape.sketch-motion{height:360px;margin-top:28px;background:#000}.sketch-motion>img{opacity:.12;bottom:-150px}.sketch-motion .product-motion-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+@media(max-width:760px){.product-landscape.sketch-motion{height:290px;margin-top:20px}.sketch-motion>img{opacity:.09;bottom:-185px}}

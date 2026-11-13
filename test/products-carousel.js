@@ -4,7 +4,7 @@ const section=document.querySelector('#products'),wheel=section.querySelector('[
 const reduced=matchMedia('(prefers-reduced-motion:reduce)'),small=matchMedia('(max-width:760px)');
 const paused=()=>reduced.matches||document.documentElement.classList.contains('motion-paused'),lang=()=>document.documentElement.lang.startsWith('fr')?'fr':'en';
 let products=[],nodes=[],position=0,target=0,last=0,raf=0,visible=false,hover=false,focus=false,drag=null,selected=-1,lastInput=0,snapTimer=0;
-const rowHeight=()=>small.matches?278:306,local=value=>typeof value==='string'?value:value?.[lang()]||value?.en||'';
+const rowHeight=()=>small.matches?278:Math.max(286,Math.min(340,wheel.clientWidth*.44)),local=value=>typeof value==='string'?value:value?.[lang()]||value?.en||'';
 function build(){
  track.replaceChildren();nodes=[];
  const copies=products.length>1?3:1;
@@ -20,11 +20,12 @@ function build(){
 }
 function draw(){
  if(!products.length)return;
- const n=products.length,h=rowHeight(),center=rowHeight()/2+20,base=Math.floor(position/n),nearest=Math.round(position),active=((nearest%n)+n)%n;
+ const n=products.length,h=rowHeight(),center=wheel.clientWidth/2,base=Math.floor(position/n),nearest=Math.round(position),active=((nearest%n)+n)%n;
+ wheel.style.setProperty('--product-step',h+'px');
  for(const item of nodes){
-  const absolute=n>1?(base+item.cycle-1)*n+item.index:0,distance=(absolute-position)*h,y=center-h/2+distance;
+  const absolute=n>1?(base+item.cycle-1)*n+item.index:0,distance=(absolute-position)*h,y=center-(h-48)/2+distance;
   item.article.style.transform='translate3d('+y+'px,0,0)';
-  item.article.style.opacity=String(1);
+  item.article.style.opacity=String(1-.65*Math.min(1,Math.abs(distance)/h));
   item.article.classList.toggle('is-current',absolute===nearest);
   item.article.setAttribute('aria-hidden',String(y+h<0||y>wheel.clientWidth));
  }
@@ -35,7 +36,7 @@ function draw(){
 function tick(now){
  raf=0;
  if(last){const dt=Math.min((now-last)/1000,.12);
-  if(visible&&!paused()&&!hover&&!focus&&!drag&&!document.hidden&&products.length>1&&now-lastInput>2400)target+=dt*.105;
+  if(visible&&!paused()&&!hover&&!focus&&!drag&&!document.hidden&&products.length>1&&now-lastInput>2400)target+=dt*.075;
   position=paused()?target:position+(target-position)*(1-Math.exp(-dt*(drag?28:12)));
  }
  last=now;draw();
@@ -62,5 +63,5 @@ new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;refresh()},
 new ResizeObserver(draw).observe(wheel);
 document.addEventListener('telotia-motion',refresh);document.addEventListener('visibilitychange',refresh);reduced.addEventListener('change',refresh);small.addEventListener('change',draw);
 document.addEventListener('telotia-language',()=>{announce.textContent='';if(products.length)build()});
-fetch('products.json?v=9').then(r=>{if(!r.ok)throw Error('Product data unavailable');return r.json()}).then(data=>{if(!data.products?.length)return;products=data.products;build();section.dataset.carouselReady='true';refresh()}).catch(error=>console.warn(error));
+fetch('products.json?v=10').then(r=>{if(!r.ok)throw Error('Product data unavailable');return r.json()}).then(data=>{if(!data.products?.length)return;products=data.products;build();section.dataset.carouselReady='true';refresh()}).catch(error=>console.warn(error));
 })();
