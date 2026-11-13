@@ -9,6 +9,7 @@ try { const saved = localStorage.getItem('telotia-obsidian-motion'); if(saved !=
 const motionButton = document.querySelector('[data-motion]');
 function updateMotion(){
   root.classList.toggle('motion-paused',paused);
+  document.dispatchEvent(new CustomEvent('telotia-motion',{detail:{paused}}));
   motionButton.setAttribute('aria-pressed',String(paused));
   const label = language === 'fr' ? (paused ? 'Activer l’animation' : 'Arrêter l’animation') : (paused ? 'Resume motion' : 'Pause motion');
   document.querySelector('[data-motion-label]').textContent=label;
