@@ -29,6 +29,7 @@ function setLanguage(chosen,updateAddress=true){
  document.querySelector('.scroll-cue').setAttribute('aria-label',language==='fr'?'Découvrir les produits':'Explore products');
  document.querySelector('.back-top').setAttribute('aria-label',language==='fr'?'Retour en haut':'Back to top');
  updateMotion();
+ document.dispatchEvent(new CustomEvent('telotia-language',{detail:{language}}));
  if(updateAddress){const url=new URL(location.href);if(language==='fr')url.searchParams.set('lang','fr');else url.searchParams.delete('lang');history.replaceState(null,'',url)}
  scheduleFrame();
 }

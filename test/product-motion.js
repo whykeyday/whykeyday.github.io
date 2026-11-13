@@ -6,7 +6,7 @@ async function startProductMotion(){
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let shapes;try{const [handshake,bridge,starPath]=await Promise.all(['handshake','building-bridge','cross-star'].map(W)),orbit=q();shapes={handshake,bridge,star:Y(starPath,orbit,handshake),orbit};}catch(error){console.warn('Product motion unavailable',error);return}
  const points=Array.from({length:C},()=>({x:0,y:0,move:false}));
- let width=0,height=0,frame=0,last=0,elapsed=0,inView=false,mouseX=0,mouseY=0,targetX=0,targetY=0;
+ let width=0,height=0,frame=0,last=0,elapsed=0,inView=false,mouseX=0,mouseY=0,targetX=0,targetY=0,productPulse=-5000;
  const paused=()=>reduced.matches||document.documentElement.classList.contains('motion-paused');
  function resize(){
   const rect=host.getBoundingClientRect();width=rect.width;height=rect.height;const dpr=Math.min(devicePixelRatio||1,2);
@@ -22,7 +22,7 @@ async function startProductMotion(){
    const startX=cx+side*(width*.51),startY=height*(.38+line*.065);
    const endX=cx+side*scale*.4,endY=cy+Math.sin(line*.75+time*.00022)*20;
    const bendX=cx+side*(width*.25),bendY=cy+Math.sin(time*.00018+line*.7)*35;
-   const alpha=.09+(line%3)*.045;
+   const pulse=Math.max(0,1-(time-productPulse)/1500);const alpha=.09+(line%3)*.045+pulse*.13;
    ctx.beginPath();ctx.moveTo(startX,startY);ctx.quadraticCurveTo(bendX,bendY,endX,endY);
    ctx.strokeStyle='rgba(70,218,204,'+alpha+')';ctx.lineWidth=.65;ctx.shadowColor='#36bfae';ctx.shadowBlur=8;ctx.stroke();ctx.shadowBlur=0;
    if(!paused()){
@@ -46,7 +46,7 @@ async function startProductMotion(){
  function refresh(){if(frame)cancelAnimationFrame(frame);frame=0;last=0;render(elapsed);host.dataset.playing=String(!paused()&&inView&&!document.hidden);if(!paused()&&inView&&!document.hidden)frame=requestAnimationFrame(tick)}
  host.addEventListener('pointermove',event=>{if(paused())return;const r=host.getBoundingClientRect();targetX=(event.clientX-r.left-r.width/2)*.012;targetY=(event.clientY-r.top-r.height/2)*.025});
  host.addEventListener('pointerleave',()=>{targetX=targetY=0});
- document.addEventListener('telotia-motion',refresh);reduced.addEventListener('change',refresh);document.addEventListener('visibilitychange',refresh);
+ document.addEventListener('telotia-product-change',()=>{productPulse=elapsed;render(elapsed)});document.addEventListener('telotia-motion',refresh);reduced.addEventListener('change',refresh);document.addEventListener('visibilitychange',refresh);
  new ResizeObserver(resize).observe(host);
  new IntersectionObserver(entries=>{inView=entries[0].isIntersecting;refresh()},{rootMargin:'80px'}).observe(host);
  host.dataset.ready='true';resize();refresh();
