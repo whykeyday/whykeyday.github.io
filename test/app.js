@@ -39,51 +39,11 @@ const progress=document.querySelector('.reading-progress');
 const hero=document.querySelector('.hero');
 const contact=document.querySelector('.contact');
 
-const contactButton = contact.querySelector('.button');
-const contactImage = contact.querySelector('.contact-art img');
-const particleCanvas = contact.querySelector('.contact-particles');
-const particleContext = particleCanvas.getContext('2d');
-let contactInView=false, particleFrame=0, particleWidth=0, particleHeight=0, focusX=0, focusY=0;
-function alignContactLight(){
- const area=contact.getBoundingClientRect(), action=contactButton.getBoundingClientRect();
- focusX=action.left-area.left+action.width/2;focusY=action.top-area.top+action.height/2;
- const imageWidth=Math.max(area.width,1000), aspect=contactImage.naturalWidth&&contactImage.naturalHeight?contactImage.naturalWidth/contactImage.naturalHeight:2;
- contact.style.setProperty('--contact-art-top',(focusY-imageWidth/aspect*.324)+'px');
- const width=Math.round(area.width),height=Math.round(area.height);
- if(width!==particleWidth||height!==particleHeight){
-  particleWidth=width;particleHeight=height;const dpr=Math.min(devicePixelRatio||1,2);
-  particleCanvas.width=width*dpr;particleCanvas.height=height*dpr;
-  particleContext.setTransform(dpr,0,0,dpr,0,0);
- }
-}
-function animateContactLight(now){
- particleFrame=0;
- if(paused||media.matches||!contactInView||document.hidden){particleContext.clearRect(0,0,particleWidth,particleHeight);return}
- particleContext.clearRect(0,0,particleWidth,particleHeight);
- for(let i=0;i<34;i++){
-  const seed=((i*73+19)%101)/101;
-  const duration=6000+(i%7)*700,t=((now+i*619)%duration)/duration,remaining=(1-t)*(1-t);
-  const direction=i%2?1:-1,startX=direction*particleWidth*(.2+seed*.36);
-  const startY=(seed-.46)*210;
-  const x=focusX+startX*remaining,y=focusY+startY*remaining+Math.sin(t*Math.PI)*8;
-  const alpha=Math.sin(t*Math.PI)*(.2+seed*.3);
-  particleContext.beginPath();particleContext.fillStyle='rgba(182,255,243,'+alpha+')';
-  particleContext.arc(x,y,.45+seed*.65,0,Math.PI*2);particleContext.fill();
- }
- particleFrame=requestAnimationFrame(animateContactLight);
-}
-function refreshContactAnimation(){
- if(particleFrame)cancelAnimationFrame(particleFrame);particleFrame=0;
- if(paused||media.matches||!contactInView||document.hidden)particleContext.clearRect(0,0,particleWidth,particleHeight);
- else particleFrame=requestAnimationFrame(animateContactLight);
-}
-contactImage.addEventListener('load',()=>{alignContactLight();refreshContactAnimation()});
-new ResizeObserver(()=>{alignContactLight();refreshContactAnimation()}).observe(contact.querySelector('.contact-copy'));
-new IntersectionObserver(entries=>{contactInView=entries[0].isIntersecting;refreshContactAnimation()},{rootMargin:'100px'}).observe(contact);
-document.addEventListener('visibilitychange',refreshContactAnimation);
-motionButton.addEventListener('click',refreshContactAnimation);
-media.addEventListener('change',refreshContactAnimation);
-
+const contactButton=contact.querySelector('.button');
+const contactImage=contact.querySelector('.contact-art img');
+function alignContactLight(){const area=contact.getBoundingClientRect(),action=contactButton.getBoundingClientRect();const imageWidth=Math.max(area.width,1000),aspect=contactImage.naturalWidth&&contactImage.naturalHeight?contactImage.naturalWidth/contactImage.naturalHeight:2;contact.style.setProperty('--contact-art-top',(action.top-area.top+action.height/2-imageWidth/aspect*.324)+'px')}
+contactImage.addEventListener('load',alignContactLight);
+new ResizeObserver(alignContactLight).observe(contact.querySelector('.contact-copy'));
 const sections=[...document.querySelectorAll('main section[id]')];
 function drawFrame(){
  pending=false;

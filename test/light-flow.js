@@ -1,88 +1,26 @@
 (() => {
 'use strict';
-const reduced=matchMedia('(prefers-reduced-motion: reduce)');
-const stopped=()=>reduced.matches||document.documentElement.classList.contains('motion-paused');
-const instances=[];
-function createField(section,selector,kind){
- const image=section?.querySelector(selector);if(!image)return;
- const canvas=document.createElement('canvas');canvas.className='flowing-light-canvas';canvas.setAttribute('aria-hidden','true');section.append(canvas);
- const ctx=canvas.getContext('2d');if(!ctx)return;
- const mask=document.createElement('canvas'),mc=mask.getContext('2d');
- let w=0,h=0,dpr=1,visible=false,raf=0,last=0,time=0;
- const points=[];
- function frameGeometry(){
-  const area=section.getBoundingClientRect(),rect=image.getBoundingClientRect();
-  return {x:rect.left-area.left,y:rect.top-area.top,w:rect.width,h:rect.height};
- }
- function resize(){
-  const box=section.getBoundingClientRect();w=box.width;h=box.height;dpr=Math.min(devicePixelRatio||1,1.25);
-  for(const c of [canvas,mask]){c.width=Math.round(w*dpr);c.height=Math.round(h*dpr)}
-  ctx.setTransform(dpr,0,0,dpr,0,0);mc.setTransform(dpr,0,0,dpr,0,0);draw(time);
- }
- function pathAt(t,lane,g){
-  if(kind==='loop'){
-   const angle=t*Math.PI*2,spread=(lane-7)*.003;
-   const xx=Math.sin(angle)*.34,yy=Math.sin(angle*2)*(.135+spread);
-   const a=-.64,x=xx*Math.cos(a)-yy*Math.sin(a),y=xx*Math.sin(a)+yy*Math.cos(a);
-   return {x:g.x+g.w*(.51+x),y:g.y+g.h*(.50+y)};
-  }
-  const x=t*2-1,tilt=kind==='contact'?-1:1;
-  const horizon=kind==='contact'?.324:.676;
-  let y;
-  if(lane<3)y=horizon+tilt*(.10*x*x+(lane-1)*.003);
-  else{
-   const k=(lane-3)/9;
-   y=horizon+tilt*(-(.09+k*.22)*Math.pow(Math.abs(x),1.2)+Math.sin(t*Math.PI*2+k*5)*.035*Math.abs(x));
-  }
-  return {x:g.x+g.w*t,y:g.y+g.h*y};
- }
- function draw(ms){
-  ctx.clearRect(0,0,w,h);mc.clearRect(0,0,w,h);
-  if(!image.complete||!image.naturalWidth||stopped())return;
-  const g=frameGeometry(),lanes=kind==='loop'?16:12;
-  mc.lineCap='round';mc.lineJoin='round';
-  for(let lane=0;lane<lanes;lane++){
-   const duration=(kind==='loop'?11000:14000)+lane*850;
-   const head=(ms/duration+lane*.109)%1,tail=kind==='loop'?.13:.16;
-   // A moving head and a long dim tail travel continuously along the existing light field.
-   for(let j=0;j<18;j++){
-    const t=(head-tail+j*tail/18+1)%1,next=(t+tail/18)%1;
-    if(next<t)continue;
-    const p=pathAt(t,lane,g),q=pathAt(next,lane,g),alpha=Math.pow(j/18,1.5)*.8;
-    mc.beginPath();mc.moveTo(p.x,p.y);mc.lineTo(q.x,q.y);
-    mc.strokeStyle='rgba(190,255,242,'+alpha+')';mc.lineWidth=kind==='loop'?g.w*.018:g.h*.017;
-    mc.stroke();
-   }
-  }
-  // Use the original raster as the mask: the highlights only illuminate its real filaments.
-  mc.globalCompositeOperation='source-in';
-  if(kind==='contact'){mc.save();mc.translate(g.x,g.y+g.h);mc.scale(1,-1);mc.drawImage(image,0,0,g.w,g.h);mc.restore()}
-  else mc.drawImage(image,g.x,g.y,g.w,g.h);
-  mc.globalCompositeOperation='source-over';
-  ctx.globalCompositeOperation='screen';ctx.globalAlpha=.9;
-  ctx.filter='blur(8px) brightness(2.2)';ctx.drawImage(mask,0,0,w,h);ctx.filter='none';
-  ctx.globalCompositeOperation='source-over';
-  section.dataset.lightFlow='running';
- }
- function tick(now){
-  raf=0;if(stopped()||!visible||document.hidden){last=0;ctx.clearRect(0,0,w,h);return}
-  if(last&&now-last<32){raf=requestAnimationFrame(tick);return}
-  if(last)time+=Math.min(now-last,80);last=now;draw(time);raf=requestAnimationFrame(tick);
- }
- function refresh(){
-  if(raf)cancelAnimationFrame(raf);raf=0;last=0;
-  if(stopped()||!visible||document.hidden){ctx.clearRect(0,0,w,h);section.dataset.lightFlow='paused'}
-  else raf=requestAnimationFrame(tick);
- }
- new ResizeObserver(resize).observe(section);
- new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;refresh()},{rootMargin:'80px'}).observe(section);
- image.addEventListener('load',()=>{resize();refresh()});
- instances.push({refresh});resize();refresh();
+const reduced=matchMedia('(prefers-reduced-motion:reduce)'),paused=()=>reduced.matches||document.documentElement.classList.contains('motion-paused'),fields=[];
+const vertex='attribute vec2 a;varying vec2 v;void main(){v=(a+1.0)*0.5;gl_Position=vec4(a,0.0,1.0);}';
+const fragment="precision highp float;\nuniform sampler2D photo;uniform float clock;uniform float loopMode;uniform float flipped;varying vec2 v;\nvoid main(){\nvec2 uv=vec2(v.x,1.0-v.y);if(flipped>0.5)uv.y=1.0-uv.y;\nvec4 source=texture2D(photo,vec2(uv.x,1.0-uv.y));\nfloat luminance=dot(source.rgb,vec3(.2126,.7152,.0722));\nfloat strength=smoothstep(.015,.12,luminance),gain=1.0;\nif(loopMode>0.5){\nvec2 p=(uv-vec2(.575,.49))*vec2(1.112,1.0);float c=cos(.64),s=sin(.64);vec2 q=vec2(c*p.x-s*p.y,s*p.x+c*p.y);\nfloat left=atan(q.y,q.x+.205),right=atan(q.y,q.x-.205),blend=smoothstep(-.055,.055,q.x);\nfloat wave=mix(sin(left-clock*.58),sin(-right-clock*.58+3.14159265),blend);\nfloat detail=mix(sin(left*2.0-clock*1.16),sin(-right*2.0-clock*1.16),blend);\ngain=.91+.23*wave+.06*detail;strength*=1.0-smoothstep(.77,.89,uv.y);\n}else{\nfloat nx=(uv.x-.5)*2.0,arc=.676+.10*nx*nx,outward=arc-uv.y;\nfloat distance=max(0.0,outward)+abs(nx)*.025;\nfloat broad=pow(.5+.5*sin(distance*28.0-clock*.85),2.0),fine=sin(distance*49.0-clock*1.31+nx*nx*.8);\ngain=.76+.48*broad+.055*fine;strength*=smoothstep(-.035,.025,outward);\n}\ngl_FragColor=vec4(clamp(source.rgb*mix(1.0,gain,strength),0.0,1.0),1.0);\n}";
+function install(section,selector,kind){
+const image=section?.querySelector(selector);if(!image)return;
+const canvas=document.createElement('canvas');canvas.className='flowing-light-canvas pixel-light-surface';canvas.setAttribute('aria-hidden','true');
+const gl=canvas.getContext('webgl',{alpha:false,antialias:false,preserveDrawingBuffer:false,powerPreference:'low-power'});if(!gl)return;
+function compile(type,source){const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s}
+let program;try{program=gl.createProgram();gl.attachShader(program,compile(gl.VERTEX_SHADER,vertex));gl.attachShader(program,compile(gl.FRAGMENT_SHADER,fragment));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));}catch(error){console.warn('Original image kept: light animation unavailable',error);return}
+gl.useProgram(program);const buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);const attribute=gl.getAttribLocation(program,'a');gl.enableVertexAttribArray(attribute);gl.vertexAttribPointer(attribute,2,gl.FLOAT,false,0,0);
+const texture=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,texture);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+const timeUniform=gl.getUniformLocation(program,'clock');gl.uniform1f(gl.getUniformLocation(program,'loopMode'),kind==='loop'?1:0);gl.uniform1f(gl.getUniformLocation(program,'flipped'),kind==='contact'?1:0);gl.uniform1i(gl.getUniformLocation(program,'photo'),0);
+let ready=false,visible=false,raf=0,last=0,elapsed=0,lost=false;section.append(canvas);image.dataset.pixelSource='true';
+function geometry(){const area=section.getBoundingClientRect(),box=image.getBoundingClientRect();canvas.style.left=(box.left-area.left)+'px';canvas.style.top=(box.top-area.top)+'px';canvas.style.width=box.width+'px';canvas.style.height=box.height+'px';const scale=Math.min(devicePixelRatio||1,1.5,1800/Math.max(1,box.width)),w=Math.max(1,Math.round(box.width*scale)),h=Math.max(1,Math.round(box.height*scale));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h)}}
+function draw(){if(!ready||lost)return;geometry();gl.uniform1f(timeUniform,elapsed/1000);gl.drawArrays(gl.TRIANGLES,0,6)}
+function frame(now){raf=0;if(!ready||lost||paused()||!visible||document.hidden){last=0;return}if(last&&now-last<32){raf=requestAnimationFrame(frame);return}if(last)elapsed+=Math.min(now-last,90);last=now;draw();section.dataset.pixelFlow='running';raf=requestAnimationFrame(frame)}
+function refresh(){if(raf)cancelAnimationFrame(raf);raf=0;last=0;const active=ready&&!lost&&!paused()&&visible&&!document.hidden;section.dataset.pixelFlow=active?'running':'static';if(active){draw();raf=requestAnimationFrame(frame)}}
+function load(){try{gl.bindTexture(gl.TEXTURE_2D,texture);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,image);ready=true;refresh()}catch(error){console.warn('Original image retained',error)}}
+canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;refresh()});image.addEventListener('load',load);if(image.complete&&image.naturalWidth)load();
+new ResizeObserver(()=>{draw();refresh()}).observe(section);new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;refresh()},{rootMargin:'60px'}).observe(section);fields.push({refresh});
 }
-createField(document.querySelector('.hero'),'.hero-art img','hero');
-createField(document.querySelector('.contact'),'.contact-art img','contact');
-createField(document.querySelector('.connection-art'),'img','loop');
-document.addEventListener('telotia-motion',()=>instances.forEach(i=>i.refresh()));
-document.addEventListener('visibilitychange',()=>instances.forEach(i=>i.refresh()));
-reduced.addEventListener('change',()=>instances.forEach(i=>i.refresh()));
+install(document.querySelector('.hero'),'.hero-art img','hero');install(document.querySelector('.contact'),'.contact-art img','contact');install(document.querySelector('.connection-art'),'img','loop');
+document.addEventListener('telotia-motion',()=>fields.forEach(f=>f.refresh()));document.addEventListener('visibilitychange',()=>fields.forEach(f=>f.refresh()));reduced.addEventListener('change',()=>fields.forEach(f=>f.refresh()));
 })();
