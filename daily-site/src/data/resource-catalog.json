@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Daily Finance | Monthly inflation relief meets financing and delivery constraints",
+    "date": "2026-11-14",
+    "dateLabel": "Nov 14, 2026",
+    "folderLabel": "2026/11/14/daily-news",
+    "href": "/news/2026/11/14/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/14/daily-news/zh/index.html",
+    "image": "/news/2026/11/14/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/14/daily-news/en/card-1.webp",
+      "/news/2026/11/14/daily-news/en/card-2.webp",
+      "/news/2026/11/14/daily-news/en/card-3.webp",
+      "/news/2026/11/14/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Carving air into music",
+    "date": "2026-11-14",
+    "dateLabel": "Nov 14, 2026",
+    "folderLabel": "2026/11/14/seated-harp-player",
+    "href": "/art/2026/11/14/seated-harp-player/en/index.html",
+    "zhHref": "/art/2026/11/14/seated-harp-player/zh/index.html",
+    "image": "/art/2026/11/14/seated-harp-player/cover.webp",
+    "cards": [
+      "/art/2026/11/14/seated-harp-player/en/card-1.webp",
+      "/art/2026/11/14/seated-harp-player/en/card-2.webp",
+      "/art/2026/11/14/seated-harp-player/en/card-3.webp",
+      "/art/2026/11/14/seated-harp-player/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Inflation and delivery: divergent markets under a firm dollar",
     "date": "2026-11-13",
     "dateLabel": "Nov 13, 2026",
