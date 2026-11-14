@@ -1,22 +1,21 @@
-# Telotia line animation score — v13
+# Telotia continuous line performance — v14
 
-504 frames at 24 fps; 21 seconds. Rendering interpolates at the display refresh rate.
-Fixed figure paths are revealed by a traveling head. Figures never interpolate or scale into one another.
+One global route, 19.105 seconds per loop. The review video stops after the final logo hold; the site also runs the short connector back to the next loop.
 
-| Motif | Travel | Anticipation | Drawing | Pen lifts | Follow-through | Read hold |
-|---|---:|---:|---|---:|---:|---:|
-| Spark | 8f | 4f | 20f | — | 5f | 5f |
-| Chaos | 10f | 4f | 78f | — | 7f | 12f |
-| Bridge | 10f | 5f | 10 / 10 / 12 / 24 / 5f | 4 × 2f | 8f | 12f |
-| Handshake | 10f | 4f | 76f (one stroke) | - | 8f | 24f |
-| Brand | 12f | 4f | T 46f / dot 7f | 8f | 9f | 42f |
+| Pose | Draw starts | Complete | Read hold |
+|---|---:|---:|---:|
+| Spark | 0.000s | 0.900s | 0.300s |
+| Chaos | 1.655s | 4.305s | 0.900s |
+| Bridge | 5.625s | 8.675s | 0.800s |
+| Handshake | 9.969s | 12.819s | 0.900s |
+| Brand: T + hollow dot | 14.165s | 16.955s | 1.650s |
 
-Timing and spacing: each stroke has an explicit duration instead of sharing a uniform length-based speed. Monotone cubic spacing accelerates the middle, with readable beginnings and endings. Curvature adds time at the turns without stopping at each sample.
+The same arclength coordinates drive both the visible start and end of the line. There is no independent erased figure or detached moving dot. The previous stroke's tail follows the pen into the next drawing. Short transition wires leave with that same tail; they are not permanent new icon features. The T-to-circle transfer is transient so the completed logo retains the required empty gap.
 
-Anticipation: the head makes a small reverse preparation at the next starting point. Arcs: pen-up motion follows shallow curves. Follow-through: the light tail finishes after the leading pen has stopped. Overlap: the preceding stroke recedes as the head leaves; it clears before meaningful new ink.
+The bridge and handshake each have one continuous route; dead-end reversals follow existing edges instead of jumping between separate paths. Each genuine turnaround has a zero-velocity landmark. Generic pace landmarks cannot override those physical reversals.
 
-Squash/stretch is restricted to the leading light and preserves its area. Staging keeps one active head, fixed centered figures, and quiet holds. Secondary action places the dot after the T and makes light reinforce the principal action. Exaggeration is in restrained speed contrast. Solid drawing preserves all contour coordinates; the rounded original icon assets support appeal. Pose-to-pose planning defines beats; straight-ahead tracing performs them.
+The approach to an icon and its first drawn edge share velocity. Transfer paths match the incoming/outgoing tangent and blend endpoint curvature; control excursions are bounded to the responsive stage. Closed figure ports are selected before playback. No figure points animate or morph.
 
-Chaos uses four consecutive balanced Lorenz turns, two on either side. A distributed return correction and matched end tangents produce a complete closed loop, without a straight closing chord. The dot diameter is 19% of the T bar width; gap approximately 10% of the bar width. The T itself is retained from the original logo. The dot remains hollow, like every figure. The standalone spiral has been removed. Handshake contours are routed as one uninterrupted stroke, with no pen lifts and only a short retrace on an existing finger edge.
+Monotone cubic master-clock segments carry momentum through handoffs. Only final reading poses and actual pen reversals come to rest. Tail feathering and leading brightness vary continuously with speed; neither is a threshold switch. All figure pixels remain outline strokes, including the dot at 19% of the T bar width.
 
-References: [Disney Animation](https://www.disneyanimation.com/process/animation/), [Toon Boom: animation principles](https://helpcentre.toonboom.com/hc/en-ca/articles/57087608774931-About-the-12-Principles-of-Animation).
+Research and source boundaries are recorded in [motion-research.md](motion-research.md).
