@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Fiscal support meets financing constraints",
+    "date": "2026-11-15",
+    "dateLabel": "Nov 15, 2026",
+    "folderLabel": "2026/11/15/daily-news",
+    "href": "/news/2026/11/15/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/15/daily-news/zh/index.html",
+    "image": "/news/2026/11/15/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/15/daily-news/en/card-1.webp",
+      "/news/2026/11/15/daily-news/en/card-2.webp",
+      "/news/2026/11/15/daily-news/en/card-3.webp",
+      "/news/2026/11/15/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "Let autumn become colour",
+    "date": "2026-11-15",
+    "dateLabel": "Nov 15, 2026",
+    "folderLabel": "2026/11/15/the-talisman",
+    "href": "/art/2026/11/15/the-talisman/en/index.html",
+    "zhHref": "/art/2026/11/15/the-talisman/zh/index.html",
+    "image": "/art/2026/11/15/the-talisman/cover.webp",
+    "cards": [
+      "/art/2026/11/15/the-talisman/en/card-1.webp",
+      "/art/2026/11/15/the-talisman/en/card-2.webp",
+      "/art/2026/11/15/the-talisman/en/card-3.webp",
+      "/art/2026/11/15/the-talisman/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Daily Finance | Monthly inflation relief meets financing and delivery constraints",
     "date": "2026-11-14",
     "dateLabel": "Nov 14, 2026",
