@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Growth cools; rates and delivery risks persist",
+    "date": "2026-11-16",
+    "dateLabel": "Nov 16, 2026",
+    "folderLabel": "2026/11/16/daily-news",
+    "href": "/news/2026/11/16/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/16/daily-news/zh/index.html",
+    "image": "/news/2026/11/16/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/16/daily-news/en/card-1.webp",
+      "/news/2026/11/16/daily-news/en/card-2.webp",
+      "/news/2026/11/16/daily-news/en/card-3.webp",
+      "/news/2026/11/16/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A garden held inside a star",
+    "date": "2026-11-16",
+    "dateLabel": "Nov 16, 2026",
+    "folderLabel": "2026/11/16/star-shaped-tile",
+    "href": "/art/2026/11/16/star-shaped-tile/en/index.html",
+    "zhHref": "/art/2026/11/16/star-shaped-tile/zh/index.html",
+    "image": "/art/2026/11/16/star-shaped-tile/cover.webp",
+    "cards": [
+      "/art/2026/11/16/star-shaped-tile/en/card-1.webp",
+      "/art/2026/11/16/star-shaped-tile/en/card-2.webp",
+      "/art/2026/11/16/star-shaped-tile/en/card-3.webp",
+      "/art/2026/11/16/star-shaped-tile/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Fiscal support meets financing constraints",
     "date": "2026-11-15",
     "dateLabel": "Nov 15, 2026",
