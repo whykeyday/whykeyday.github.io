@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "Better expectations still face funding and delivery tests",
+    "date": "2026-11-17",
+    "dateLabel": "Nov 17, 2026",
+    "folderLabel": "2026/11/17/daily-news",
+    "href": "/news/2026/11/17/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/17/daily-news/zh/index.html",
+    "image": "/news/2026/11/17/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/17/daily-news/en/card-1.webp",
+      "/news/2026/11/17/daily-news/en/card-2.webp",
+      "/news/2026/11/17/daily-news/en/card-3.webp",
+      "/news/2026/11/17/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A Turn of the Head, a Breath of Space",
+    "date": "2026-11-17",
+    "dateLabel": "Nov 17, 2026",
+    "folderLabel": "2026/11/17/crane-in-a-bamboo-grove",
+    "href": "/art/2026/11/17/crane-in-a-bamboo-grove/en/index.html",
+    "zhHref": "/art/2026/11/17/crane-in-a-bamboo-grove/zh/index.html",
+    "image": "/art/2026/11/17/crane-in-a-bamboo-grove/cover.webp",
+    "cards": [
+      "/art/2026/11/17/crane-in-a-bamboo-grove/en/card-1.webp",
+      "/art/2026/11/17/crane-in-a-bamboo-grove/en/card-2.webp",
+      "/art/2026/11/17/crane-in-a-bamboo-grove/en/card-3.webp",
+      "/art/2026/11/17/crane-in-a-bamboo-grove/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Growth cools; rates and delivery risks persist",
     "date": "2026-11-16",
     "dateLabel": "Nov 16, 2026",
