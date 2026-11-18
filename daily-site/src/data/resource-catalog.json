@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "UK inflation picks up as Asian chip shares rebound",
+    "date": "2026-11-18",
+    "dateLabel": "Nov 18, 2026",
+    "folderLabel": "2026/11/18/daily-news",
+    "href": "/news/2026/11/18/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/18/daily-news/zh/index.html",
+    "image": "/news/2026/11/18/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/18/daily-news/en/card-1.webp",
+      "/news/2026/11/18/daily-news/en/card-2.webp",
+      "/news/2026/11/18/daily-news/en/card-3.webp",
+      "/news/2026/11/18/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "A Line of Warmth at the Hem",
+    "date": "2026-11-18",
+    "dateLabel": "Nov 18, 2026",
+    "folderLabel": "2026/11/18/pines-and-interlocking-squares",
+    "href": "/art/2026/11/18/pines-and-interlocking-squares/en/index.html",
+    "zhHref": "/art/2026/11/18/pines-and-interlocking-squares/zh/index.html",
+    "image": "/art/2026/11/18/pines-and-interlocking-squares/cover.webp",
+    "cards": [
+      "/art/2026/11/18/pines-and-interlocking-squares/en/card-1.webp",
+      "/art/2026/11/18/pines-and-interlocking-squares/en/card-2.webp",
+      "/art/2026/11/18/pines-and-interlocking-squares/en/card-3.webp",
+      "/art/2026/11/18/pines-and-interlocking-squares/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "Better expectations still face funding and delivery tests",
     "date": "2026-11-17",
     "dateLabel": "Nov 17, 2026",

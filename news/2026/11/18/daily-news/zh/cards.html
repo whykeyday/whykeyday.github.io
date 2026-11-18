@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>简报卡片 · 每日财经</title>
+<!-- style_ref: U41 -->
+<style>
+:root {
+  color-scheme: dark;
+  --base: #080b1b; --base-deep: #050611; --surface: rgb(19 28 57 / 65%);
+  --border: rgb(153 182 255 / 24%); --ink: #eef3ff; --soft: #c6d1eb;
+  --muted: #aab7d4; --cyan: #91dfff; --violet: #baaeff;
+  --up: #6fe4be; --amber: #ffd09a;
+  --display: Georgia, "Songti SC", SimSun, serif;
+  --body: Inter, "Microsoft YaHei", system-ui, sans-serif;
+  --accent: linear-gradient(113deg, #89e6ff, #a3aaff 58%, #c4a2ff);
+  --mesh: radial-gradient(ellipse at 3% 0%, #283b77 0%, transparent 52%),
+    radial-gradient(ellipse at 96% 15%, #352653 0%, transparent 48%),
+    radial-gradient(ellipse at 82% 100%, #172e49 0%, transparent 52%),
+    linear-gradient(160deg, var(--base), var(--base-deep));
+}
+html[lang="en"] { --display: Georgia, "Liberation Serif", serif; --body: Inter, system-ui, sans-serif; }
+* { box-sizing: border-box; }
+body { margin: 0; color: var(--ink); background: var(--base-deep); font-family: var(--body); }
+h1, h2, p, ul { margin: 0; }
+a { color: var(--cyan); text-underline-offset: .18em; }
+a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+[hidden] { display: none !important; }
+
+.deck { display: grid; justify-items: center; gap: 32px; padding: 32px 0; min-width: 1080px; }
+.card { width: 1080px; height: 1350px; padding: 68px 76px 62px; position: relative;
+  background: var(--mesh); isolation: isolate; display: flex; flex-direction: column;
+  border: 1px solid var(--border); overflow: hidden; }
+.card::before { content: ""; position: absolute; inset: 0 76px auto; height: 4px; background: var(--accent); }
+.card header { display: flex; justify-content: space-between; align-items: baseline; gap: 28px;
+  color: var(--muted); font-size: 21px; font-variant-numeric: tabular-nums; }
+.card .masthead { color: var(--ink); font-weight: 700; }
+.topic { color: var(--cyan); font-size: 27px; font-weight: 700; letter-spacing: .055em; margin-top: 58px; }
+.card h2 { font: 700 76px/1.07 var(--display); letter-spacing: -.035em; margin-top: 16px; }
+.card .dek { color: var(--soft); font-size: 31px; line-height: 1.43; margin-top: 24px; }
+.metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 34px 0 26px; }
+.metric { min-width: 0; padding: 20px 23px; border-radius: 19px; border: 1px solid var(--border);
+  background: linear-gradient(140deg, rgb(101 135 199 / 18%), transparent), var(--surface);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 12%); }
+.value { font-size: 53px; display: block; white-space: nowrap; font-weight: 750;
+  font-variant-numeric: tabular-nums; letter-spacing: -.055em; }
+.value.up { color: var(--up); } .value.amber { color: var(--amber); }
+.caption { display: block; color: var(--soft); font-size: 21px; line-height: 1.3; }
+.rows { display: grid; gap: 0; padding: 0 26px; list-style: none; border: 1px solid var(--border);
+  border-radius: 20px; background: var(--surface); }
+.rows li { display: grid; grid-template-columns: 156px 1fr; align-items: baseline; gap: 20px; padding: 19px 0;
+  font-size: 25px; line-height: 1.35; color: var(--soft); }
+.rows li + li { border-top: 1px solid var(--border); }
+.rows strong { color: var(--violet); font-size: 22px; }
+.rows li:last-child strong { color: var(--amber); }
+.card footer { margin-top: auto; padding-top: 25px; font-size: 19px; color: var(--muted); }
+.card footer a { display: inline-block; margin-bottom: 8px; }
+.isolated .deck { gap: 0; padding: 0; }
+.isolated .card { border-radius: 0; }
+html[lang="zh-CN"] .card h2 { font-size: 76px; line-height: 1.18; letter-spacing: .01em; }
+html[lang="zh-CN"] .card .dek { line-height: 1.6; }
+html[lang="zh-CN"] .rows li { line-height: 1.58; }
+</style>
+</head>
+<body>
+<main class="deck">
+<article class="card" data-card="1">
+<header><span class="masthead">每日财经</span><time datetime="2026-11-18T07:02:00-05:00">2026-11-18 · 截至美东 07:02（UTC−5）</time></header>
+<p class="topic">今日主线</p>
+<h2>芯片股反弹，买盘仍集中</h2>
+<p class="dek">英国商品通胀加速，亚洲科技股回升。宏观压力和盈利增长同时存在。</p>
+<div class="metrics"><div class="metric"><span class="value amber">3.6%</span><span class="caption">英国整体通胀同比</span></div>
+<div class="metric"><span class="value up">+1.99%</span><span class="caption">韩国 KOSPI 收盘</span></div></div>
+<ul class="rows"><li><strong>价格</strong><span>英国商品通胀升至 3.5%，服务通胀维持 3.7%。</span></li>
+<li><strong>股市</strong><span>日经 225 上涨，覆盖范围更广的东证指数收跌。</span></li>
+<li><strong>观察</strong><span>看科技股买盘能否扩散，以及收益率是否回升。</span></li></ul>
+<footer><a href="index.html">阅读完整简报</a><p>仅供资讯参考，不构成投资建议。</p></footer>
+</article>
+<article class="card" data-card="2">
+<header><span class="masthead">每日财经</span><time datetime="2026-11-18T07:02:00-05:00">2026-11-18 · 截至美东 07:02（UTC−5）</time></header>
+<p class="topic">宏观与央行</p>
+<h2>下午公布美联储纪要</h2>
+<p class="dek">美东 14:00 公布 10 月纪要。上次会议有两票支持加息。</p>
+<div class="metrics"><div class="metric"><span class="value neutral">3.75%–4.00%</span><span class="caption">联邦基金利率目标区间</span></div>
+<div class="metric"><span class="value amber">5.10%</span><span class="caption">11 月 17 日美债十年期</span></div></div>
+<ul class="rows"><li><strong>英国通胀</strong><span>核心 CPI 同比持平于 2.8%，整体 CPI 升至 3.6%。</span></li>
+<li><strong>美元兑日元</strong><span>18 日早间盘中报价约 159.22，低于此前约 159.40。</span></li>
+<li><strong>风险</strong><span>纪要反映上月讨论，近期数据仍可能改变利率预期。</span></li></ul>
+<footer><a href="index.html">阅读完整简报</a><p>仅供资讯参考，不构成投资建议。</p></footer>
+</article>
+<article class="card" data-card="3">
+<header><span class="masthead">每日财经</span><time datetime="2026-11-18T07:02:00-05:00">2026-11-18 · 截至美东 07:02（UTC−5）</time></header>
+<p class="topic">市场与行业</p>
+<h2>芯片营收与零售客流同步增长</h2>
+<p class="dek">日本出口创纪录，美国芯片与零售财报分别给出需求线索。</p>
+<div class="metrics"><div class="metric"><span class="value up">+103%</span><span class="caption">NVDA 季度营收同比</span></div>
+<div class="metric"><span class="value up">+5.6%</span><span class="caption">TGT 季度可比销售同比</span></div></div>
+<ul class="rows"><li><strong>芯片</strong><span>NVDA 下季非 GAAP 毛利率指引为 71%–72%，本季为 74.9%。</span></li>
+<li><strong>零售</strong><span>TGT 每股收益 2.65 美元，含 0.50 美元关税退款。</span></li>
+<li><strong>日本贸易</strong><span>出口额同比增 20.5%，进口增幅更大，贸易仍为逆差。</span></li></ul>
+<footer><a href="index.html">阅读完整简报</a><p>仅供资讯参考，不构成投资建议。</p></footer>
+</article>
+<article class="card" data-card="4">
+<header><span class="masthead">每日财经</span><time datetime="2026-11-18T07:02:00-05:00">2026-11-18 · 截至美东 07:02（UTC−5）</time></header>
+<p class="topic">下周观察与风险</p>
+<h2>通胀与增长数据集中在周三</h2>
+<p class="dek">11 月 23–27 日 · 以下时间均为美东时间。</p>
+<div class="metrics"><div class="metric"><span class="value amber">08:30</span><span class="caption">11 月 25 日 · 美国 PCE 与 GDP</span></div>
+<div class="metric"><span class="value neutral">14:00</span><span class="caption">11 月 25 日 · 美联储褐皮书</span></div></div>
+<ul class="rows"><li><strong>数据</strong><span>观察实际消费与核心 PCE 物价是否同向变动。</span></li>
+<li><strong>地区经济</strong><span>比较各地区对工资与成本转嫁的描述。</span></li>
+<li><strong>假日交易</strong><span>纽交所 26 日休市，27 日核心股票时段 13:00 结束。交投清淡时，价格波动可能放大。</span></li></ul>
+<footer><a href="index.html">阅读完整简报</a><p>仅供资讯参考，不构成投资建议。</p></footer>
+</article>
+</main>
+
+<script>
+(() => {
+  const requested = new URLSearchParams(location.search).get('card');
+  if (!/^[1-4]$/.test(requested ?? '')) return;
+  document.documentElement.classList.add('isolated');
+  document.querySelectorAll('[data-card]').forEach(card => {
+    card.hidden = card.dataset.card !== requested;
+  });
+})();
+</script>
+
+</body>
+</html>
