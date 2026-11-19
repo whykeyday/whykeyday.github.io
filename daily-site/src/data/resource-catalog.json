@@ -4,6 +4,44 @@
     "categories": [
       "news"
     ],
+    "title": "A major AI IPO prices as U.S. and Australian rate signals diverge",
+    "date": "2026-11-19",
+    "dateLabel": "Nov 19, 2026",
+    "folderLabel": "2026/11/19/daily-news",
+    "href": "/news/2026/11/19/daily-news/en/index.html",
+    "zhHref": "/news/2026/11/19/daily-news/zh/index.html",
+    "image": "/news/2026/11/19/daily-news/cover.webp",
+    "cards": [
+      "/news/2026/11/19/daily-news/en/card-1.webp",
+      "/news/2026/11/19/daily-news/en/card-2.webp",
+      "/news/2026/11/19/daily-news/en/card-3.webp",
+      "/news/2026/11/19/daily-news/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "art",
+    "categories": [
+      "art"
+    ],
+    "title": "The Rain Inside the Glass",
+    "date": "2026-11-19",
+    "dateLabel": "Nov 19, 2026",
+    "folderLabel": "2026/11/19/drops-of-rain",
+    "href": "/art/2026/11/19/drops-of-rain/en/index.html",
+    "zhHref": "/art/2026/11/19/drops-of-rain/zh/index.html",
+    "image": "/art/2026/11/19/drops-of-rain/cover.webp",
+    "cards": [
+      "/art/2026/11/19/drops-of-rain/en/card-1.webp",
+      "/art/2026/11/19/drops-of-rain/en/card-2.webp",
+      "/art/2026/11/19/drops-of-rain/en/card-3.webp",
+      "/art/2026/11/19/drops-of-rain/en/card-4.webp"
+    ]
+  },
+  {
+    "kind": "news",
+    "categories": [
+      "news"
+    ],
     "title": "UK inflation picks up as Asian chip shares rebound",
     "date": "2026-11-18",
     "dateLabel": "Nov 18, 2026",

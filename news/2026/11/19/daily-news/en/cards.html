@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>View the four cards · Daily Finance</title>
+<style>
+:root { color-scheme:dark; --base:#070b1a; --panel:rgba(19,28,57,.68); --ink:#edf2ff;
+ --soft:#b8c3e1; --accent:#8ce3ff; --risk:#ffb4c5; --line:rgba(157,182,255,.26);
+ --display:Georgia,"Noto Serif CJK SC","Songti SC",STSong,serif;
+ --body:system-ui,"Noto Sans CJK SC","Microsoft YaHei",sans-serif; }
+* { box-sizing:border-box; }
+body { margin:0; color:var(--ink); font-family:var(--body); background-color:var(--base); }
+a { color:var(--accent); text-underline-offset:.2em; }
+a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+
+.deck { display:grid; justify-content:center; gap:28px; padding:28px 16px; }
+.frame { position:relative; width:min(1080px,calc(100vw - 32px)); aspect-ratio:4/5; }
+.card { position:absolute; inset:0 auto auto 0; width:1080px; height:1350px; --scale:1;
+ transform:scale(var(--scale)); transform-origin:top left; padding:65px 72px 52px;
+ display:flex; flex-direction:column; border:1px solid var(--line); overflow:hidden;
+ background:
+   radial-gradient(ellipse at 5% 8%,rgba(45,101,174,.42),transparent 63%),
+   radial-gradient(ellipse at 98% 12%,rgba(105,62,158,.42),transparent 55%),
+   radial-gradient(ellipse at 13% 90%,rgba(26,105,136,.25),transparent 52%),
+   linear-gradient(165deg,#10172e,#050610 78%); }
+.masthead,.foot { display:flex; justify-content:space-between; align-items:baseline; gap:24px; color:var(--soft); }
+.masthead { padding-bottom:23px; border-bottom:1px solid var(--line); font-size:26px; }
+.masthead strong { color:var(--ink); }
+.tag { color:var(--accent); font-size:27px; font-weight:650; letter-spacing:.02em; margin:35px 0 13px; }
+h1 { font-family:var(--display); font-size:76px; line-height:1.11; text-wrap:balance; margin:0; font-weight:700; }
+.lead { color:var(--soft); font-size:32px; line-height:1.4; margin:20px 0 25px; }
+.stat { display:grid; grid-template-columns: minmax(280px,max-content) 1fr; align-items:center; gap:30px;
+ background:linear-gradient(125deg,rgba(90,137,217,.2),rgba(38,48,86,.55) 72%);
+ border:1px solid rgba(157,182,255,.34); border-radius:23px; padding:19px 28px; }
+.value { font-size:76px; font-weight:720; line-height:1; letter-spacing:-.045em; font-variant-numeric:tabular-nums;
+ color:var(--accent); background:linear-gradient(120deg,#95edff,#abaaff 70%,#d2b2ff); background-clip:text; -webkit-text-fill-color:transparent; }
+.metric { font-size:32px; line-height:1.22; font-weight:630; }
+.panels { display:grid; gap:15px; margin-top:19px; }
+.panel { padding:17px 25px 20px; border:1px solid var(--line); border-radius:19px; background:var(--panel); }
+.panel.risk { background:linear-gradient(115deg,rgba(112,47,79,.5),var(--panel) 85%); border-color:rgba(255,166,197,.27); }
+.panel h2 { font-size:24px; line-height:1.2; color:var(--accent); margin:0 0 6px; }
+.panel.risk h2 { color:var(--risk); }
+.panel p { font-size:29px; line-height:1.3; margin:0; }
+.foot { font-size:20px; margin-top:auto; padding-top:17px; border-top:1px solid var(--line); }
+.card:lang(zh) h1 { line-height:1.19; }
+.deck.single { padding:0; }
+.single .frame { width:min(1080px,100vw); }
+[hidden] { display:none!important; }
+@media print { .deck { display:block;padding:0; } .frame { width:1080px; height:1350px; break-after:page; }
+ .card { transform:none; print-color-adjust:exact; } @page { size:1080px 1350px; margin:0; } }
+</style>
+</head>
+<body>
+<!-- style_ref: U41 -->
+<main class="deck">
+<div class="frame"><article class="card" id="card-1">
+<div class="masthead"><strong>Daily Finance</strong><time datetime="2026-11-19">November 19, 2026</time></div>
+<p class="tag">Lead story</p>
+<h1>A major AI IPO is set to debut</h1>
+<p class="lead">The offer priced above the preliminary range. The debut will test secondary-market demand.</p>
+<div class="stat"><span class="value">$83</span><span class="metric">ANT offer price per share</span></div>
+<div class="panels">
+<section class="panel"><h2>Deal size</h2><p>The base deal includes 980 million shares, including sales by existing holders.</p></section>
+<section class="panel risk"><h2>Counter-risk</h2><p>Infrastructure bills could come due faster than cash collections grow.</p></section>
+</div>
+<footer class="foot"><span>For information only. This material does not constitute investment advice.</span><a href="index.html">Read the full briefing</a></footer>
+</article></div>
+<div class="frame"><article class="card" id="card-2">
+<div class="masthead"><strong>Daily Finance</strong><time datetime="2026-11-19">November 19, 2026</time></div>
+<p class="tag">Economy and central banks</p>
+<h1>The Fed leans tighter as Australian jobs weaken</h1>
+<p class="lead">The latest releases point to different pressures on the two rate paths.</p>
+<div class="stat"><span class="value">4.9%</span><span class="metric">Australia’s October jobless rate, seasonally adjusted</span></div>
+<div class="panels">
+<section class="panel"><h2>United States</h2><p>The Fed held at 3.75%–4.00% in October. The minutes show broad support for further hikes.</p></section>
+<section class="panel risk"><h2>Australia</h2><p>Employment fell by about 44,000 in October. Persistent inflation leaves room for more hikes.</p></section>
+</div>
+<footer class="foot"><span>For information only. This material does not constitute investment advice.</span><a href="index.html">Read the full briefing</a></footer>
+</article></div>
+<div class="frame"><article class="card" id="card-3">
+<div class="masthead"><strong>Daily Finance</strong><time datetime="2026-11-19">November 19, 2026</time></div>
+<p class="tag">Markets and sectors</p>
+<h1>U.S. stocks split as oil falls</h1>
+<p class="lead">November 18 closes and settlements.</p>
+<div class="stat"><span class="value">−0.23%</span><span class="metric">Broad U.S. equity benchmark (SPX)</span></div>
+<div class="panels">
+<section class="panel"><h2>Equities</h2><p>The tech-heavy composite gained 0.42%. Chip bellwether NVDA fell about 2.9%.</p></section>
+<section class="panel"><h2>Energy and rates</h2><p>WTI settled 3.2% lower. The U.S. 10-year Treasury yield eased to 5.07%.</p></section>
+</div>
+<footer class="foot"><span>For information only. This material does not constitute investment advice.</span><a href="index.html">Read the full briefing</a></footer>
+</article></div>
+<div class="frame"><article class="card" id="card-4">
+<div class="masthead"><strong>Daily Finance</strong><time datetime="2026-11-19">November 19, 2026</time></div>
+<p class="tag">Next week and risks</p>
+<h1>U.S. inflation data land in a short trading week</h1>
+<p class="lead">Inflation and growth updates arrive before the holiday.</p>
+<div class="stat"><span class="value">NOV 25</span><span class="metric">8:30 a.m. ET · PCE and GDP</span></div>
+<div class="panels">
+<section class="panel"><h2>November 25</h2><p>The Fed’s Beige Book is due at 2 p.m. ET. Watch regional hiring and business pricing.</p></section>
+<section class="panel risk"><h2>November 26–27</h2><p>U.S. exchanges close Thursday and end regular equity trading at 1 p.m. ET Friday. Thin trading could magnify price moves.</p></section>
+</div>
+<footer class="foot"><span>For information only. This material does not constitute investment advice.</span><a href="index.html">Read the full briefing</a></footer>
+</article></div>
+</main>
+<script>
+const deck = document.querySelector('.deck');
+const frames = [...deck.querySelectorAll('.frame')];
+const selected = new URLSearchParams(window.location.search).get('card');
+if (selected && /^[1-4]$/.test(selected)) {
+  deck.classList.add('single');
+  frames.forEach((frame, index) => { frame.hidden = index !== Number(selected) - 1; });
+}
+const fitCards = () => {
+  for (const frame of frames) {
+    if (!frame.hidden) frame.firstElementChild.style.setProperty('--scale', frame.clientWidth / 1080);
+  }
+};
+new ResizeObserver(fitCards).observe(deck);
+fitCards();
+</script>
+</body>
+</html>
