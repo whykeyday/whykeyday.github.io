@@ -1,4 +1,20 @@
 const projects = {
+    betweenUs: {
+        kicker: "Wearable interface · DIGF-3010 · Fall 2026",
+        title: "Between Us",
+        description: "A pet garment and its owner's glove use different signals for passersby and the owner. The garment uses lettering and light to communicate the owner's choice. Conductive-fabric touch patches trigger a visual cue on the glove, and a wrist vibration is designed to signal sustained contact. The project asks whose boundaries an owner-controlled signal can represent.",
+        tags: ["Wearable Electronics", "Conductive Fabric", "Capacitive Touch", "Haptic Feedback"],
+        primary: "https://blogs.ocaduwebspace.ca/digf-3010-301-2026fa/2-wearable-display/between-us/",
+        primaryLabel: "Read the OCAD project",
+        secondary: "https://www.youtube.com/watch?v=hv2o5OO2BQA",
+        secondaryLabel: "Watch the worn demo",
+        preview: "url('assets/wearables/between-us-1.webp')",
+        gallery: [
+            { src: "assets/wearables/between-us-1.webp", alt: "Owner wearing the glove with the cat in its matching garment" },
+            { src: "assets/wearables/between-us-2.webp", alt: "Cat wearing the garment with illuminated lettering" },
+            { src: "assets/wearables/between-us-3.webp", alt: "The prototype garment, leash, and glove laid out together" }
+        ]
+    },
     recognizeMe: {
     "kicker": "Wearable interface · DIGF-3010 · Fall 2026",
     "title": "Recognize Me?",
@@ -128,8 +144,8 @@ const projects = {
         primaryLabel: "Play on GX Games",
         secondary: "https://keyinggamedesign.itch.io/echoes-of-past",
         secondaryLabel: "View Itch.io Page",
-        preview: "linear-gradient(145deg, #17233a 0%, #31567d 42%, #f6a1bc 100%)",
-        media: "launch"
+        cover: "assets/echoes-of-past-cover.png",
+        coverAlt: "Echoes of Past pixel-art cover with a red heart, the title, and a character's face"
     },
     media2d: {
         kicker: "2D gallery",
@@ -255,6 +271,8 @@ const panelPrev = document.getElementById("panel-prev");
 const panelNext = document.getElementById("panel-next");
 const panelDots = document.getElementById("panel-dots");
 const projectToggle = document.querySelector(".project-toggle");
+const scene = document.getElementById("scene");
+const showcaseSections = document.querySelectorAll("#wearables, #play");
 const modal = document.getElementById("project-modal");
 const modalKicker = document.getElementById("modal-kicker");
 const modalTitle = document.getElementById("modal-title");
@@ -266,7 +284,7 @@ const modalSecondary = document.getElementById("modal-secondary");
 const menuButton = document.querySelector(".menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
 const railLinks = Array.from(document.querySelectorAll(".left-rail a[href^='#']"));
-const sliderProjectIds = ["recognizeMe", "blooming", "takeBreath", "inFocus", "echoes", "media2d", "viewer3d", "beyond", "installation", "demo2", "demo34", "breath", "grain", "pull"];
+const sliderProjectIds = ["betweenUs", "recognizeMe", "blooming", "takeBreath", "inFocus", "echoes", "media2d", "viewer3d", "beyond", "installation", "demo2", "demo34", "breath", "grain", "pull"];
 let currentProjectId = "echoes";
 let panelUserHidden = false;
 let panelAvailable = false;
@@ -274,10 +292,22 @@ let autoSlideTimer;
 
 function setPreview(target, project) {
     target.innerHTML = "";
+    if (project.cover) {
+        appendProjectCover(target, project);
+        return;
+    }
     const preview = document.createElement("div");
-    preview.className = project.media === "launch" ? "preview-art launch-preview" : "preview-art";
+    preview.className = "preview-art";
     preview.style.setProperty("--preview", project.preview);
     target.append(preview);
+}
+
+function appendProjectCover(target, project) {
+    const image = document.createElement("img");
+    image.className = "game-cover";
+    image.src = project.cover;
+    image.alt = project.coverAlt;
+    target.append(image);
 }
 
 function selectProject(id, openModal = false) {
@@ -367,8 +397,11 @@ function restartAutoSlide() {
 }
 
 function updateFloatingPanelState() {
-    const scene = document.getElementById("scene");
-    panelAvailable = scene.getBoundingClientRect().bottom < window.innerHeight * 0.68;
+    const showcaseInView = Array.from(showcaseSections).some(section => {
+        const { top, bottom } = section.getBoundingClientRect();
+        return top < window.innerHeight && bottom > 0;
+    });
+    panelAvailable = scene.getBoundingClientRect().bottom < window.innerHeight * 0.68 && !showcaseInView;
     projectPanel.classList.toggle("is-floating", panelAvailable && !panelUserHidden);
     projectToggle.classList.toggle("is-visible", panelAvailable && panelUserHidden);
 
@@ -395,20 +428,8 @@ function renderModalMedia(project) {
         return;
     }
 
-    if (project.media === "launch") {
-        const launch = document.createElement("div");
-        launch.className = "game-launch modal-launch";
-        launch.innerHTML = `
-            <span class="launch-moon"></span>
-            <span class="launch-tree"></span>
-            <span class="launch-character"></span>
-            <div class="launch-copy">
-                <p class="micro-text">Open playable build</p>
-                <h3>${project.title}</h3>
-                <p>GX Games does not allow embedded play, so use the launch buttons below to open the game.</p>
-            </div>
-        `;
-        modalMedia.append(launch);
+    if (project.cover) {
+        appendProjectCover(modalMedia, project);
         return;
     }
 
@@ -511,7 +532,6 @@ function addParticles() {
 }
 
 function addPointerGlow() {
-    const scene = document.querySelector(".scene-section");
     let lastTrail = 0;
 
     scene.addEventListener("pointermove", (event) => {

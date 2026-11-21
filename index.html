@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=wearables-20261019">
+    <link rel="stylesheet" href="style.css?v=portfolio-20261120">
 </head>
 <body>
     <a class="skip-link" href="#scene">Skip to portfolio</a>
@@ -28,7 +28,7 @@
             <a href="#play">Play</a>
             <a href="#about">About</a>
             <a href="materials/">Materials</a>
-            <a href="assets/cv/keying-dai-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+            <a href="assets/cv/keying-dai-cv.pdf?v=20261120" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
             <a href="#contact">Contact</a>
         </nav>
         <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu">
@@ -44,7 +44,7 @@
         <a href="#play">Play</a>
         <a href="#about">About</a>
         <a href="materials/">Materials</a>
-            <a href="assets/cv/keying-dai-cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+            <a href="assets/cv/keying-dai-cv.pdf?v=20261120" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         <a href="#contact">Contact</a>
     </nav>
 
@@ -89,7 +89,7 @@
                 <p class="hero-intro">I craft meaningful experiences through motion, interaction, spatial media, and visual storytelling. My practice spans VR/AR, UI/UX, game design, installation, animation, and 3D world-building.</p>
                 <ul class="hero-facts" aria-label="Profile highlights">
                     <li>OCAD University - Experimental Animation BFA</li>
-                    <li>3D Animator at Empowered Futures</li>
+                    <li>3D Animator at Empowered Futures (Aug 2024 – Jan 2026)</li>
                     <li>Co-founder / Art & Visual Identity Lead at Telotia</li>
                 </ul>
             </div>
@@ -233,9 +233,13 @@
             <div class="section-heading">
                 <p class="micro-text">Wearable interfaces · 2026</p>
                 <h2 id="wearables-title">Softness, Signals, Boundaries</h2>
-                <p>Clothing becomes a way to communicate care, attention, and permission. Four material experiments bring sensing, light, sound, and movement onto the body.</p>
+                <p>Clothing becomes a way to communicate care, attention, and permission through touch, light, sound, and movement.</p>
             </div>
             <div class="wearable-grid">
+                <button class="wearable-card wearable-card--featured" id="between-us" type="button" data-project="betweenUs" aria-label="Explore Between Us">
+                    <span class="wearable-photo"><img src="assets/wearables/between-us-1.webp" alt="A cat wearing the Between Us garment beside its owner, who is wearing the matching glove" loading="lazy" width="1024" height="975"></span>
+                    <span class="wearable-copy"><small>DIGF-3010 · Fall 2026</small><strong>Between Us</strong><span>A pet garment and a glove explore how we communicate boundaries around touch.</span><span class="wearable-cta">Explore project ↗</span></span>
+                </button>
                 <button class="wearable-card" type="button" data-project="recognizeMe" aria-label="Explore Recognize Me?">
                     <span class="wearable-photo"><img src="assets/wearables/recognize-me-1.webp" alt="Recognize Me? worn on the body" loading="lazy" width="800" height="1024"></span>
                     <span class="wearable-copy"><small>DIGF-3010 · Fall 2026</small><strong>Recognize Me?</strong><span>Touch, trust, and negotiated intimacy.</span><span class="wearable-cta">Explore project ↗</span></span>
@@ -260,19 +264,10 @@
             <div class="section-heading">
                 <p class="micro-text">Playable spotlight</p>
                 <h2 id="play-title">Echoes of Past</h2>
-                <p>GX Games does not allow embedded play, so the game opens cleanly in a new tab instead of showing a broken frame.</p>
+                <p>A pixel-art puzzle game about memory, investigation, and choices that change the ending.</p>
             </div>
             <div class="game-shell">
-                <div class="game-launch" aria-label="Echoes of Past launch panel">
-                    <span class="launch-moon"></span>
-                    <span class="launch-tree"></span>
-                    <span class="launch-character"></span>
-                    <div class="launch-copy">
-                        <p class="micro-text">Open playable build</p>
-                        <h3>Echoes of Past</h3>
-                        <p>A narrative puzzle game about memory, investigation, and changing the ending.</p>
-                    </div>
-                </div>
+                <img class="game-cover" src="assets/echoes-of-past-cover.png" alt="Echoes of Past pixel-art cover with a red heart, the title, and a character's face" loading="lazy" width="1651" height="933">
                 <div class="game-actions">
                     <a class="primary-action" href="https://gx.games/games/2upm5i/echoes-of-past/" target="_blank" rel="noreferrer">Play on GX Games</a>
                     <a class="secondary-action" href="https://keyinggamedesign.itch.io/echoes-of-past" target="_blank" rel="noreferrer">View Itch.io Page</a>
@@ -287,7 +282,7 @@
                 <p>Keying Dai is a digital artist and immersive experience designer studying Experimental Animation at OCAD University. Her work connects 3D animation, VR/AR, UI/UX, game design, installation, illustration, and video editing into clear emotional systems.</p>
             </div>
             <div class="game-actions">
-                <a class="primary-action" href="assets/cv/keying-dai-cv.pdf" download="Keying_Dai_CV.pdf">Download CV (PDF)</a>
+                <a class="primary-action" href="assets/cv/keying-dai-cv.pdf?v=20261120" download="Keying_Dai_CV.pdf">Download CV (PDF)</a>
             </div>
             <div class="skill-cloud" aria-label="Creative tools and skills">
                 <span>Maya</span>
@@ -348,6 +343,6 @@
         <span>Project</span>
     </button>
 
-    <script src="portfolio.js?v=wearables-20261019"></script>
+    <script src="portfolio.js?v=portfolio-20261120"></script>
 </body>
 </html>
