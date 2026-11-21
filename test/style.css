@@ -114,6 +114,10 @@ html.motion-paused .pixel-light-surface{display:none!important}html.motion-pause
 .wheel-items{position:absolute;inset:0}
 .product-wheel-item{height:204px;position:absolute;top:10px;left:0;width:calc(var(--product-step,306px) - 48px);padding:14px 0 12px;display:flex;flex-direction:column;align-items:flex-start;gap:20px;will-change:transform;pointer-events:none}
 .product-wheel-item h3{font:500 32px/1.18 Inter,Arial,sans-serif;letter-spacing:-.035em;overflow-wrap:anywhere;margin:0}
+.product-link{pointer-events:auto;display:inline-flex;align-items:baseline;gap:12px;color:inherit;text-decoration:none;cursor:pointer}
+.product-link>span{font-size:.62em;color:var(--accent)}
+.product-link:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px}
+.product-link:focus-visible{outline:1px solid var(--accent);outline-offset:6px}
 .wheel-number{font-size:11px;letter-spacing:.08em;color:var(--accent);font-variant-numeric:tabular-nums;margin:0}
 .product-wheel-item>div{margin-top:auto}
 .product-wheel-item>div p{font-size:18px;line-height:1.5;color:var(--muted);margin:0}
