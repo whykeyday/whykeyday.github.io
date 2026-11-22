@@ -7,7 +7,31 @@ const media = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = media.matches;
 try { const saved = localStorage.getItem('telotia-obsidian-motion'); if(saved !== null) paused = saved === 'paused' || media.matches; } catch {}
 const motionButton = document.querySelector('[data-motion]');
+const productVideo = document.querySelector('[data-product-video]');
+let productVideoVisible = !('IntersectionObserver' in window);
+
+function updateProductVideo() {
+  if (!productVideo) return;
+  if (!productVideoVisible || document.hidden || paused || media.matches) {
+    productVideo.pause();
+  } else if (productVideo.paused) {
+    productVideo.play().catch(() => {});
+  }
+}
+
+if (productVideo) {
+  document.addEventListener('visibilitychange', updateProductVideo);
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(([entry]) => {
+      productVideoVisible = entry.isIntersecting;
+      updateProductVideo();
+    });
+    observer.observe(productVideo);
+  }
+}
+
 function updateMotion(){
+  updateProductVideo();
   root.classList.toggle('motion-paused',paused);
   document.dispatchEvent(new CustomEvent('telotia-motion',{detail:{paused}}));
   motionButton.setAttribute('aria-pressed',String(paused));

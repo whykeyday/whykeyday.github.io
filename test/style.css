@@ -128,6 +128,33 @@ html.motion-paused .pixel-light-surface{display:none!important}html.motion-pause
 @media(max-width:760px){.product-wheel-layout{display:block}.product-wheel-layout .products-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}.wheel-counter{margin-top:0}.product-wheel{height:220px;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)}.product-wheel-item{height:200px}.product-wheel-layout+.product-landscape{margin-top:18px}}
 
 
-/* Rebuilt vector animation based on the sketch. */
-.product-landscape.sketch-motion{height:360px;margin-top:28px;background:#000}.sketch-motion>img{opacity:.12;bottom:-150px}.sketch-motion .product-motion-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-@media(max-width:760px){.product-landscape.sketch-motion{height:290px;margin-top:20px}.sketch-motion>img{opacity:.09;bottom:-185px}}
+/* Hand-drawn film on the product stage. */
+.product-landscape.product-film {
+  height: 360px;
+  margin-top: 28px;
+  background: #000;
+}
+.product-film > img {
+  opacity: .12;
+  bottom: -150px;
+}
+.product-film > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* The supplied MP4 has a black matte. Screen keeps it clear over the stage art. */
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+@media (max-width: 760px) {
+  .product-landscape.product-film {
+    height: 290px;
+    margin-top: 20px;
+  }
+  .product-film > img {
+    opacity: .09;
+    bottom: -185px;
+  }
+}
