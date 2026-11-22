@@ -128,33 +128,43 @@ html.motion-paused .pixel-light-surface{display:none!important}html.motion-pause
 @media(max-width:760px){.product-wheel-layout{display:block}.product-wheel-layout .products-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}.wheel-counter{margin-top:0}.product-wheel{height:220px;mask-image:linear-gradient(to right,transparent,#000 9%,#000 91%,transparent)}.product-wheel-item{height:200px}.product-wheel-layout+.product-landscape{margin-top:18px}}
 
 
-/* Hand-drawn film on the product stage. */
-.product-landscape.product-film {
-  height: 360px;
-  margin-top: 28px;
-  background: #000;
+/* Compact light accent below the product listings. */
+.product-landscape.product-accent {
+  height: 112px;
+  margin-top: 16px;
 }
-.product-film > img {
-  opacity: .12;
-  bottom: -150px;
-}
-.product-film > video {
-  position: absolute;
+.product-landscape.product-accent > img {
   inset: 0;
   width: 100%;
   height: 100%;
+  min-height: 0;
+  object-position: center 68%;
+  transform: none;
+  translate: none;
+  opacity: .12;
+}
+
+/* The original hand-drawn film occupies the About artwork column. */
+.about-film {
+  min-width: 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+.about-film > video {
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
-  /* The supplied MP4 has a black matte. Screen keeps it clear over the stage art. */
   mix-blend-mode: screen;
   pointer-events: none;
 }
 @media (max-width: 760px) {
-  .product-landscape.product-film {
-    height: 290px;
-    margin-top: 20px;
+  .product-landscape.product-accent {
+    height: 80px;
+    margin-top: 12px;
   }
-  .product-film > img {
-    opacity: .09;
-    bottom: -185px;
+  .about-film {
+    max-width: 560px;
+    margin: 24px auto 28px;
   }
 }

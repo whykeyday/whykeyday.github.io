@@ -7,31 +7,31 @@ const media = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = media.matches;
 try { const saved = localStorage.getItem('telotia-obsidian-motion'); if(saved !== null) paused = saved === 'paused' || media.matches; } catch {}
 const motionButton = document.querySelector('[data-motion]');
-const productVideo = document.querySelector('[data-product-video]');
-let productVideoVisible = !('IntersectionObserver' in window);
+const aboutVideo = document.querySelector('[data-about-video]');
+let aboutVideoVisible = !('IntersectionObserver' in window);
 
-function updateProductVideo() {
-  if (!productVideo) return;
-  if (!productVideoVisible || document.hidden || paused || media.matches) {
-    productVideo.pause();
-  } else if (productVideo.paused) {
-    productVideo.play().catch(() => {});
+function updateAboutVideo() {
+  if (!aboutVideo) return;
+  if (!aboutVideoVisible || document.hidden || paused || media.matches) {
+    aboutVideo.pause();
+  } else if (aboutVideo.paused) {
+    aboutVideo.play().catch(() => {});
   }
 }
 
-if (productVideo) {
-  document.addEventListener('visibilitychange', updateProductVideo);
+if (aboutVideo) {
+  document.addEventListener('visibilitychange', updateAboutVideo);
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(([entry]) => {
-      productVideoVisible = entry.isIntersecting;
-      updateProductVideo();
+      aboutVideoVisible = entry.isIntersecting;
+      updateAboutVideo();
     });
-    observer.observe(productVideo);
+    observer.observe(aboutVideo);
   }
 }
 
 function updateMotion(){
-  updateProductVideo();
+  updateAboutVideo();
   root.classList.toggle('motion-paused',paused);
   document.dispatchEvent(new CustomEvent('telotia-motion',{detail:{paused}}));
   motionButton.setAttribute('aria-pressed',String(paused));

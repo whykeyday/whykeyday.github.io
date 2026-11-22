@@ -32,6 +32,6 @@ function load(){try{gl.bindTexture(gl.TEXTURE_2D,texture);gl.texImage2D(gl.TEXTU
 canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=true;refresh()});image.addEventListener('load',load);if(image.complete&&image.naturalWidth)load();
 new ResizeObserver(()=>{draw();refresh()}).observe(section);new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;refresh()},{rootMargin:'60px'}).observe(section);fields.push({refresh});
 }
-install(document.querySelector('.hero'),'.hero-art img','hero');install(document.querySelector('.contact'),'.contact-art img','contact');install(document.querySelector('.connection-art'),'img','loop');
+install(document.querySelector('.hero'),'.hero-art img','hero');install(document.querySelector('.contact'),'.contact-art img','contact');
 document.addEventListener('telotia-motion',()=>fields.forEach(f=>f.refresh()));document.addEventListener('visibilitychange',()=>fields.forEach(f=>f.refresh()));reduced.addEventListener('change',()=>fields.forEach(f=>f.refresh()));
 })();
