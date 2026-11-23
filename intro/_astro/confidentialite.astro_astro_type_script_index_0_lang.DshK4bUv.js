@@ -1,0 +1,1 @@
+import{i as c}from"./site.BJPZAARU.js";c();const o=()=>{const t=document.documentElement.dataset.lang==="en";for(const e of document.querySelectorAll(".toc a")){const n=(e.getAttribute("href")||"").replace(/-en$/,"");e.setAttribute("href",t?n+"-en":n)}};o();for(const t of document.querySelectorAll(".lang button"))t.addEventListener("click",o);
