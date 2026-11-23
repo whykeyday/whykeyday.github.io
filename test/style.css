@@ -254,15 +254,15 @@ html.motion-paused .pixel-light-surface{display:none!important}html.motion-pause
 }
 :root[data-theme="light"] {
   color-scheme: light;
-  --bg: #f9f7f1;
+  --bg: #F7F5F0;
   --text: #252b28;
   --muted: #4d5750;
   --accent: #086d66;
   --line: #d6d1c5;
-  --header-glass: rgb(249 247 241 / 62%);
-  --header-fallback: #f5f2e9;
+  --header-glass: rgb(247 245 240 / 62%);
+  --header-fallback: var(--bg);
   --header-edge: rgb(67 79 70 / 22%);
-  --xuan-paper: linear-gradient(rgb(255 254 250 / 36%), rgb(255 254 250 / 36%)), url('assets/xuan-paper.jpg');
+  --xuan-paper: linear-gradient(rgb(249 251 254 / 56%), rgb(249 251 254 / 56%)), url('assets/xuan-paper.jpg');
   --header-control: #425759;
   --header-control-line: #b8ccc8;
   --day-art-filter: invert(1) hue-rotate(180deg) saturate(.75);

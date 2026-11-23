@@ -20,7 +20,7 @@ function updateThemeControl() {
   themeToggle.title = french
     ? (light ? 'Passer en mode sombre' : 'Passer en mode clair')
     : (light ? 'Switch to dark mode' : 'Switch to light mode');
-  themeColor.content = light ? '#f9f7f1' : '#030707';
+  themeColor.content = light ? '#F7F5F0' : '#030707';
 }
 
 themeToggle.addEventListener('click', () => {
