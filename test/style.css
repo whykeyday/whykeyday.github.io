@@ -353,12 +353,11 @@ html.motion-paused .site-header { transition: none; }
   background-position: center bottom;
 }
 :root[data-theme="light"] .hero::before {
-  height: clamp(310px, 42vw, 650px);
-  background-image: url('assets/ink-mountains.jpg');
-  background-size: max(100%, 630px) auto;
-  opacity: .44;
-  -webkit-mask-image: linear-gradient(transparent, #000 26%, #000 79%, transparent);
-  mask-image: linear-gradient(transparent, #000 26%, #000 79%, transparent);
+  bottom: clamp(110px, 15vh, 160px);
+  height: clamp(105px, 12vw, 190px);
+  background-image: url('assets/ink-waves.webp');
+  background-size: 100% 100%;
+  opacity: .86;
 }
 :root[data-theme="light"] .contact::before {
   height: clamp(190px, 26vw, 370px);
@@ -367,9 +366,6 @@ html.motion-paused .site-header { transition: none; }
   opacity: .52;
   -webkit-mask-image: linear-gradient(transparent, #000 62%, #000 84%, transparent);
   mask-image: linear-gradient(transparent, #000 62%, #000 84%, transparent);
-}
-@media (max-width: 760px) {
-  :root[data-theme="light"] .hero::before { background-position-x: 63%; }
 }
 :root[data-theme="light"] .about-film > video {
   mix-blend-mode: multiply;
