@@ -39,8 +39,8 @@ function mount() {
   let current = clamp((scrollY - 12) / 320), target = current, frame = 0, last = 0;
   function paint() {
     letters.forEach((letter, index) => {
-      // Adjacent fades overlap, so e → l → o → t → i → a reads as one gesture.
-      const local = clamp((current - index * .14) / .30);
+      // Adjacent fades overlap from right to left: a → i → t → o → l → e.
+      const local = clamp((current - (letters.length - 1 - index) * .14) / .30);
       const progress = local * local * (3 - 2 * local);
       const distance = [90, 160, 240, 310, 365, 440][index];
       letter.setAttribute('transform', `translate(${-distance * progress} 0)`);
