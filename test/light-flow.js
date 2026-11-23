@@ -1,6 +1,9 @@
 (() => {
 'use strict';
-const reduced=matchMedia('(prefers-reduced-motion:reduce)'),paused=()=>reduced.matches||document.documentElement.classList.contains('motion-paused'),fields=[];
+const root = document.documentElement;
+const reduced = matchMedia('(prefers-reduced-motion:reduce)');
+const paused = () => reduced.matches || root.classList.contains('motion-paused') || root.dataset.theme === 'light';
+const fields = [];
 const vertex='attribute vec2 a;varying vec2 v;void main(){v=(a+1.0)*0.5;gl_Position=vec4(a,0.0,1.0);}';
 const fragment="precision highp float;\nuniform sampler2D photo;uniform sampler2D ribbonPhase;uniform float clock;uniform float loopMode;uniform float flipped;varying vec2 v;\nvoid main(){\nvec2 uv=vec2(v.x,1.0-v.y);if(flipped>0.5)uv.y=1.0-uv.y;\nvec4 source=texture2D(photo,vec2(uv.x,1.0-uv.y));\nfloat luminance=dot(source.rgb,vec3(.2126,.7152,.0722));\nfloat strength=smoothstep(.015,.12,luminance),gain=1.0;\nif(loopMode>0.5){\nvec4 route=texture2D(ribbonPhase,uv);vec2 phase=route.rg*2.0-1.0;\nfloat angle=atan(phase.y,phase.x),travel=clock*.36;\nfloat wave=pow(.5+.5*cos(angle-travel),8.0),tail=pow(.5+.5*cos(angle-travel+.55),3.0);\ngain=.82+.40*wave+.13*tail;strength*=route.b;\n}else{\nfloat nx=(uv.x-.5)*2.0,arc=.676+.10*nx*nx,outward=arc-uv.y;\nfloat distance=max(0.0,outward)+abs(nx)*.025;\nfloat broad=pow(.5+.5*sin(distance*28.0-clock*.85),2.0),fine=sin(distance*49.0-clock*1.31+nx*nx*.8);\nfloat along=pow(.5+.5*cos(abs(nx)*4.8-clock*.38),3.0);\nfloat rim=exp(-pow(outward/.026,2.0));\ngain=.79+.34*broad+.055*fine+.28*rim*along;\nstrength*=smoothstep(-.05,-.008,outward);\n}\ngl_FragColor=vec4(clamp(source.rgb*mix(1.0,gain,strength),0.0,1.0),1.0);\n}";
 function install(section,selector,kind){
@@ -33,5 +36,9 @@ canvas.addEventListener('webglcontextlost',event=>{event.preventDefault();lost=t
 new ResizeObserver(()=>{draw();refresh()}).observe(section);new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;refresh()},{rootMargin:'60px'}).observe(section);fields.push({refresh});
 }
 install(document.querySelector('.hero'),'.hero-art img','hero');install(document.querySelector('.contact'),'.contact-art img','contact');
-document.addEventListener('telotia-motion',()=>fields.forEach(f=>f.refresh()));document.addEventListener('visibilitychange',()=>fields.forEach(f=>f.refresh()));reduced.addEventListener('change',()=>fields.forEach(f=>f.refresh()));
+const refreshFields = () => fields.forEach(field => field.refresh());
+document.addEventListener('telotia-motion', refreshFields);
+document.addEventListener('telotia-theme', refreshFields);
+document.addEventListener('visibilitychange', refreshFields);
+reduced.addEventListener('change', refreshFields);
 })();

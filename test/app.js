@@ -20,7 +20,7 @@ function updateThemeControl() {
   themeToggle.title = french
     ? (light ? 'Passer en mode sombre' : 'Passer en mode clair')
     : (light ? 'Switch to dark mode' : 'Switch to light mode');
-  themeColor.content = light ? '#f8faf8' : '#030707';
+  themeColor.content = light ? '#f9f7f1' : '#030707';
 }
 
 themeToggle.addEventListener('click', () => {
@@ -28,6 +28,7 @@ themeToggle.addEventListener('click', () => {
   root.dataset.theme = theme;
   try { localStorage.setItem('telotia-theme', theme); } catch {}
   updateThemeControl();
+  document.dispatchEvent(new Event('telotia-theme'));
 });
 
 const aboutVideo = document.querySelector('[data-about-video]');
@@ -56,6 +57,7 @@ if (aboutVideo) {
 function updateMotion(){
   updateAboutVideo();
   root.classList.toggle('motion-paused',paused);
+  if (paused || media.matches) settleBrand();
   document.dispatchEvent(new CustomEvent('telotia-motion',{detail:{paused}}));
   motionButton.setAttribute('aria-pressed',String(paused));
   const label = language === 'fr' ? (paused ? 'Activer l’animation' : 'Arrêter l’animation') : (paused ? 'Resume motion' : 'Pause motion');
@@ -73,7 +75,6 @@ function setLanguage(chosen,updateAddress=true){
  document.querySelector('[data-language]').setAttribute('aria-label',text.language);
  document.querySelectorAll('[data-copy]').forEach(el=>{if(text[el.dataset.copy])el.textContent=text[el.dataset.copy]});
  document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
- document.querySelector('.scroll-cue').setAttribute('aria-label',language==='fr'?'Découvrir les produits':'Explore products');
  document.querySelector('.back-top').setAttribute('aria-label',language==='fr'?'Retour en haut':'Back to top');
  updateMotion();
  updateThemeControl();
@@ -104,12 +105,92 @@ function alignContactLight(){const area=contact.getBoundingClientRect(),action=c
 contactImage.addEventListener('load',alignContactLight);
 new ResizeObserver(alignContactLight).observe(contact.querySelector('.contact-copy'));
 const sections=[...document.querySelectorAll('main section[id]')];
+const brandArt = siteHeader.querySelector('.nav-brand-art');
+const brandSymbol = brandArt.querySelector('[data-brand-symbol]');
+const brandT = brandArt.querySelector('[data-brand-t]');
+const brandHook = brandArt.querySelector('[data-brand-hook]');
+const brandSuffix = brandArt.querySelector('[data-brand-suffix]');
+const brandDot = brandArt.querySelector('[data-brand-dot]');
+const brandDuration = 620;
+const scrollDirectionThreshold = 5;
+let brandCompact = false;
+let brandProgress = 0;
+let brandFrame = 0;
+let brandFrameTime = 0;
+let brandScrollEdge = Math.max(0, window.scrollY);
+
+function smoothstep(value) {
+  const t = Math.min(1, Math.max(0, value));
+  return t * t * t * (t * (t * 6 - 15) + 10);
+}
+
+function drawBrand() {
+  // The original SVG's i dot follows its arc to x=268 above the T.
+  const travel = smoothstep(brandProgress / .55);
+  const lift = smoothstep((brandProgress - .55) / .27);
+  const dotX = -1254.14 * travel;
+  const dotY = -86.67 * travel - 160 * Math.sin(Math.PI * travel) - 37.74 * lift;
+  brandDot.setAttribute('transform', `translate(${dotX} ${dotY})`);
+
+  const suffixExit = smoothstep((brandProgress - .55) / .30);
+  brandSuffix.setAttribute('transform', `translate(${-200 * suffixExit} 0)`);
+  brandSuffix.setAttribute('opacity', 1 - suffixExit);
+
+  const hook = smoothstep((brandProgress - .56) / .30);
+  brandT.setAttribute('opacity', 1 - hook);
+  brandHook.setAttribute('opacity', hook);
+
+  // Center the compact symbol after the dot arrives, with both paths on the same group.
+  const center = smoothstep((brandProgress - .63) / .37);
+  brandSymbol.setAttribute('transform', `translate(${742.47 * center} ${71.5 * center})`);
+}
+
+function settleBrand() {
+  if (brandFrame) cancelAnimationFrame(brandFrame);
+  brandFrame = 0;
+  brandProgress = Number(brandCompact);
+  drawBrand();
+}
+
+function animateBrand(now) {
+  const target = Number(brandCompact);
+  const elapsed = Math.max(0, Math.min(64, now - brandFrameTime));
+  const step = elapsed / brandDuration;
+  brandFrameTime = now;
+  brandProgress = brandCompact ? Math.min(target, brandProgress + step) : Math.max(target, brandProgress - step);
+  drawBrand();
+  brandFrame = brandProgress === target ? 0 : requestAnimationFrame(animateBrand);
+}
+
+function updateBrandDirection(y) {
+  const wasCompact = brandCompact;
+  if (y <= 2) {
+    brandCompact = false;
+    brandScrollEdge = y;
+  } else if (brandCompact) {
+    brandScrollEdge = Math.max(brandScrollEdge, y);
+    if (brandScrollEdge - y >= scrollDirectionThreshold) brandCompact = false;
+  } else {
+    brandScrollEdge = Math.min(brandScrollEdge, y);
+    if (y - brandScrollEdge >= scrollDirectionThreshold) brandCompact = true;
+  }
+
+  if (brandCompact === wasCompact) return;
+  brandScrollEdge = y;
+  if (paused || media.matches) {
+    settleBrand();
+  } else if (!brandFrame) {
+    brandFrameTime = performance.now();
+    brandFrame = requestAnimationFrame(animateBrand);
+  }
+}
 function drawFrame(){
  pending=false;
  alignHeroLight();
  alignContactLight();
  const y=window.scrollY, max=document.documentElement.scrollHeight-innerHeight;
  siteHeader.classList.toggle('is-scrolled', y > 24);
+ updateBrandDirection(Math.max(0, Math.min(y, max)));
  progress.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';
  let current='home';
  for(const section of sections)if(section.getBoundingClientRect().top<innerHeight*.4)current=section.id;
