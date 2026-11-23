@@ -7,6 +7,29 @@ const media = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = media.matches;
 try { const saved = localStorage.getItem('telotia-obsidian-motion'); if(saved !== null) paused = saved === 'paused' || media.matches; } catch {}
 const motionButton = document.querySelector('[data-motion]');
+
+const siteHeader = document.querySelector('.site-header');
+const themeToggle = document.querySelector('[data-theme-toggle]');
+const themeColor = document.querySelector('meta[name="theme-color"]');
+
+function updateThemeControl() {
+  const light = root.dataset.theme === 'light';
+  const french = language === 'fr';
+  themeToggle.setAttribute('aria-label', french ? 'Mode clair' : 'Light mode');
+  themeToggle.setAttribute('aria-pressed', String(light));
+  themeToggle.title = french
+    ? (light ? 'Passer en mode sombre' : 'Passer en mode clair')
+    : (light ? 'Switch to dark mode' : 'Switch to light mode');
+  themeColor.content = light ? '#f8faf8' : '#030707';
+}
+
+themeToggle.addEventListener('click', () => {
+  const theme = root.dataset.theme === 'light' ? 'dark' : 'light';
+  root.dataset.theme = theme;
+  try { localStorage.setItem('telotia-theme', theme); } catch {}
+  updateThemeControl();
+});
+
 const aboutVideo = document.querySelector('[data-about-video]');
 let aboutVideoVisible = !('IntersectionObserver' in window);
 
@@ -53,6 +76,7 @@ function setLanguage(chosen,updateAddress=true){
  document.querySelector('.scroll-cue').setAttribute('aria-label',language==='fr'?'Découvrir les produits':'Explore products');
  document.querySelector('.back-top').setAttribute('aria-label',language==='fr'?'Retour en haut':'Back to top');
  updateMotion();
+ updateThemeControl();
  document.dispatchEvent(new CustomEvent('telotia-language',{detail:{language}}));
  if(updateAddress){const url=new URL(location.href);if(language==='fr')url.searchParams.set('lang','fr');else url.searchParams.delete('lang');history.replaceState(null,'',url)}
  scheduleFrame();
@@ -85,6 +109,7 @@ function drawFrame(){
  alignHeroLight();
  alignContactLight();
  const y=window.scrollY, max=document.documentElement.scrollHeight-innerHeight;
+ siteHeader.classList.toggle('is-scrolled', y > 24);
  progress.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';
  let current='home';
  for(const section of sections)if(section.getBoundingClientRect().top<innerHeight*.4)current=section.id;
