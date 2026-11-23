@@ -5,8 +5,7 @@ let language = 'en';
 const root = document.documentElement;
 const media = matchMedia('(prefers-reduced-motion: reduce)');
 let paused = media.matches;
-try { const saved = localStorage.getItem('telotia-obsidian-motion'); if(saved !== null) paused = saved === 'paused' || media.matches; } catch {}
-const motionButton = document.querySelector('[data-motion]');
+// Motion follows the system preference; the obsolete manual control is removed.
 
 const siteHeader = document.querySelector('.site-header');
 const themeToggle = document.querySelector('[data-theme-toggle]');
@@ -59,12 +58,7 @@ function updateMotion(){
   root.classList.toggle('motion-paused',paused);
   if (paused || media.matches) settleBrand();
   document.dispatchEvent(new CustomEvent('telotia-motion',{detail:{paused}}));
-  motionButton.setAttribute('aria-pressed',String(paused));
-  const label = language === 'fr' ? (paused ? 'Activer l’animation' : 'Arrêter l’animation') : (paused ? 'Resume motion' : 'Pause motion');
-  document.querySelector('[data-motion-label]').textContent=label;
-  motionButton.setAttribute('aria-label',label);
 }
-motionButton.addEventListener('click',()=>{paused=!paused;updateMotion();try{localStorage.setItem('telotia-obsidian-motion',paused?'paused':'running')}catch{}scheduleFrame()});
 media.addEventListener('change',e=>{paused=e.matches;updateMotion();scheduleFrame()});
 function setLanguage(chosen,updateAddress=true){
  language=chosen==='fr'?'fr':'en'; const text=words[language];
@@ -126,22 +120,23 @@ function smoothstep(value) {
 
 function drawBrand() {
   // The original SVG's i dot follows its arc to x=268 above the T.
-  const travel = smoothstep(brandProgress / .55);
-  const lift = smoothstep((brandProgress - .55) / .27);
+  const travel = smoothstep(brandProgress);
+  const lift = travel;
   const dotX = -1254.14 * travel;
   const dotY = -86.67 * travel - 160 * Math.sin(Math.PI * travel) - 37.74 * lift;
+  brandArt.dataset.progress = brandProgress.toFixed(4);
   brandDot.setAttribute('transform', `translate(${dotX} ${dotY})`);
 
-  const suffixExit = smoothstep((brandProgress - .55) / .30);
+  const suffixExit = smoothstep(brandProgress / .85);
   brandSuffix.setAttribute('transform', `translate(${-200 * suffixExit} 0)`);
   brandSuffix.setAttribute('opacity', 1 - suffixExit);
 
-  const hook = smoothstep((brandProgress - .56) / .30);
+  const hook = travel;
   brandT.setAttribute('opacity', 1 - hook);
   brandHook.setAttribute('opacity', hook);
 
-  // Center the compact symbol after the dot arrives, with both paths on the same group.
-  const center = smoothstep((brandProgress - .63) / .37);
+  // T and dot converge together on the same progress curve, keeping the final pose.
+  const center = travel;
   brandSymbol.setAttribute('transform', `translate(${742.47 * center} ${71.5 * center})`);
 }
 

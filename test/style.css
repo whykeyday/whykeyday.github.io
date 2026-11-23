@@ -245,7 +245,7 @@ html.motion-paused .pixel-light-surface{display:none!important}html.motion-pause
 
 /* Theme surfaces and navigation. */
 :root {
-  --header-glass: rgb(10 18 18 / 56%);
+  --header-glass: rgb(10 18 18 / 38%);
   --header-fallback: #0c1313;
   --header-edge: rgb(107 184 176 / 22%);
   --header-control: #a5b1b1;
@@ -259,10 +259,10 @@ html.motion-paused .pixel-light-surface{display:none!important}html.motion-pause
   --muted: #4d5750;
   --accent: #086d66;
   --line: #d6d1c5;
-  --header-glass: rgb(247 245 240 / 62%);
+  --header-glass: rgb(247 245 240 / 42%);
   --header-fallback: var(--bg);
   --header-edge: rgb(67 79 70 / 22%);
-  --xuan-paper: linear-gradient(rgb(249 251 254 / 56%), rgb(249 251 254 / 56%)), url('assets/xuan-paper.jpg');
+  --xuan-paper: linear-gradient(rgb(249 251 254 / 78%), rgb(249 251 254 / 78%)), url('assets/xuan-paper.jpg');
   --header-control: #425759;
   --header-control-line: #b8ccc8;
   --day-art-filter: invert(1) hue-rotate(180deg) saturate(.75);
@@ -357,15 +357,18 @@ html.motion-paused .site-header { transition: none; }
   height: clamp(105px, 12vw, 190px);
   background-image: url('assets/ink-waves.webp');
   background-size: 100% 100%;
-  opacity: .86;
+  opacity: .64;
+  filter: blur(.9px);
 }
 :root[data-theme="light"] .contact::before {
   height: clamp(190px, 26vw, 370px);
   background-image: url('assets/ink-water.webp');
   background-size: max(100%, 760px) auto;
-  opacity: .52;
-  -webkit-mask-image: linear-gradient(transparent, #000 62%, #000 84%, transparent);
-  mask-image: linear-gradient(transparent, #000 62%, #000 84%, transparent);
+  background-position: center calc(100% + max(100vw, 760px) * .04);
+  opacity: .34;
+  filter: blur(1.1px);
+  -webkit-mask-image: linear-gradient(transparent, #000 45%);
+  mask-image: linear-gradient(transparent, #000 45%);
 }
 :root[data-theme="light"] .about-film > video {
   mix-blend-mode: multiply;
@@ -398,3 +401,7 @@ html.motion-paused .site-header { transition: none; }
   .header-inner { padding-inline: 16px; column-gap: 8px; }
   .site-header nav { gap: 12px; }
 }
+
+/* Preserve the existing controls alignment after removing the manual pause button. */
+.motion-slot { display:block; flex:0 0 98px; width:98px; }
+@media(max-width:760px) { .motion-slot { flex-basis:38px; width:38px; } }
