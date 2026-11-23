@@ -61,6 +61,17 @@ document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener
 let pending=false;
 const progress=document.querySelector('.reading-progress');
 const hero=document.querySelector('.hero');
+const heroCopy = hero.querySelector('.hero-copy');
+const heroButton = heroCopy.querySelector('.button');
+
+function alignHeroLight() {
+  const area = hero.getBoundingClientRect();
+  const action = heroButton.getBoundingClientRect();
+  hero.style.setProperty('--hero-light-x', (action.left - area.left + action.width / 2) + 'px');
+  hero.style.setProperty('--hero-light-y', (action.top - area.top + action.height * 0.72) + 'px');
+}
+
+new ResizeObserver(scheduleFrame).observe(heroCopy);
 const contact=document.querySelector('.contact');
 
 const contactButton=contact.querySelector('.button');
@@ -71,14 +82,10 @@ new ResizeObserver(alignContactLight).observe(contact.querySelector('.contact-co
 const sections=[...document.querySelectorAll('main section[id]')];
 function drawFrame(){
  pending=false;
+ alignHeroLight();
  alignContactLight();
  const y=window.scrollY, max=document.documentElement.scrollHeight-innerHeight;
  progress.style.transform='scaleX('+(max>0?Math.min(1,y/max):0)+')';
- if(!paused&&!media.matches){
-  root.style.setProperty('--hero-y',Math.min(y*.13,140)+'px');
-  root.style.setProperty('--hero-scale',1+Math.min(y/innerHeight,.95)*.12);
- 
- }
  let current='home';
  for(const section of sections)if(section.getBoundingClientRect().top<innerHeight*.4)current=section.id;
  document.querySelectorAll('[data-nav] a').forEach(a=>{if(a.hash==='#'+current)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
