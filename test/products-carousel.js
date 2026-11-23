@@ -117,5 +117,5 @@ new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;refresh()},
 new ResizeObserver(draw).observe(wheel);
 document.addEventListener('telotia-motion',refresh);document.addEventListener('visibilitychange',refresh);reduced.addEventListener('change',refresh);small.addEventListener('change',draw);
 document.addEventListener('telotia-language',()=>{announce.textContent='';if(products.length)build()});
-fetch('products.json?v=11').then(r=>{if(!r.ok)throw Error('Product data unavailable');return r.json()}).then(data=>{if(!data.products?.length)return;products=data.products;build();toggle.disabled=false;section.dataset.carouselReady='true';refresh()}).catch(error=>console.warn(error));
+fetch('products.json?v=12').then(r=>{if(!r.ok)throw Error('Product data unavailable');return r.json()}).then(data=>{if(!data.products?.length)return;products=data.products;build();toggle.disabled=false;section.dataset.carouselReady='true';refresh()}).catch(error=>console.warn(error));
 })();
