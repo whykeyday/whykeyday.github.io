@@ -15,11 +15,20 @@ function mount() {
   const fullPath = svg.querySelector('path');
   const suffix = document.createElementNS(ns, 'g');
   suffix.dataset.wordmarkSuffix = '';
-  const suffixPath = fullPath.cloneNode(false);
-  suffixPath.setAttribute('d', contours.filter(path => path !== initial).join(''));
-  suffix.append(suffixPath);
+  // Keep each letter's counters in the same even-odd path as its outer contour.
+  const letterContours = [[0, 9], [4], [1, 7], [5], [6], [2, 8]];
+  const names = ['e', 'l', 'o', 't', 'i', 'a'];
+  const letters = letterContours.map((indices, index) => {
+    const group = document.createElementNS(ns, 'g');
+    group.dataset.wordmarkLetter = names[index];
+    const path = fullPath.cloneNode(false);
+    path.setAttribute('d', indices.map(i => contours[i]).join(''));
+    group.append(path);
+    suffix.append(group);
+    return group;
+  });
   const dot = svg.querySelector('circle');
-  if (dot) suffix.append(dot);
+  if (dot) letters[4].append(dot);
   const first = fullPath.cloneNode(false);
   first.setAttribute('d', initial);
   first.dataset.wordmarkInitial = '';
@@ -27,11 +36,16 @@ function mount() {
   svg.dataset.scrollWordmark = '';
 
   const clamp = value => Math.max(0, Math.min(1, value));
-  let current = clamp((scrollY - 12) / 200), target = current, frame = 0, last = 0;
+  let current = clamp((scrollY - 12) / 320), target = current, frame = 0, last = 0;
   function paint() {
-    const progress = current * current * (3 - 2 * current);
-    suffix.setAttribute('transform', `translate(${-110 * progress} 0)`);
-    suffix.setAttribute('opacity', String(1 - progress));
+    letters.forEach((letter, index) => {
+      // Adjacent fades overlap, so e → l → o → t → i → a reads as one gesture.
+      const local = clamp((current - index * .14) / .30);
+      const progress = local * local * (3 - 2 * local);
+      const distance = [90, 160, 240, 310, 365, 440][index];
+      letter.setAttribute('transform', `translate(${-distance * progress} 0)`);
+      letter.setAttribute('opacity', String(1 - progress));
+    });
     svg.dataset.scrollProgress = current.toFixed(4);
   }
   function tick(now) {
@@ -43,7 +57,7 @@ function mount() {
     frame = current === target ? 0 : requestAnimationFrame(tick);
   }
   function update() {
-    target = clamp((scrollY - 12) / 200);
+    target = clamp((scrollY - 12) / 320);
     if (reduced.matches) {
       cancelAnimationFrame(frame); frame = 0; current = target; paint();
     } else if (!frame) {
